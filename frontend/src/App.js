@@ -1,20 +1,30 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useAuthContext } from './hooks/useAuthContext'
 
 // pages & components
-import Home from './pages/Home'
-import Login from './pages/Login'
+import RoutesBeforeAuth from './pages/RoutesBeforeAuth'
+import MyRoutes from './pages/MyRoutes'
+import Navbar from './components/Navbar'
 
 function App() {
-  return (
-    <div className=''>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  )
+  const { user } = useAuthContext()
+
+  if (!user) {
+    return (
+      <div className=''>
+        <RoutesBeforeAuth />
+      </div>
+    )
+  }
+
+  if (user) {
+    return (
+      <div className=''>
+        <Navbar />
+        <MyRoutes />
+      </div>
+    )
+  }
 }
 
 export default App

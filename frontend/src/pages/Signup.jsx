@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSignup } from '../hooks/useSignup'
+import { useSignup } from '../hooks/useSignUp'
 
 const Signup = () => {
   const [email, setEmail] = useState('')
@@ -13,17 +13,19 @@ const Signup = () => {
   }
 
   return (
-    <form className='signup' onSubmit={handleSubmit}>
+    <form className=' space-x-10' onSubmit={handleSubmit}>
       <h3>Sign Up</h3>
 
       <label>Email address:</label>
       <input
+        className=' bg-gray-500'
         type='email'
         onChange={(e) => setEmail(e.target.value)}
         value={email}
       />
       <label>Password:</label>
       <input
+        className=' bg-gray-500'
         type='password'
         onChange={(e) => setPassword(e.target.value)}
         value={password}
