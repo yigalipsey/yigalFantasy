@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
 
-//schema for Players
 const playerSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  position: { type: String, required: true },
-  price: { type: Number, required: true },
+  position: { type: String },
+  price: { type: Number },
   team: { type: mongoose.Schema.Types.ObjectId, ref: 'Team' },
   stats: [
     {
@@ -16,4 +15,6 @@ const playerSchema = new mongoose.Schema({
   ],
 })
 
-module.exports = mongoose.model('playerFantasy', playerSchema)
+const Player = mongoose.model('Player', playerSchema)
+
+module.exports = Player

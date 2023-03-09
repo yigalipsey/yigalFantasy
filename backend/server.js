@@ -3,7 +3,9 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
-const teamsRoutes = require('./routes/teamsRoutes')
+const playerRoutes = require('./routes/playerRoutes')
+const leagueRoutes = require('./routes/leagueRoutes')
+const teamRoutes = require('./routes/teamRoutes')
 const cors = require('cors')
 
 // express app
@@ -19,7 +21,9 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/user', userRoutes)
-app.use('/teams', teamsRoutes)
+app.use('/player', playerRoutes)
+app.use('/team', teamRoutes)
+app.use('/league', leagueRoutes)
 
 // connect to db
 mongoose.set('strictQuery', false)
