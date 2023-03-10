@@ -7,6 +7,7 @@ import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 import MyTeam from './MyTeam'
+import BuyldTeam from './BuyldTeam'
 
 const MyRoutes = () => {
   const { user } = useAuthContext()
@@ -19,6 +20,7 @@ const MyRoutes = () => {
           element={!user ? <Login /> : <Navigate to={'/myteam'} />}
         />
         <Route path='/myteam' element={<MyTeam />} />
+        <Route path='/buyldteam' element={<BuyldTeam />} />
       </Routes>
     </div>
   )

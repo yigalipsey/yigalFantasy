@@ -26,7 +26,12 @@ const Navbar = () => {
           >
             הטובים ביותר
           </Link>
-
+          <Link
+            to='buyldteam'
+            className='block px-3 py-2 rounded-md hover:bg-gray-700'
+          >
+            בניית קבוצה
+          </Link>
           <Link
             to='/myteam'
             className='block px-3 py-2 rounded-md hover:bg-gray-700'

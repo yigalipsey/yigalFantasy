@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import { LeagueContext } from '../context/LeagueContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
-const MyTeam = () => {
+const BuyldTeam = () => {
   const [players, setPlayers] = useState([])
   const { dispatch } = useContext(LeagueContext)
   const { user } = useAuthContext()
@@ -34,7 +34,15 @@ const MyTeam = () => {
     fetchAllPlayers()
   }, [dispatch])
 
-  return <div></div>
+  return (
+    <div>
+      {players.map((player) => (
+        <div className=' w-2/5' key={player._id}>
+          <h2 className=' bg-red-600 mt-1 '>{player.name}</h2>
+        </div>
+      ))}
+    </div>
+  )
 }
 
-export default MyTeam
+export default BuyldTeam
