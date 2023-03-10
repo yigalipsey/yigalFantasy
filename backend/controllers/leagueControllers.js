@@ -2,9 +2,16 @@ const LeagueModel = require('../models/leagueModel')
 
 // get all players
 async function getTheLeaguePlayers(req, res) {
+  const { name } = req.body
+  console.log(name)
   try {
-    const league = await LeagueModel.find()
-    // .populate('players')
+    const league = await LeagueModel.find().populate({
+      path: 'teams',
+      populate: {
+        path: 'players',
+      },
+    })
+
     res.status(201).json(league)
   } catch (err) {
     console.error(err)

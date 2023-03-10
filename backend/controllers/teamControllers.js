@@ -24,6 +24,7 @@ async function findTeamByName(req, res) {
   const { name } = req.body
   try {
     const team = await Team.findOne({ name }).populate('players')
+
     res.status(201).json(team)
   } catch (err) {
     console.error(err)
