@@ -16,7 +16,7 @@ const PickPlayers = () => {
   }, [])
 
   return (
-    <div className=' w-1/5'>
+    <div className=''>
       <div>
         {teams.map((item) => (
           <TeamDetails key={item._id} {...item} />

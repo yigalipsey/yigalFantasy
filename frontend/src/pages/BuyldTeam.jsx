@@ -11,7 +11,10 @@ const BuyldTeam = () => {
           <div>
             <DropDownXi />
           </div>
-          <PickPlayers />
+
+          <div className='h-64 overflow-y-auto w-1/2  '>
+            <PickPlayers />
+          </div>
         </div>
         <div className='w-full md:w-1/2'>
           <div className=' w-[450px] h-[600px] mt-10  '>
