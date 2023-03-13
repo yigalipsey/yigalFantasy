@@ -7,9 +7,7 @@ function SoccerPitch() {
       <div className='absolute top-0 left-0 w-full h-full'>
         {/* Field lines */}
         <div className='absolute top-0 left-0 w-full h-full grid grid-cols-2 grid-rows-2'>
-          <div className='bg-white w-px h-full'>
-            <div className='absolute top-10 left-1/3'>jcbkwhbkhbd</div>
-          </div>
+          <div className='bg-white w-px h-full'></div>
           <div className=' w-px h-full'></div>
           <div className='bg-white w-full h-px'></div>
           <div className='bg-white w-full h-px'></div>

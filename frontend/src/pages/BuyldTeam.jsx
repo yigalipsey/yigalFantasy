@@ -1,33 +1,31 @@
-import { useEffect, useState, useContext } from 'react'
-import { useDataContext } from '../hooks/useDataContext'
-import { useAuthContext } from '../hooks/useAuthContext'
-import { useFetchData } from '../hooks/useFetchData'
 import Pitch from '../components/SoccerPitch'
+import PickPlayers from '../components/PickPlayers'
+import { useState } from 'react'
 
 const BuyldTeam = () => {
-  const [data, setData] = useState([])
-  const { teams, dispatch } = useDataContext()
-  const { user } = useAuthContext()
-  const { fetchAllPlayers } = useFetchData()
+  const [t, setT] = useState(true)
 
-  useEffect(() => {
-    fetchAllPlayers()
-  }, [])
+  const change = () => {
+    setT(!t)
+    console.log(t)
+  }
 
-  const team = teams[0]
-  console.log(team)
-  return (
-    <div className=' flex w-5/6 '>
-      <div className=' w-1/5'>
-        {teams.map((team) => {
-          return <h1>team</h1>
-        })}
-      </div>
-      <div className=' w-[450px] h-[600px] mt-10  '>
-        <Pitch />
-      </div>
-    </div>
-  )
+  if (t) return <button onClick={change}>select</button>
+  else
+    return (
+      <>
+        <div className=' flex w-5/6 m-auto '>
+          <div className='w-full md:w-1/2'>
+            <PickPlayers />
+          </div>
+          <div className='w-full md:w-1/2'>
+            <div className=' w-[450px] h-[600px] mt-10  '>
+              <Pitch />
+            </div>
+          </div>
+        </div>
+      </>
+    )
 }
 
 export default BuyldTeam
