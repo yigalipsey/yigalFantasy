@@ -5,6 +5,7 @@ const {
   createTeam,
   findTeamByName,
   findAllTeams,
+  AddPlyerToTeam,
 } = require('../controllers/teamControllers')
 
 const router = express.Router()
@@ -17,5 +18,8 @@ router.get('/getteambyname', findTeamByName)
 
 //find all teams
 router.get('/allteams', findAllTeams)
+
+//add player to the team
+router.post('/addplayer', AddPlyerToTeam)
 
 module.exports = router

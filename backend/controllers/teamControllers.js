@@ -1,4 +1,5 @@
 const { Team } = require('../models/teamModel')
+const Player = require('../models/playerModel')
 
 // Create a new team
 const createTeam = async (req, res) => {
@@ -16,6 +17,27 @@ const createTeam = async (req, res) => {
   } catch (error) {
     console.error(error)
     res.status(500).json({ message: 'Error creating team' })
+  }
+}
+
+//Add a new player to the team
+const AddPlyerToTeam = async (req, res) => {
+  try {
+    const { name, age, position, teamId } = req.body
+
+    const player = new Player({ name, age, position })
+    await player.save()
+
+    const team = await Team.findByIdAndUpdate(
+      teamId,
+      { $push: { players: player._id } },
+      { new: true }
+    ).populate('players')
+
+    res.status(201).json(team)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Server error' })
   }
 }
 
@@ -42,4 +64,9 @@ async function findAllTeams(req, res) {
   }
 }
 
-module.exports = { createTeam, findTeamByName, findAllTeams }
+module.exports = {
+  createTeam,
+  findTeamByName,
+  findAllTeams,
+  AddPlyerToTeam,
+}
