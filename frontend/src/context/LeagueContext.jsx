@@ -8,7 +8,7 @@ const initialState = {
 
 const leagueReducer = (state, action) => {
   switch (action.type) {
-    case 'SET_PLAYERS':
+    case 'SET_DATA':
       return {
         ...state,
         players: action.payload,

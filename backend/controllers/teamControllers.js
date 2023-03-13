@@ -31,4 +31,15 @@ async function findTeamByName(req, res) {
   }
 }
 
-module.exports = { createTeam, findTeamByName }
+// find all teams
+async function findAllTeams(req, res) {
+  try {
+    const teams = await Team.find().populate('players')
+
+    res.status(201).json(teams)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+module.exports = { createTeam, findTeamByName, findAllTeams }

@@ -1,7 +1,11 @@
 const express = require('express')
 
 // controller functions
-const { createTeam, findTeamByName } = require('../controllers/teamControllers')
+const {
+  createTeam,
+  findTeamByName,
+  findAllTeams,
+} = require('../controllers/teamControllers')
 
 const router = express.Router()
 
@@ -10,5 +14,8 @@ router.post('/create', createTeam)
 
 //find team by name
 router.get('/getteambyname', findTeamByName)
+
+//find all teams
+router.get('/allteams', findAllTeams)
 
 module.exports = router
