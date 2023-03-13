@@ -1,7 +1,7 @@
 import { createContext, useReducer } from 'react'
 
 const initialState = {
-  players: [],
+  teams: [],
   loading: true,
   error: null,
 }
@@ -11,7 +11,7 @@ const leagueReducer = (state, action) => {
     case 'SET_DATA':
       return {
         ...state,
-        players: action.payload,
+        teams: action.payload,
         loading: false,
         error: null,
       }
@@ -38,7 +38,7 @@ export const LeagueProvider = ({ children }) => {
   const [state, dispatch] = useReducer(leagueReducer, initialState)
 
   return (
-    <LeagueContext.Provider value={{ state, dispatch }}>
+    <LeagueContext.Provider value={{ ...state, dispatch }}>
       {children}
     </LeagueContext.Provider>
   )
