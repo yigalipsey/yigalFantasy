@@ -19,7 +19,7 @@ const PickPlayers = () => {
     <div className=' w-1/5'>
       <div>
         {teams.map((item) => (
-          <TeamDetails key={item.name} {...item} />
+          <TeamDetails key={item._id} {...item} />
         ))}
       </div>
     </div>
