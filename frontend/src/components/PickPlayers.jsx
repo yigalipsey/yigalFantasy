@@ -7,7 +7,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import TeamDetails from '../components/TeamDetails'
 
 const PickPlayers = () => {
-  const { teams, dispatch } = useDataContext()
+  const { teams } = useDataContext()
   const { user } = useAuthContext()
   const { fetchAllPlayers } = useFetchData()
 

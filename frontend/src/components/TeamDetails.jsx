@@ -1,4 +1,5 @@
 import React from 'react'
+import { useMyTeamContext } from '../hooks/useMyTeamContext'
 
 const TeamDetails = ({ _id, name, players }) => {
   return (
@@ -19,11 +20,18 @@ const TeamDetails = ({ _id, name, players }) => {
 }
 
 function Player({ name, _id, position, price }) {
+  const { dispatch } = useMyTeamContext()
+
+  const selectPlayer = (_id) => {
+    // update the myTeam context
+    dispatch({ type: 'ADD_PLAYER', payload: _id })
+  }
+
   return (
     <div className=' mt-4 flex space-x-2 '>
       <div className=' text-yellow-400'>{name}</div>
       <h1 className=' text-green-700'>${price}M</h1>
-      <button>בחר</button>
+      <button onClick={() => selectPlayer(_id)}>בחר</button>
     </div>
   )
 }
