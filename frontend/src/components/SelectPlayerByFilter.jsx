@@ -15,11 +15,22 @@ const SelectPlayerByFilter = () => {
             <ul>
               {team.players.map((player) =>
                 positionToFilter === null ? (
-                  <Player key={player._id} player={player} />
-                ) : (
-                  positionToFilter === player.position && (
+                  priceToFilter === null ? (
                     <Player key={player._id} player={player} />
+                  ) : (
+                    priceToFilter === player.price && (
+                      <Player key={player._id} player={player} />
+                    )
                   )
+                ) : (
+                  positionToFilter === player.position &&
+                  (priceToFilter === null ? (
+                    <Player key={player._id} player={player} />
+                  ) : (
+                    priceToFilter === player.price && (
+                      <Player key={player._id} player={player} />
+                    )
+                  ))
                 )
               )}
             </ul>
@@ -30,11 +41,22 @@ const SelectPlayerByFilter = () => {
               <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
               {team.players.map((player) =>
                 positionToFilter === null ? (
-                  <Player key={player._id} player={player} />
-                ) : (
-                  positionToFilter === player.position && (
+                  priceToFilter === null ? (
                     <Player key={player._id} player={player} />
+                  ) : (
+                    priceToFilter === player.price && (
+                      <Player key={player._id} player={player} />
+                    )
                   )
+                ) : (
+                  positionToFilter === player.position &&
+                  (priceToFilter === null ? (
+                    <Player key={player._id} player={player} />
+                  ) : (
+                    priceToFilter === player.price && (
+                      <Player key={player._id} player={player} />
+                    )
+                  ))
                 )
               )}
             </div>
