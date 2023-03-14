@@ -4,13 +4,12 @@ import { useDataContext } from '../hooks/useDataContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 //components
-import SelectByTeam from '../components/SelectByTeam'
-import SelectByPosition from '../components/SelectByPosition'
+import SelectPlayerByPosition from '../components/SelectPlayerByPosition'
 import DropDownXi from '../components/DropDownXi'
 import NameInputs from './NamesInputs'
+import SelectPlayerByTeam from './SelectPlayerByTeam'
 
 const PickPlayers = () => {
-  const s = false
   const { teams } = useDataContext()
   const { user } = useAuthContext()
   const { fetchAllPlayers } = useFetchData()
@@ -26,11 +25,8 @@ const PickPlayers = () => {
       </div>
 
       <div className=' h-64 overflow-y-auto mt-5 '>
-        {teams.map((item) => (
-          <SelectByTeam key={item._id} item={item} />
-        ))}
+        <SelectPlayerByTeam />
       </div>
-      <div></div>
 
       <div>
         <DropDownXi />

@@ -1,20 +1,21 @@
 import React from 'react'
 import { useMyTeamContext } from '../hooks/useMyTeamContext'
+import { useDataContext } from '../hooks/useDataContext'
 
-const SelectByTeam = ({ item }) => {
+const SelectPlayerByTeam = () => {
+  const { teams } = useDataContext()
   return (
-    <div className='  ' key={item._id}>
-      <div className='  bg-green-500 w-[full]'>
-        <h2 className=' text-blue-500'>{item.name}</h2>
-        <h1 className=' text-red-700'>{}</h1>
-      </div>
-      <div>
-        <ul>
-          {item.players.map((player) => (
-            <Player key={player._id} player={player} />
-          ))}
-        </ul>
-      </div>
+    <div className=''>
+      {teams.map((team) => (
+        <div key={team.name}>
+          <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
+          <ul>
+            {team.players.map((player) => (
+              <Player key={player._id} player={player} />
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   )
 }
@@ -36,5 +37,4 @@ function Player({ player }) {
     </div>
   )
 }
-
-export default SelectByTeam
+export default SelectPlayerByTeam

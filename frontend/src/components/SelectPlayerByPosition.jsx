@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMyTeamContext } from '../hooks/useMyTeamContext'
 
-const SelectByPosition = ({ _id, name, players }) => {
+const SelectPlayerByPosition = ({ _id, name, players }) => {
   const forwards = players.filter((player) => player.position === 'Forward')
   const midfielders = players.filter(
     (player) => player.position === 'Midfielder'
@@ -42,4 +42,4 @@ function Player({ player }) {
   )
 }
 
-export default SelectByPosition
+export default SelectPlayerByPosition
