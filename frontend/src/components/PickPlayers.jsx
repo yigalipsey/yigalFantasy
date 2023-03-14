@@ -31,10 +31,8 @@ const PickPlayers = () => {
       <div>
         <DropDownXi />
       </div>
-      <div>
+      <div className=' flex'>
         <DropDownByPosition />
-      </div>
-      <div>
         <DropDownByTeam />
       </div>
     </div>

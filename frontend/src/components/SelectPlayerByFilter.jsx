@@ -4,47 +4,44 @@ import { useDataContext } from '../hooks/useDataContext'
 
 const SelectPlayerByFilter = () => {
   const { teams, positionToFilter, teamToFilter } = useDataContext()
-  const [isFilterd, setIsFilterd] = useState(false)
 
-  if (!isFilterd)
-    return (
-      <div className=''>
-        {teams.map((team) =>
-          teamToFilter === null ? (
+  return (
+    <div className=''>
+      {teams.map((team) =>
+        teamToFilter === null ? (
+          <div key={team.name}>
+            <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
+            <ul>
+              {team.players.map((player) =>
+                positionToFilter === null ? (
+                  <Player key={player._id} player={player} />
+                ) : (
+                  positionToFilter === player.position && (
+                    <Player key={player._id} player={player} />
+                  )
+                )
+              )}
+            </ul>
+          </div>
+        ) : (
+          teamToFilter === team.name && (
             <div key={team.name}>
               <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
-              <ul>
-                {team.players.map((player) =>
-                  positionToFilter === null ? (
+              {team.players.map((player) =>
+                positionToFilter === null ? (
+                  <Player key={player._id} player={player} />
+                ) : (
+                  positionToFilter === player.position && (
                     <Player key={player._id} player={player} />
-                  ) : (
-                    positionToFilter === player.position && (
-                      <Player key={player._id} player={player} />
-                    )
                   )
-                )}
-              </ul>
+                )
+              )}
             </div>
-          ) : (
-            teamToFilter === team.name && (
-              <div key={team.name}>
-                <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
-                {team.players.map((player) =>
-                  positionToFilter === null ? (
-                    <Player key={player._id} player={player} />
-                  ) : (
-                    positionToFilter === player.position && (
-                      <Player key={player._id} player={player} />
-                    )
-                  )
-                )}
-              </div>
-            )
           )
-        )}
-      </div>
-    )
-  else return <h1>knhljlkj</h1>
+        )
+      )}
+    </div>
+  )
 }
 
 function Player({ player }) {
