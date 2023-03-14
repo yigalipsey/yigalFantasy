@@ -6,12 +6,15 @@ const DropDownByPosition = () => {
   const [selectedOption, setSelectedOption] = useState('בחר על פי עמדה')
   const { dispatch } = useDataContext()
 
-  const options = ['התקפה', 'קישור', 'הגנה', 'שוערים']
+  const options = ['st', 'קישור', 'הגנה', 'שוערים', 'כל העמדות']
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option)
     setIsOpen(false)
     dispatch({ type: 'SET_POSITION_TO_FILTER', payload: option })
+    if (option === 'כל העמדות') {
+      dispatch({ type: 'SET_POSITION_TO_FILTER', payload: null })
+    }
   }
 
   return (

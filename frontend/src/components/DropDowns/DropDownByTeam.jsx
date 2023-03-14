@@ -6,12 +6,15 @@ const DropDownByTeam = () => {
   const [selectedOption, setSelectedOption] = useState('בחר על פי קבוצה')
   const { dispatch } = useDataContext()
 
-  const options = ['מכבי חיפה', 'בית״ר ירושלים', 'מכבי תל-אביב']
+  const options = ['מכבי חיפה', 'בית״ר ירושלים', 'מכבי תל-אביב', 'כל הקבוצות']
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option)
     setIsOpen(false)
     dispatch({ type: 'SET_TEAM_TO_FILTER', payload: option })
+    if (option === 'כל הקבוצות') {
+      dispatch({ type: 'SET_TEAM_TO_FILTER', payload: null })
+    }
   }
 
   return (

@@ -4,12 +4,11 @@ import { useDataContext } from '../hooks/useDataContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 //components
-import SelectPlayerByPosition from '../components/SelectPlayerByPosition'
 import DropDownXi from './DropDowns/DropDownXi'
 import DropDownByPosition from './DropDowns/DropDownByPosition'
 import DropDownByTeam from './DropDowns/DropDownByTeam'
 import NameInputs from './NamesInputs'
-import SelectPlayerByTeam from './SelectPlayerByTeam'
+import SelectPlayerByFilter from './SelectPlayerByFilter'
 
 const PickPlayers = () => {
   const { user } = useAuthContext()
@@ -26,7 +25,7 @@ const PickPlayers = () => {
       </div>
 
       <div className=' h-64 overflow-y-auto mt-5 '>
-        <SelectPlayerByTeam />
+        <SelectPlayerByFilter />
       </div>
 
       <div>
