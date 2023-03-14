@@ -5,12 +5,13 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 //components
 import SelectPlayerByPosition from '../components/SelectPlayerByPosition'
-import DropDownXi from '../components/DropDownXi'
+import DropDownXi from './DropDowns/DropDownXi'
+import DropDownByPosition from './DropDowns/DropDownByPosition'
+import DropDownByTeam from './DropDowns/DropDownByTeam'
 import NameInputs from './NamesInputs'
 import SelectPlayerByTeam from './SelectPlayerByTeam'
 
 const PickPlayers = () => {
-  const { teams } = useDataContext()
   const { user } = useAuthContext()
   const { fetchAllPlayers } = useFetchData()
 
@@ -30,6 +31,12 @@ const PickPlayers = () => {
 
       <div>
         <DropDownXi />
+      </div>
+      <div>
+        <DropDownByPosition />
+      </div>
+      <div>
+        <DropDownByTeam />
       </div>
     </div>
   )

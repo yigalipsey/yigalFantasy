@@ -1,6 +1,5 @@
 import Pitch from '../components/SoccerPitch'
 import PickPlayers from '../components/PickPlayers'
-import DropDownXi from '../components/DropDownXi'
 import { useState } from 'react'
 
 const BuyldTeam = () => {

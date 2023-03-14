@@ -2,7 +2,9 @@ import { createContext, useReducer } from 'react'
 
 const initialState = {
   teams: [],
-  filterByPosition: [],
+  positionToFilter: null,
+  teamToFilter: null,
+  priceToFilter: null,
   loading: true,
   error: null,
 }
@@ -16,12 +18,15 @@ const leagueReducer = (state, action) => {
         loading: false,
         error: null,
       }
-    case 'SET_FILTER_BY_POSITION':
+    case 'SET_POSITION_TO_FILTER':
       return {
         ...state,
-        teams: action.payload,
-        loading: false,
-        error: null,
+        positionToFilter: action.payload,
+      }
+    case 'SET_TEAM_TO_FILTER':
+      return {
+        ...state,
+        teamToFilter: action.payload,
       }
     case 'SET_LOADING':
       return {
@@ -35,8 +40,6 @@ const leagueReducer = (state, action) => {
         error: action.payload,
         loading: false,
       }
-    default:
-      return state
   }
 }
 
@@ -44,6 +47,8 @@ export const LeagueContext = createContext(initialState)
 
 export const LeagueProvider = ({ children }) => {
   const [state, dispatch] = useReducer(leagueReducer, initialState)
+
+  console.log('DataContext state:', state)
 
   return (
     <LeagueContext.Provider value={{ ...state, dispatch }}>

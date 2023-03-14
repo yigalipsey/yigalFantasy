@@ -18,7 +18,7 @@ export const useFetchData = () => {
         },
       })
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       setData(data)
       dispatch({ type: 'SET_DATA', payload: data })
     } catch (error) {

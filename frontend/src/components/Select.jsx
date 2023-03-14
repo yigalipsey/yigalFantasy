@@ -2,25 +2,24 @@ import React from 'react'
 import { useMyTeamContext } from '../hooks/useMyTeamContext'
 import { useDataContext } from '../hooks/useDataContext'
 
-const SelectPlayerByTeam = () => {
-  const { teams, positionToFilter, teamToFilter, priceToFilter } =
-    useDataContext()
+const SelectPlayerByTeam = ({ position }) => {
+  const { teams } = useDataContext()
+
   return (
     <div className=''>
-      {teams.map((team) =>
-        teamToFilter != null ? (
-          <div key={team.name}>
-            <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
-            <ul>
-              {team.players.map((player) => (
-                <Player key={player._id} player={player} />
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <h1>njkjj</h1>
-        )
-      )}
+      {teams.map((team) => (
+        <div key={team.name}>
+          <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
+          <ul>
+            {team.players.map(
+              (player) =>
+                player.name === 'אצילי' && (
+                  <Player key={player._id} player={player} />
+                )
+            )}
+          </ul>
+        </div>
+      ))}
     </div>
   )
 }
