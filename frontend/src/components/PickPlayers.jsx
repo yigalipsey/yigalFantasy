@@ -4,9 +4,12 @@ import { useDataContext } from '../hooks/useDataContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 //components
-import TeamDetails from '../components/TeamDetails'
+import SelectByTeam from '../components/SelectByTeam'
+import DropDownXi from '../components/DropDownXi'
+import NameInputs from './NamesInputs'
 
 const PickPlayers = () => {
+  const s = false
   const { teams } = useDataContext()
   const { user } = useAuthContext()
   const { fetchAllPlayers } = useFetchData()
@@ -17,10 +20,19 @@ const PickPlayers = () => {
 
   return (
     <div className=''>
+      <div className='flex'>
+        <NameInputs />
+      </div>
+      {
+        <div className=' h-64 overflow-y-auto mt-5 '>
+          {teams.map((item) => (
+            <SelectByTeam key={item._id} {...item} />
+          ))}
+        </div>
+      }
+
       <div>
-        {teams.map((item) => (
-          <TeamDetails key={item._id} {...item} />
-        ))}
+        <DropDownXi />
       </div>
     </div>
   )

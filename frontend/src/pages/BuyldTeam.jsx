@@ -6,18 +6,14 @@ import { useState } from 'react'
 const BuyldTeam = () => {
   return (
     <>
-      <div className=' flex w-5/6 m-auto '>
-        <div className='w-full md:w-1/2'>
-          <div>
-            <DropDownXi />
-          </div>
-
-          <div className='h-64 overflow-y-auto w-1/2  '>
+      <div className=' grid grid-cols-1 mym:grid-cols-2 gap-4 w-5/6 m-auto mt-6 '>
+        <div className='w-full   '>
+          <div className=' '>
             <PickPlayers />
           </div>
         </div>
-        <div className='w-full md:w-1/2'>
-          <div className=' w-[450px] h-[600px] mt-10  '>
+        <div className='w-full '>
+          <div className=' w-[400px] h-[600px]  mx-auto'>
             <Pitch />
           </div>
         </div>
