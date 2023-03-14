@@ -4,7 +4,7 @@ const NamesInputs = () => {
   return (
     <div className='flex '>
       <label htmlFor='input1' className='text-sm'>
-        Input 1:
+        {/* Input 1: */}
       </label>
       <input
         id='input1'
@@ -14,7 +14,7 @@ const NamesInputs = () => {
       />
 
       <label htmlFor='input2' className='text-sm'>
-        Input 2:
+        {/* Input 2: */}
       </label>
       <input
         id='input2'

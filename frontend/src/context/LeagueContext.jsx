@@ -28,6 +28,11 @@ const leagueReducer = (state, action) => {
         ...state,
         teamToFilter: action.payload,
       }
+    case 'SET_PRICE_TO_FILTER':
+      return {
+        ...state,
+        priceToFilter: action.payload,
+      }
     case 'SET_LOADING':
       return {
         ...state,

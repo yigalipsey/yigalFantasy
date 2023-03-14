@@ -7,6 +7,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import DropDownXi from './DropDowns/DropDownXi'
 import DropDownByPosition from './DropDowns/DropDownByPosition'
 import DropDownByTeam from './DropDowns/DropDownByTeam'
+import PriceSlider from './PriceSlider'
 import NameInputs from './NamesInputs'
 import SelectPlayerByFilter from './SelectPlayerByFilter'
 
@@ -22,6 +23,7 @@ const PickPlayers = () => {
     <div className=''>
       <div className='flex'>
         <NameInputs />
+        <DropDownXi />
       </div>
 
       <div className=' h-64 overflow-y-auto mt-5 '>
@@ -29,7 +31,7 @@ const PickPlayers = () => {
       </div>
 
       <div>
-        <DropDownXi />
+        <PriceSlider />
       </div>
       <div className=' flex'>
         <DropDownByPosition />

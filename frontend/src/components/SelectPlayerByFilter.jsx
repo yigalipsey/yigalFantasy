@@ -3,7 +3,8 @@ import { useMyTeamContext } from '../hooks/useMyTeamContext'
 import { useDataContext } from '../hooks/useDataContext'
 
 const SelectPlayerByFilter = () => {
-  const { teams, positionToFilter, teamToFilter } = useDataContext()
+  const { teams, positionToFilter, teamToFilter, priceToFilter } =
+    useDataContext()
 
   return (
     <div className=''>
