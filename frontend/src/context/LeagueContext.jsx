@@ -2,6 +2,7 @@ import { createContext, useReducer } from 'react'
 
 const initialState = {
   teams: [],
+  filterByPosition: [],
   loading: true,
   error: null,
 }
@@ -9,6 +10,13 @@ const initialState = {
 const leagueReducer = (state, action) => {
   switch (action.type) {
     case 'SET_DATA':
+      return {
+        ...state,
+        teams: action.payload,
+        loading: false,
+        error: null,
+      }
+    case 'SET_FILTER_BY_POSITION':
       return {
         ...state,
         teams: action.payload,

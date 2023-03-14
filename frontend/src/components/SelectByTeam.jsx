@@ -1,16 +1,16 @@
 import React from 'react'
 import { useMyTeamContext } from '../hooks/useMyTeamContext'
 
-const SelectByTeam = ({ _id, name, players }) => {
+const SelectByTeam = ({ item }) => {
   return (
-    <div className='  ' key={_id}>
+    <div className='  ' key={item._id}>
       <div className='  bg-green-500 w-[full]'>
-        <h2 className=' text-blue-500'>{name}</h2>
+        <h2 className=' text-blue-500'>{item.name}</h2>
         <h1 className=' text-red-700'>{}</h1>
       </div>
       <div>
         <ul>
-          {players.map((player) => (
+          {item.players.map((player) => (
             <Player key={player._id} player={player} />
           ))}
         </ul>

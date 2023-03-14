@@ -5,6 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 //components
 import SelectByTeam from '../components/SelectByTeam'
+import SelectByPosition from '../components/SelectByPosition'
 import DropDownXi from '../components/DropDownXi'
 import NameInputs from './NamesInputs'
 
@@ -23,13 +24,13 @@ const PickPlayers = () => {
       <div className='flex'>
         <NameInputs />
       </div>
-      {
-        <div className=' h-64 overflow-y-auto mt-5 '>
-          {teams.map((item) => (
-            <SelectByTeam key={item._id} {...item} />
-          ))}
-        </div>
-      }
+
+      <div className=' h-64 overflow-y-auto mt-5 '>
+        {teams.map((item) => (
+          <SelectByTeam key={item._id} item={item} />
+        ))}
+      </div>
+      <div></div>
 
       <div>
         <DropDownXi />
