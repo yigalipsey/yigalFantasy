@@ -17,14 +17,20 @@ function App() {
     )
   }
 
-  if (user) {
-    return (
-      <div className=''>
-        <Navbar />
-        <MyRoutes />
-      </div>
-    )
-  }
+  return (
+    <div className=''>
+      <Navbar />
+      <MyRoutes />
+    </div>
+  )
+
+  // return (
+  //   <div className=''>
+  //     <RoutesBeforeAuth />
+  //     <Navbar />
+  //     <MyRoutes />
+  //   </div>
+  // )
 }
 
 export default App

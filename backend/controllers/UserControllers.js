@@ -37,4 +37,9 @@ const signupUser = async (req, res) => {
   }
 }
 
-module.exports = { signupUser, loginUser }
+const test = async (req, res) => {
+  console.log(req.body)
+  res.json('work')
+}
+
+module.exports = { signupUser, loginUser, test }

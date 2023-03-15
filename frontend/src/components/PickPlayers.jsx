@@ -21,7 +21,7 @@ const PickPlayers = () => {
   return (
     <div className=''>
       <div className='flex'>
-        <NameInputs />
+        {/* <NameInputs /> */}
         <DropDownXi />
       </div>
 

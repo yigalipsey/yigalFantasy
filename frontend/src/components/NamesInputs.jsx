@@ -1,27 +1,22 @@
 import React from 'react'
 
 const NamesInputs = () => {
+  const stam = async () => {
+    console.log('ok')
+    const a = 'jnnnk'
+    //https://d4fd-31-168-34-130.eu.ngrok.io/user/login
+    const response = await fetch('http://localhost:4000/user/test', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(a),
+    })
+    const json = await response.json()
+  }
   return (
     <div className='flex '>
-      <label htmlFor='input1' className='text-sm'>
-        {/* Input 1: */}
-      </label>
-      <input
-        id='input1'
-        type='text'
-        className='border border-gray-400 p-2 rounded-md text-sm'
-        name='input1'
-      />
-
-      <label htmlFor='input2' className='text-sm'>
-        {/* Input 2: */}
-      </label>
-      <input
-        id='input2'
-        type='text'
-        className='border border-gray-400 p-2 rounded-md text-sm'
-        name='input2'
-      />
+      <button onClick={stam} className=' mt-10 mr-10 bg-green-600'>
+        תנסה
+      </button>
     </div>
   )
 }
