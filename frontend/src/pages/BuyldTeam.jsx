@@ -1,5 +1,7 @@
 import Pitch from '../components/SoccerPitch'
 import PickPlayers from '../components/PickPlayers'
+import PlayersOnPitch from '../components/PlayersOnPitch'
+
 import { useState } from 'react'
 
 const BuyldTeam = () => {
@@ -12,8 +14,11 @@ const BuyldTeam = () => {
           </div>
         </div>
         <div className='w-full '>
-          <div className=' w-[400px] h-[600px]  mx-auto'>
+          <div className='relative w-[350px]  h-[600px]  mx-auto'>
             <Pitch />
+            <div className=' absolute top-0 -left-0'>
+              <PlayersOnPitch />
+            </div>
           </div>
         </div>
       </div>

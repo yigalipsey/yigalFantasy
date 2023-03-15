@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useMyTeamContext } from '../../hooks/useMyTeamContext'
 
 const xiOptions = [
   { label: '4-3-3', value: '433' },
@@ -9,6 +10,8 @@ const xiOptions = [
 function DropDownXi() {
   const [selectedOption, setSelectedOption] = useState(xiOptions[0])
 
+  const { dispatch } = useMyTeamContext()
+
   const handleOptionChange = (event) => {
     console.log('clicked')
     const selectedValue = event.target.value
@@ -16,6 +19,8 @@ function DropDownXi() {
       (option) => option.value === selectedValue
     )
     setSelectedOption(selectedOption)
+    console.log(event.target.value)
+    dispatch({ type: 'SET_TEAM_SETUP', payload: event.target.value })
   }
 
   let selectedSetup = '4-3-3' // Assume this is the selected setup

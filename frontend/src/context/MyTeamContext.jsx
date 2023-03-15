@@ -3,9 +3,9 @@ import { createContext, useReducer } from 'react'
 const initialState = {
   teamName: null,
   coachOfTeam: null,
-
+  setup: 433,
   team: [],
-  budget: 100,
+  budget: 120,
 }
 
 function myTeamReducer(state, action) {
@@ -20,8 +20,13 @@ function myTeamReducer(state, action) {
         ...state,
         coachOfTeam: action.payload.coachOfTeam,
       }
+    case 'SET_TEAM_SETUP':
+      return {
+        ...state,
+        setup: action.payload,
+      }
     case 'ADD_PLAYER':
-      console.log(action.payload.price)
+      // console.log(action.payload.price)
       return {
         ...state,
         team: [...state.team, action.payload],

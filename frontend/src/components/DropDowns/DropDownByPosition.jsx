@@ -6,7 +6,7 @@ const DropDownByPosition = () => {
   const [selectedOption, setSelectedOption] = useState('בחר על פי עמדה')
   const { dispatch } = useDataContext()
 
-  const options = ['st', 'קישור', 'הגנה', 'שוערים', 'כל העמדות']
+  const options = ['התקפה', 'קישור', 'הגנה', 'שוער', 'כל העמדות']
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option)

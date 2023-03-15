@@ -1,7 +1,6 @@
 import React from 'react'
 
 function SoccerPitch() {
-  const players = ['csdd', 'vebbrbfrb', 'kbjkbkj']
   return (
     <div className='relative bg-green-500 border-2 border-black h-full'>
       <div className='absolute top-0 left-0 w-full h-full'>

@@ -6,7 +6,7 @@ const DropDownByTeam = () => {
   const [selectedOption, setSelectedOption] = useState('בחר על פי קבוצה')
   const { dispatch } = useDataContext()
 
-  const options = ['מכבי חיפה', 'בית״ר ירושלים', 'מכבי תל-אביב', 'כל הקבוצות']
+  const options = ['מכבי חיפה', 'בי״תר ירושלים', 'מכבי תל-אביב ', 'כל הקבוצות']
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option)

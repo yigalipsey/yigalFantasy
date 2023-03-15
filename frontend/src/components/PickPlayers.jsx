@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useFetchData } from '../hooks/useFetchData'
-import { useDataContext } from '../hooks/useDataContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 //components

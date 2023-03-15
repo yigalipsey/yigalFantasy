@@ -7,11 +7,11 @@ const SelectPlayerByFilter = () => {
     useDataContext()
 
   return (
-    <div className=''>
+    <div className=' '>
       {teams.map((team) =>
         teamToFilter === null ? (
           <div key={team.name}>
-            <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
+            <h2 className='  bg-green-500 w-[full]'>שחקנים</h2>
             <ul>
               {team.players.map((player) =>
                 positionToFilter === null ? (
@@ -38,7 +38,7 @@ const SelectPlayerByFilter = () => {
         ) : (
           teamToFilter === team.name && (
             <div key={team.name}>
-              <h2 className='  bg-green-500 w-[full]'>{team.name}</h2>
+              <h2 className='  bg-green-500 w-[full]'>שחקנים</h2>
               {team.players.map((player) =>
                 positionToFilter === null ? (
                   priceToFilter === null ? (
@@ -71,7 +71,7 @@ function Player({ player }) {
   const { dispatch } = useMyTeamContext()
 
   const selectPlayer = () => {
-    console.log('here' + player.name)
+    // console.log('select player' + player.name)
     // update the myTeam context
     dispatch({ type: 'ADD_PLAYER', payload: player })
   }
