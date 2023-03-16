@@ -3,8 +3,12 @@ import { createContext, useReducer } from 'react'
 const initialState = {
   teamName: null,
   coachOfTeam: null,
-  setup: 433,
   team: [],
+  goalkeeperPlayers: 0,
+  defencePlayers: 0,
+  midfielderPlayers: 0,
+  attackePlayers: 0,
+  teamLength: 0,
   budget: 120,
 }
 
@@ -25,12 +29,40 @@ function myTeamReducer(state, action) {
         ...state,
         setup: action.payload,
       }
-    case 'ADD_PLAYER':
+
+    case 'ADD_GK':
       // console.log(action.payload.price)
       return {
         ...state,
         team: [...state.team, action.payload],
         budget: state.budget - action.payload.price,
+        goalkeeperPlayers: state.goalkeeperPlayers + 1,
+        teamLength: state.teamLength + 1,
+      }
+
+    case 'ADD_DEFENCE_PLAYER':
+      return {
+        ...state,
+        team: [...state.team, action.payload],
+        budget: state.budget - action.payload.price,
+        defencePlayers: state.defencePlayers + 1,
+        teamLength: state.teamLength + 1,
+      }
+    case 'ADD_MIDFIELDER_PLAYER':
+      return {
+        ...state,
+        team: [...state.team, action.payload],
+        budget: state.budget - action.payload.price,
+        midfielderPlayers: state.midfielderPlayers + 1,
+        teamLength: state.teamLength + 1,
+      }
+    case 'ADD_ATTACK_PLAYER':
+      return {
+        ...state,
+        team: [...state.team, action.payload],
+        budget: state.budget - action.payload.price,
+        attackePlayers: state.attackePlayers + 1,
+        teamLength: state.teamLength + 1,
       }
     case 'REMOVE_PLAYER':
       return {

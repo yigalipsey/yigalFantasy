@@ -68,12 +68,32 @@ const SelectPlayerByFilter = () => {
 }
 
 function Player({ player }) {
-  const { dispatch } = useMyTeamContext()
+  const {
+    dispatch,
+    defencePlayers,
+    teamLength,
+    attackePlayers,
+    midfielderPlayers,
+    goalkeeperPlayers,
+  } = useMyTeamContext()
 
-  const selectPlayer = () => {
-    // console.log('select player' + player.name)
+  const selectPlayer = ({ player }) => {
     // update the myTeam context
-    dispatch({ type: 'ADD_PLAYER', payload: player })
+    if (teamLength <= 11) {
+      if (player.position === 'שוער' && goalkeeperPlayers < 1) {
+        dispatch({ type: 'ADD_GK', payload: player })
+      }
+
+      if (player.position === 'הגנה' && defencePlayers <= 4) {
+        dispatch({ type: 'ADD_DEFENCE_PLAYER', payload: player })
+      }
+      if (player.position === 'קישור' && midfielderPlayers <= 4) {
+        dispatch({ type: 'ADD_MIDFIELDER_PLAYER', payload: player })
+      }
+      if (player.position === 'התקפה' && attackePlayers <= 2) {
+        dispatch({ type: 'ADD_ATTACK_PLAYER', payload: player })
+      }
+    }
   }
 
   return (

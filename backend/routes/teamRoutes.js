@@ -1,4 +1,5 @@
 const express = require('express')
+const requireAuth = require('../midellware/requireAuth')
 
 // controller functions
 const {
@@ -11,7 +12,7 @@ const {
 const router = express.Router()
 
 // create team route
-router.post('/create', createTeam)
+router.post('/create', requireAuth, createTeam)
 
 //find team by name
 router.get('/getteambyname', findTeamByName)
