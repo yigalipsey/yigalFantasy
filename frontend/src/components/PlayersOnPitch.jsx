@@ -23,81 +23,13 @@ const PlayersOnPitch = () => {
 
         <div className='absolute left-0 h-[500px] w-[350px]'>
           <div className=' bg-amber-500 h-1/5 '></div>
-          <div className=' bg-gray-500 h-1/5'></div>
-          <div className=' bg-yellow-500 h-1/5'></div>
 
-          <div className=' h-2/5'>
-            <div className=' h-1/2 flex'>
-              {DefensePlayers.length === 4
-                ? DefensePlayers.slice(2, 5).map((p, index) => {
-                    // console.log('3' + p.name)
-                    return (
-                      <div className={`w-1/2`}>
-                        <PlayerCaracter
-                          player={p}
-                          location={index === 1 ? `end` : `start`}
-                        />
-                        {console.log(index)}
-                      </div>
-                    )
-                  })
-                : DefensePlayers.length === 5 &&
-                  DefensePlayers.slice(3, 5).map((p, index) => {
-                    // console.log('==4' + p.name)
-                    return (
-                      <div className=' w-1/2 '>
-                        <PlayerCaracter
-                          player={p}
-                          location={index === 1 ? `end` : `start`}
-                        />
-                      </div>
-                    )
-                  })}
-            </div>
+          <div className='h-2/5  border-t-red-500'>
+            <BlockPlayerList DefensePlayers={MidfieldPlayers} />
+          </div>
 
-            {/* div */}
-
-            <div className=' h-1/2 flex'>
-              {DefensePlayers.length <= 3 || DefensePlayers.length === 5
-                ? DefensePlayers.slice(0, 3).map((p, index) => {
-                    // console.log('1' + p.name)
-                    return (
-                      <div className=' w-1/2  '>
-                        <PlayerCaracter
-                          player={p}
-                          location={
-                            DefensePlayers.length === 3
-                              ? index === 0
-                                ? `end`
-                                : index === 1
-                                ? `center`
-                                : `start`
-                              : DefensePlayers.length === 2
-                              ? index === 0
-                                ? `end`
-                                : `start`
-                              : index === 0
-                              ? `end`
-                              : index === 1
-                              ? `center`
-                              : `start`
-                          }
-                        />
-                      </div>
-                    )
-                  })
-                : DefensePlayers.slice(0, 2).map((p, index) => {
-                    // console.log('2' + p.name)
-                    return (
-                      <div className=' w-1/2  '>
-                        <PlayerCaracter
-                          player={p}
-                          location={index === 0 ? `end` : `start`}
-                        />
-                      </div>
-                    )
-                  })}
-            </div>
+          <div className='h-2/5  border-t-red-500'>
+            <BlockPlayerList DefensePlayers={DefensePlayers} />
           </div>
         </div>
       </div>
@@ -105,8 +37,82 @@ const PlayersOnPitch = () => {
   )
 }
 
-function DefensePlayerList({ defensePlayers }) {
-  return <div></div>
+function BlockPlayerList({ DefensePlayers }) {
+  return (
+    <div className=''>
+      <div className=' h-1/2 flex'>
+        {DefensePlayers.length === 4
+          ? DefensePlayers.slice(2, 5).map((p, index) => {
+              // console.log('3' + p.name)
+              return (
+                <div className={`w-1/2`}>
+                  <PlayerCaracter
+                    player={p}
+                    location={index === 1 ? `end` : `start`}
+                  />
+                  {console.log(index)}
+                </div>
+              )
+            })
+          : DefensePlayers.length === 5 &&
+            DefensePlayers.slice(3, 5).map((p, index) => {
+              // console.log('==4' + p.name)
+              return (
+                <div className=' w-1/2 '>
+                  <PlayerCaracter
+                    player={p}
+                    location={index === 1 ? `end` : `start`}
+                  />
+                </div>
+              )
+            })}
+      </div>
+
+      {/* div */}
+
+      <div className=' h-1/2 flex'>
+        {DefensePlayers.length <= 3 || DefensePlayers.length === 5
+          ? DefensePlayers.slice(0, 3).map((p, index) => {
+              // console.log('1' + p.name)
+              return (
+                <div className=' w-1/2  '>
+                  <PlayerCaracter
+                    player={p}
+                    location={
+                      DefensePlayers.length === 3
+                        ? index === 0
+                          ? `end`
+                          : index === 1
+                          ? `center`
+                          : `start`
+                        : DefensePlayers.length === 2
+                        ? index === 0
+                          ? `end`
+                          : `start`
+                        : index === 0
+                        ? `end`
+                        : index === 1
+                        ? `center`
+                        : `start`
+                    }
+                  />
+                </div>
+              )
+            })
+          : DefensePlayers.slice(0, 2).map((p, index) => {
+              // console.log('2' + p.name)
+              return (
+                <div className=' w-1/2  '>
+                  <PlayerCaracter
+                    player={p}
+                    location={index === 0 ? `end` : `start`}
+                  />
+                </div>
+              )
+            })}
+      </div>
+    </div>
+  )
 }
 
 export default PlayersOnPitch
