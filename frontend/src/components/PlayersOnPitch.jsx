@@ -95,55 +95,6 @@ const PlayersOnPitch = () => {
                 })}
           </div>
         </div>
-
-        {/* <div
-          className={
-            'absolute bottom-[80px] left-0 border-b-2 border-t-2 border-blue-700 h-[100px] w-[350px] flex gap-3 '
-          }
-        >
-          {DefensePlayers.slice(0, 3).map((p) => {
-            return (
-              <div className={DefensePlayers.length === 3 ? 'w-1/3' : 'w-1/2'}>
-                <div className='h-[50px]'>
-                  <img className=' w-[60px] m-auto' src={Shirt} alt='My SVG' />
-                </div>
-
-                <div className='  flex items-center'>
-                  <h1 className=' m-auto'>{p.name}</h1>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <div
-          className={
-            'absolute bottom-[180px] left-0 border-b-2 border-t-2 border-blue-700 h-[100px] w-[350px] flex gap-3 '
-          }
-        >
-          {DefensePlayers.slice(3, 5).map((p) => {
-            return (
-              <div className={DefensePlayers.length === 3 ? 'w-1/3' : 'w-1/2'}>
-                <div className='h-[50px]'>
-                  <img className=' w-[60px] m-auto' src={Shirt} alt='My SVG' />
-                </div>
-
-                <div className='  flex items-center'>
-                  <h1 className=' m-auto'>{p.name}</h1>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <div className='absolute bottom-[240px] left-0 border-t-2 border-red-600 h-[160px] w-[350px] flex gap-3 '>
-          {MidfieldPlayers.map((p) => {
-            return <div className=' '> {p.name}</div>
-          })}
-        </div>
-        <div className='absolute bottom-[400px] left-0  h-[160px] w-[350px] flex gap-3 '>
-          {attackPlayers.map((p) => {
-            return <div className=' '> {p.name}</div>
-          })}
-        </div> */}
       </div>
     </div>
   )
