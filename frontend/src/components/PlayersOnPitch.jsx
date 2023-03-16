@@ -5,10 +5,6 @@ import PlayerCaracter from './PlayerCaracter'
 const PlayersOnPitch = () => {
   const { team } = useMyTeamContext()
 
-  let rowThreeHeight = 'h-[156px]'
-  let rowTwoHeight = 'h-[156px]'
-  let rowOneHeight = 'h-[206px]'
-
   const items = team.map((item) => item.name)
   const attackPlayers = team.filter((player) => player.position === 'התקפה')
   const MidfieldPlayers = team.filter((player) => player.position === 'קישור')
@@ -35,10 +31,10 @@ const PlayersOnPitch = () => {
               ? DefensePlayers.slice(2, 5).map((p, index) => {
                   // console.log('3' + p.name)
                   return (
-                    <div className={` w-1/2   `}>
+                    <div className={`w-1/2`}>
                       <PlayerCaracter
                         player={p}
-                        location={index == 1 ? `end` : `start`}
+                        location={index === 1 ? `end` : `start`}
                       />
                       {console.log(index)}
                     </div>
@@ -51,7 +47,7 @@ const PlayersOnPitch = () => {
                     <div className=' w-1/2 '>
                       <PlayerCaracter
                         player={p}
-                        location={index == 1 ? `end` : `start`}
+                        location={index === 1 ? `end` : `start`}
                       />
                     </div>
                   )
@@ -66,7 +62,21 @@ const PlayersOnPitch = () => {
                       <PlayerCaracter
                         player={p}
                         location={
-                          index == 0 ? `start` : index == 1 ? `center` : `end`
+                          DefensePlayers.length === 3
+                            ? index === 0
+                              ? `end`
+                              : index === 1
+                              ? `center`
+                              : `start`
+                            : DefensePlayers.length === 2
+                            ? index === 0
+                              ? `end`
+                              : `start`
+                            : index === 0
+                            ? `end`
+                            : index === 1
+                            ? `center`
+                            : `start`
                         }
                       />
                     </div>
@@ -78,7 +88,7 @@ const PlayersOnPitch = () => {
                     <div className=' w-1/2  '>
                       <PlayerCaracter
                         player={p}
-                        location={index == 0 ? `end` : `start`}
+                        location={index === 0 ? `end` : `start`}
                       />
                     </div>
                   )
