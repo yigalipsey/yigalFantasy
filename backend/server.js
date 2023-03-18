@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const userRoutes = require('./routes/userRoutes')
 const playerRoutes = require('./routes/playerRoutes')
 const leagueRoutes = require('./routes/leagueRoutes')
+const MyPickedTeamRoutes = require('./routes/MyPickedTeamRoutes')
 const teamRoutes = require('./routes/teamRoutes')
 const cors = require('cors')
 
