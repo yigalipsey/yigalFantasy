@@ -18,4 +18,23 @@ const createMyTeam = async (req, res) => {
   }
 }
 
-module.exports = { createMyTeam }
+//fetch user pickedTeam
+
+const FetchMyPickedTeam = async (req, res) => {
+  try {
+    const { userMail } = req.body
+    console.log(userMail)
+    const team = await Team.findOne({ userMail }).populate('players')
+    console.log(team)
+    if (!team) {
+      return res.status(404).json({ message: 'Team not found for user.' })
+    }
+
+    return res.json(team)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Server error.' })
+  }
+}
+
+module.exports = { createMyTeam, FetchMyPickedTeam }

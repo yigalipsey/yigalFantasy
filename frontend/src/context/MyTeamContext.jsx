@@ -4,6 +4,7 @@ const initialState = {
   teamName: null,
   coachOfTeam: null,
   team: [],
+  built: false,
   allReadyPicked: [],
   teamIdArray: [],
   isAvailableToPick: false,
@@ -17,6 +18,11 @@ const initialState = {
 
 function myTeamReducer(state, action) {
   switch (action.type) {
+    case 'SET_TEAM':
+      return {
+        team: action.payload.players,
+        coachOfTeam: action.payload.coachOfTeam,
+      }
     case 'SET_TEAM_NAME':
       return {
         ...state,
