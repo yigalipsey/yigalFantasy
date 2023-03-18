@@ -10,7 +10,7 @@ const myPickedTeamSchema = new mongoose.Schema({
   players: [
     { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },
   ],
-  // ... other myPickedTeam fields
+  totalPoints: { type: Number, default: 0 },
 })
 
 const myPickedTeam = mongoose.model('MyPickedTeam', myPickedTeamSchema)

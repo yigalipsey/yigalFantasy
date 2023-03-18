@@ -1,4 +1,3 @@
-// league schema
 const mongoose = require('mongoose')
 
 const leagueSchema = new mongoose.Schema({
@@ -6,14 +5,14 @@ const leagueSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  teams: [
+  users: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Team',
+      userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
     },
   ],
 })
 
-const League = mongoose.model('League', leagueSchema)
-
-module.exports = League
+module.exports = mongoose.model('League', leagueSchema)

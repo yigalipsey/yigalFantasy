@@ -1,9 +1,7 @@
 const LeagueModel = require('../models/leagueModel')
 
 // get all players
-async function getTheLeaguePlayers(req, res) {
-  const { name } = req.body
-  console.log(name)
+async function getTheLeagueParticipates(req, res) {
   try {
     const league = await LeagueModel.find().populate({
       path: 'teams',
@@ -20,21 +18,21 @@ async function getTheLeaguePlayers(req, res) {
 
 //create a new league
 const createLeague = async (req, res) => {
-  const { name, teams } = req.body
-  console.log(name)
+  const { name, users } = req.body
+
   try {
-    const league = new LeagueModel({
+    const newLeague = new League({
       name,
-      teams,
+      users,
     })
 
-    await league.save()
+    await newLeague.save()
 
-    res.status(201).json(league)
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ message: 'Error creating league' })
+    res.status(201).json({ message: 'League created successfully' })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ message: 'Something went wrong' })
   }
 }
 
-module.exports = { getTheLeaguePlayers, createLeague }
+module.exports = { getTheLeagueParticipates, createLeague }
