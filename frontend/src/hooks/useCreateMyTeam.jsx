@@ -12,10 +12,17 @@ export const useCreateMyTeam = () => {
     setIsLoading(true)
     setError(null)
 
+    console.log(user)
+
     const response = await fetch('http://localhost:4000/myteam/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ team, teamName, coachOfTeam, user: user._id }),
+      body: JSON.stringify({
+        team,
+        teamName,
+        coachOfTeam,
+        userMail: user.email,
+      }),
     })
     const json = await response.json()
     console.log(json)
