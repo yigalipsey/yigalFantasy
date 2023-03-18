@@ -3,9 +3,8 @@ import { useMyTeamContext } from '../hooks/useMyTeamContext'
 import PlayerCaracter from './PlayerCaracter'
 
 const PlayersOnPitch = () => {
-  const { team, defencePlayers } = useMyTeamContext()
+  const { team } = useMyTeamContext()
 
-  const items = team.map((item) => item.name)
   const attackPlayers = team.filter((player) => player.position === 'התקפה')
   const MidfieldPlayers = team.filter((player) => player.position === 'קישור')
   const DefensePlayers = team.filter((player) => player.position === 'הגנה')
@@ -55,9 +54,9 @@ function BlockPlayerList({ Players }) {
                 </div>
               )
             })
-          : Players.length === 5 &&
+          : Players.length <= 5 &&
             Players.slice(3, 5).map((p, index) => {
-              // console.log('==4' + p.name)
+              console.log(index + p.name)
               return (
                 <div className=' w-1/2 '>
                   <PlayerCaracter

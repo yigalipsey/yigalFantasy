@@ -7,7 +7,7 @@ import DropDownXi from './DropDowns/DropDownXi'
 import DropDownByPosition from './DropDowns/DropDownByPosition'
 import DropDownByTeam from './DropDowns/DropDownByTeam'
 import PriceSlider from './PriceSlider'
-import NameInputs from './NamesInputs'
+import Inputs from './Inputs'
 import SelectPlayerByFilter from './SelectPlayerByFilter'
 
 const PickPlayers = () => {
@@ -19,10 +19,9 @@ const PickPlayers = () => {
   }, [])
 
   return (
-    <div className=''>
+    <div className=' w-4/6 mx-auto'>
       <div className='flex'>
-        {/* <NameInputs /> */}
-        <DropDownXi />
+        <Inputs />
       </div>
 
       <div className=' h-64 overflow-y-auto mt-5 '>

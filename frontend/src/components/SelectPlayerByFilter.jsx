@@ -3,6 +3,7 @@ import { useMyTeamContext } from '../hooks/useMyTeamContext'
 import { useDataContext } from '../hooks/useDataContext'
 
 const SelectPlayerByFilter = () => {
+  const [test, setTest] = useState(false)
   const { teams, positionToFilter, teamToFilter, priceToFilter } =
     useDataContext()
 
@@ -68,6 +69,8 @@ const SelectPlayerByFilter = () => {
 }
 
 function Player({ player }) {
+  const [allReadyPickedError, setAllReadyPickedError] = useState(false)
+  // const [teamOfPlayer, setTeamOfPlayer] = useState(null)
   const {
     dispatch,
     defencePlayers,
@@ -75,11 +78,24 @@ function Player({ player }) {
     attackePlayers,
     midfielderPlayers,
     goalkeeperPlayers,
+    allReadyPicked,
+    teamIdArray,
   } = useMyTeamContext()
 
   const selectPlayer = ({ player }) => {
-    // update the myTeam context
-    if (teamLength <= 11) {
+    const isAllReadyPicked = allReadyPicked.some((p) => p._id === player._id)
+
+    //if user select more than 4 players at same team
+    const isOverTheTeamLimit = teamIdArray.filter(
+      (team) => team === player.team
+    ).length
+
+    //if user is already picked show error
+    if (isAllReadyPicked) {
+      setAllReadyPickedError(true)
+    }
+
+    if (teamLength < 11 && !isAllReadyPicked && isOverTheTeamLimit < 4) {
       if (player.position === 'שוער' && goalkeeperPlayers < 1) {
         dispatch({ type: 'ADD_GK', payload: player })
       }
@@ -101,6 +117,11 @@ function Player({ player }) {
       <div className=' text-yellow-400'>{player.name}</div>
       <h1 className=' text-green-700'>{player.price}M$</h1>
       <button onClick={() => selectPlayer({ player })}>בחר</button>
+      {allReadyPickedError && (
+        <div className=' bg-blue-600 z-50'>
+          לא ניתן לבחור את אותו השחקן פעמיים
+        </div>
+      )}
     </div>
   )
 }

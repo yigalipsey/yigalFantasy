@@ -4,6 +4,9 @@ const initialState = {
   teamName: null,
   coachOfTeam: null,
   team: [],
+  allReadyPicked: [],
+  teamIdArray: [],
+  isAvailableToPick: false,
   goalkeeperPlayers: 0,
   defencePlayers: 0,
   midfielderPlayers: 0,
@@ -17,12 +20,12 @@ function myTeamReducer(state, action) {
     case 'SET_TEAM_NAME':
       return {
         ...state,
-        teamName: action.payload.teamName,
+        teamName: action.payload,
       }
     case 'SET_TEAM_COACH':
       return {
         ...state,
-        coachOfTeam: action.payload.coachOfTeam,
+        coachOfTeam: action.payload,
       }
     case 'SET_TEAM_SETUP':
       return {
@@ -35,34 +38,43 @@ function myTeamReducer(state, action) {
       return {
         ...state,
         team: [...state.team, action.payload],
+        allReadyPicked: [...state.team, action.payload],
         budget: state.budget - action.payload.price,
         goalkeeperPlayers: state.goalkeeperPlayers + 1,
         teamLength: state.teamLength + 1,
+        teamIdArray: [...state.teamIdArray, action.payload.team],
       }
 
     case 'ADD_DEFENCE_PLAYER':
       return {
         ...state,
         team: [...state.team, action.payload],
+        allReadyPicked: [...state.team, action.payload],
         budget: state.budget - action.payload.price,
         defencePlayers: state.defencePlayers + 1,
         teamLength: state.teamLength + 1,
+        teamIdArray: [...state.teamIdArray, action.payload.team],
       }
+
     case 'ADD_MIDFIELDER_PLAYER':
       return {
         ...state,
         team: [...state.team, action.payload],
+        allReadyPicked: [...state.team, action.payload],
         budget: state.budget - action.payload.price,
         midfielderPlayers: state.midfielderPlayers + 1,
         teamLength: state.teamLength + 1,
+        teamIdArray: [...state.teamIdArray, action.payload.team],
       }
     case 'ADD_ATTACK_PLAYER':
       return {
         ...state,
         team: [...state.team, action.payload],
+        allReadyPicked: [...state.team, action.payload],
         budget: state.budget - action.payload.price,
         attackePlayers: state.attackePlayers + 1,
         teamLength: state.teamLength + 1,
+        teamIdArray: [...state.teamIdArray, action.payload.team],
       }
     case 'REMOVE_PLAYER':
       return {

@@ -28,6 +28,7 @@ app.use('/user', userRoutes)
 app.use('/player', playerRoutes)
 app.use('/team', teamRoutes)
 app.use('/league', leagueRoutes)
+app.use('/myteam', MyPickedTeamRoutes)
 
 // connect to db
 mongoose.set('strictQuery', false)
