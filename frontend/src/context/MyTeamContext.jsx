@@ -22,6 +22,7 @@ function myTeamReducer(state, action) {
       return {
         team: action.payload.players,
         coachOfTeam: action.payload.coachOfTeam,
+        built: true,
       }
     case 'SET_TEAM_NAME':
       return {
@@ -97,7 +98,7 @@ export const MyTeamContext = createContext(initialState)
 
 export function MyTeamProvider({ children }) {
   const [state, dispatch] = useReducer(myTeamReducer, initialState)
-  console.log('MyTeamContext state:', state)
+  // console.log('MyTeamContext state:', state)
   return (
     <MyTeamContext.Provider value={{ ...state, dispatch }}>
       {children}

@@ -12,11 +12,10 @@ const PlayersOnPitch = () => {
 
   return (
     <div className='relative w-[400px] h-[600px]  '>
-      {goalKepper.map((p) => console.log(p.name))}
       <div>
         <div className='absolute bottom-2 left-[75px]  h-[80px] w-[200px] '>
           {goalKepper.map((p) => {
-            return <PlayerCaracter player={p} location={'center'} />
+            return <PlayerCaracter key={p._id} player={p} location={'center'} />
           })}
         </div>
 
@@ -58,8 +57,9 @@ function BlockPlayerList({ Players }) {
             Players.slice(3, 5).map((p, index) => {
               console.log(index + p.name)
               return (
-                <div className=' w-1/2 '>
+                <div key={p._id} className=' w-1/2 '>
                   <PlayerCaracter
+                    key={p._id}
                     player={p}
                     location={index === 1 ? `end` : `start`}
                   />
@@ -75,8 +75,9 @@ function BlockPlayerList({ Players }) {
           ? Players.slice(0, 3).map((p, index) => {
               // console.log('1' + p.name)
               return (
-                <div className=' w-1/2  '>
+                <div key={p._id} className=' w-1/2  '>
                   <PlayerCaracter
+                    key={p._id}
                     player={p}
                     location={
                       Players.length === 3
@@ -102,8 +103,9 @@ function BlockPlayerList({ Players }) {
           : Players.slice(0, 2).map((p, index) => {
               // console.log('2' + p.name)
               return (
-                <div className=' w-1/2  '>
+                <div key={p._id} className=' w-1/2  '>
                   <PlayerCaracter
+                    key={p._id}
                     player={p}
                     location={index === 0 ? `end` : `start`}
                   />

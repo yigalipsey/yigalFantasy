@@ -35,14 +35,12 @@ export const useLogin = () => {
   }
 
   const fetchMyTeam = async (email) => {
-    console.log('here')
     const response = await fetch('http://localhost:4000/myteam/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userMail: email }),
     })
     const json = await response.json()
-    console.log(json)
 
     if (response.ok) {
       // save the team to local storage

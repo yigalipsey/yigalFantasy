@@ -1,11 +1,19 @@
 import Pitch from '../components/SoccerPitch'
-import PickPlayers from '../components/PickPlayers'
 import PlayersOnPitch from '../components/PlayersOnPitch'
-import { useCreateMyTeam } from '../hooks/useCreateMyTeam'
-import { useState } from 'react'
+import { useAuthContext } from '../hooks/useAuthContext'
+import { useLogin } from '../hooks/useLogin'
+import { useEffect } from 'react'
 
 const MyTeamPage = () => {
-  const { createTeam } = useCreateMyTeam()
+  const { fetchMyTeam } = useLogin()
+  const { user } = useAuthContext()
+  const email = user.email
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchMyTeam(email)
+    }
+    fetchData()
+  }, [])
 
   return (
     <>
