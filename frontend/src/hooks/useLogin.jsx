@@ -41,7 +41,7 @@ export const useLogin = () => {
       body: JSON.stringify({ userMail: email }),
     })
     const json = await response.json()
-
+    console.log(json)
     if (response.ok) {
       // save the team to local storage
       localStorage.setItem('team', JSON.stringify(json))

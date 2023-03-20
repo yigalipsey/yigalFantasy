@@ -1,5 +1,6 @@
 import React from 'react'
 import Shirt from './shirt.svg'
+import beitarImage from '../images/beitar.png'
 
 const PlayerCaracter = ({ player, location }) => {
   return (
@@ -11,7 +12,11 @@ const PlayerCaracter = ({ player, location }) => {
       }  `}
     >
       <div className='h-[50px]'>
-        <img className={`w-[60px] `} src={Shirt} alt='My SVG' />
+        <img
+          className={`w-[60px] `}
+          src={` ${player.team === '6410b1ad7e98290ae55a6d0c' && beitarImage}`}
+          alt='My SVG'
+        />
       </div>
 
       <div className='w-full '>

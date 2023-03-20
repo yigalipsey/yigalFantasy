@@ -10,7 +10,7 @@ import Signup from './Signup'
 const BeforeAuth = () => {
   const { user } = useAuthContext()
   return (
-    <div>
+    <div className=' min-h-screen'>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/signup' element={<Signup />} />
