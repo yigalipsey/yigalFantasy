@@ -1,5 +1,6 @@
 import './App.css'
 import { useAuthContext } from './hooks/useAuthContext'
+import { useState } from 'react'
 
 // pages & components
 import RoutesBeforeAuth from './pages/RoutesBeforeAuth'
@@ -11,6 +12,7 @@ import realStadium from './images/real-stadium.jpg'
 
 function App() {
   const { user } = useAuthContext()
+  const [selectedPage, setSelectedPage] = useState('/home')
 
   if (!user) {
     return (
@@ -28,18 +30,21 @@ function App() {
       style={{ backgroundImage: `url(${realStadium})` }}
       className='bg-cover min-h-screen'
     >
-      <Navbar />
+      <Navbar selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
       <MyRoutes />
     </div>
   )
 
-  return (
-    <div className=''>
-      <RoutesBeforeAuth />
-      <Navbar />
-      <MyRoutes />
-    </div>
-  )
+  // return (
+  //   <div
+  //     style={{ backgroundImage: `url(${realStadium})` }}
+  //     className='bg-cover'
+  //   >
+  //     {/* <RoutesBeforeAuth />  */}
+  //     <Navbar selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
+  //     <MyRoutes />
+  //   </div>
+  // )
 }
 
 export default App
