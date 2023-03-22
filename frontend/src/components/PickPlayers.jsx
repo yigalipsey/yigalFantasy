@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
 import { useFetchData } from '../hooks/useFetchData'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useCreateMyTeam } from '../hooks/useCreateMyTeam'
@@ -10,6 +10,7 @@ import DropDownByTeam from './DropDowns/DropDownByTeam'
 import PriceSlider from './PriceSlider'
 import Inputs from './Inputs'
 import SelectPlayerByFilter from './SelectPlayerByFilter'
+import { useState } from 'react'
 
 const PickPlayers = () => {
   const { user } = useAuthContext()

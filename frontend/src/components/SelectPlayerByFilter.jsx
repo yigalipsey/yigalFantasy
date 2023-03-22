@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useMyTeamContext } from '../hooks/useMyTeamContext'
 import { useDataContext } from '../hooks/useDataContext'
+import ErrorMsg from './ErrorMsg'
 
 const SelectPlayerByFilter = () => {
   const [test, setTest] = useState(false)
@@ -93,6 +94,10 @@ function Player({ player }) {
     //if user is already picked show error
     if (isAllReadyPicked) {
       setAllReadyPickedError(true)
+      //reset to false if user will press few times
+      setTimeout(() => {
+        setAllReadyPickedError(false)
+      }, 2000)
     }
 
     if (teamLength < 11 && !isAllReadyPicked && isOverTheTeamLimit < 4) {
@@ -122,11 +127,11 @@ function Player({ player }) {
       <h1 className=' text-green-700'>{player.price}M$</h1>
       <button onClick={() => selectPlayer({ player })}>בחר</button>
       <button onClick={() => removePlayer({ player })}>הסר</button>
-      {allReadyPickedError && (
-        <div className=' bg-blue-600 z-50'>
-          לא ניתן לבחור את אותו השחקן פעמיים
-        </div>
-      )}
+      <div>
+        {allReadyPickedError && (
+          <ErrorMsg error={'לא ניתן לבחור את אותו השחקן פעמיים'} />
+        )}
+      </div>
     </div>
   )
 }
