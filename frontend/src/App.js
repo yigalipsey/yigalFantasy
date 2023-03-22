@@ -12,7 +12,7 @@ import realStadium from './images/real-stadium.jpg'
 
 function App() {
   const { user } = useAuthContext()
-  const [selectedPage, setSelectedPage] = useState('/home')
+  const [selectedPage, setSelectedPage] = useState('/myteam')
 
   if (!user) {
     return (

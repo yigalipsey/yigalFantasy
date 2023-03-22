@@ -113,7 +113,7 @@ function Player({ player }) {
   }
 
   return (
-    <div className=' mt-4 flex space-x-2 '>
+    <div className=' mt-4 flex space-x-12 bg-white '>
       <div className=' text-yellow-400'>{player.name}</div>
       <h1 className=' text-green-700'>{player.price}M$</h1>
       <button onClick={() => selectPlayer({ player })}>בחר</button>

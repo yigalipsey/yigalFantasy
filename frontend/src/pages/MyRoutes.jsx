@@ -5,7 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 // pages & components
 
 import Login from '../pages/Login'
-
+import SignUp from './Signup'
 import BuyldTeam from './BuyldTeam'
 import MyTeamPage from './MyTeamPage'
 
@@ -18,6 +18,10 @@ const MyRoutes = () => {
         <Route
           path='/login'
           element={!user ? <Login /> : <Navigate to={'/myteam'} />}
+        />
+        <Route
+          path='/signup'
+          element={!user ? <SignUp /> : <Navigate to={'/myteam'} />}
         />
         <Route path='/myteam' element={<MyTeamPage />} />
         <Route path='/buyldteam' element={<BuyldTeam />} />

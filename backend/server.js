@@ -13,6 +13,8 @@ const cors = require('cors')
 // express app
 const app = express()
 
+const hostname = '0.0.0.0'
+
 // middleware
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -36,7 +38,7 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     // listen for requests
-    app.listen(process.env.PORT, () => {
+    app.listen(process.env.PORT, hostname, () => {
       console.log('connected to db & listening on port', process.env.PORT)
     })
   })

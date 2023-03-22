@@ -5,64 +5,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { useLogout } from '../hooks/useLogot'
 import useMediaQuery from '../hooks/useMediaQuery'
 
-// const Navbar = () => {
-//   const { logout } = useLogout()
-//   const isDesktop = useMediaQuery('(min-width: 768px)')
-//   const [isMenuToggled, setIsMenuToggled] = useState(false)
-
-// const handleClick = () => {
-//   logout()
-// }
-//   return (
-//     <nav className='bg-gray-900 text-white'>
-//       <div className='flex  flex-row-reverse justify-end px-4 py-3'>
-// //         <div className='text-right flex  flex-row-reverse'>
-// ;<Link to={'/'}>
-//   <button onClick={handleClick}>Log out</button>
-// </Link>
-
-//           <Link
-//             to='/topplayers'
-//             className='block px-3 py-2 rounded-md hover:bg-gray-700'
-//           >
-//             הטובים ביותר
-//           </Link>
-//           <Link
-//             to='buyldteam'
-//             className='block px-3 py-2 rounded-md hover:bg-gray-700'
-//           >
-//             בניית קבוצה
-//           </Link>
-//           <Link
-//             to='/myteam'
-//             className='block px-3 py-2 rounded-md hover:bg-gray-700'
-//           >
-//             הקבוצה שלי
-//           </Link>
-//           <Link
-//             to='/rules'
-//             className='block px-3 py-2 rounded-md hover:bg-gray-700'
-//           >
-//             חוקים
-//           </Link>
-//         </div>
-//         <div>
-//           <Link to='/' className='block px-3 py-2 rounded-md hover:bg-gray-700'>
-//             Logo
-//           </Link>
-//         </div>
-//       </div>
-//     </nav>
-//   )
-// }
-
-// export default Navbar
-
-// {"----------------------------------------------------------------"}
-
-const MyLink = ({ page, selectedPage, setSelectedPage }) => {
-  // const lowerCasePage = page.toLowerCase()
-
+const MyLink = ({ page, name, selectedPage, setSelectedPage }) => {
   return (
     <Link
       className={`${selectedPage === page ? 'text-yellow' : 'text-white '}
@@ -70,7 +13,7 @@ const MyLink = ({ page, selectedPage, setSelectedPage }) => {
       to={`${page}`}
       onClick={() => setSelectedPage(page)}
     >
-      {page}
+      {name}
     </Link>
   )
 }
@@ -93,16 +36,25 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
         {isAboveSmallScreens ? (
           <div className=' flex justify-between gap-16 font-opensans text-sm font-semibold'>
             <MyLink
-              page={'Home'}
+              page={'myteam'}
+              name={' הקבוצה שלי '}
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
             <MyLink
               page={'Buyldteam'}
+              name={'בניית הקבוצה'}
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
-            <Link to={'/'}>
+
+            <MyLink
+              page={'Leagues'}
+              name={'ליגות'}
+              selectedPage={selectedPage}
+              setSelectedPage={setSelectedPage}
+            />
+            <Link className='text-lg' to={'/'}>
               <button className=' text-white' onClick={handleClick}>
                 התנתק
               </button>
@@ -130,17 +82,38 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
               </button>
             </div>
 
-            <div className=' flex flex-col gap-10 ml-[33%] text-2xl text-deep-blue'>
-              <MyLink
-                page={'Home'}
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
-              <MyLink
-                to={'Buyldteam'}
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
+            <div className=' flex flex-col  ml-[33%] text-2xl text-deep-blue'>
+              <div className=' border-t py-2'>
+                <MyLink
+                  page={'myteam'}
+                  name={' הקבוצה שלי '}
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                />
+              </div>
+              <div className=' border-t py-2'>
+                <MyLink
+                  page={'Buyldteam'}
+                  name={'בניית הקבוצה'}
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                />
+              </div>
+              <div className=' border-t py-2 '>
+                <MyLink
+                  page={'Leagues'}
+                  name={'ליגות'}
+                  selectedPage={selectedPage}
+                  setSelectedPage={setSelectedPage}
+                />
+              </div>
+              <div className=' border-t py-2'>
+                <Link className='text-lg' to={'/'}>
+                  <button className=' text-white' onClick={handleClick}>
+                    התנתק
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
