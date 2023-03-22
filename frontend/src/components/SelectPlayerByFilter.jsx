@@ -71,6 +71,7 @@ const SelectPlayerByFilter = () => {
 
 function Player({ player }) {
   const [allReadyPickedError, setAllReadyPickedError] = useState(false)
+  const [allReadyPickedErrors, setAllReadyPickedErrors] = useState(false)
   // const [teamOfPlayer, setTeamOfPlayer] = useState(null)
   const {
     dispatch,
@@ -84,6 +85,7 @@ function Player({ player }) {
   } = useMyTeamContext()
 
   const selectPlayer = ({ player }) => {
+    console.log('click')
     const isAllReadyPicked = allReadyPicked.some((p) => p._id === player._id)
 
     //if user select more than 4 players at same team
@@ -98,6 +100,11 @@ function Player({ player }) {
       setTimeout(() => {
         setAllReadyPickedError(false)
       }, 2000)
+    }
+
+    //if user try to add over 4 players from
+    if (isOverTheTeamLimit === 4) {
+      setAllReadyPickedErrors(true)
     }
 
     if (teamLength < 11 && !isAllReadyPicked && isOverTheTeamLimit < 4) {
@@ -128,8 +135,12 @@ function Player({ player }) {
       <button onClick={() => selectPlayer({ player })}>בחר</button>
       <button onClick={() => removePlayer({ player })}>הסר</button>
       <div>
-        {allReadyPickedError && (
+        {allReadyPickedError ? (
           <ErrorMsg error={'לא ניתן לבחור את אותו השחקן פעמיים'} />
+        ) : (
+          allReadyPickedErrors && (
+            <ErrorMsg error={'לא ניתן לבחור מעל ל4 שחקנים מאותה הקבוצה '} />
+          )
         )}
       </div>
     </div>
