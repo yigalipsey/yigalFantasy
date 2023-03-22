@@ -112,11 +112,16 @@ function Player({ player }) {
     }
   }
 
+  const removePlayer = ({ player }) => {
+    dispatch({ type: 'REMOVE_PLAYER', payload: player })
+  }
+
   return (
     <div className=' mt-4 flex space-x-12 bg-white '>
       <div className=' text-yellow-400'>{player.name}</div>
       <h1 className=' text-green-700'>{player.price}M$</h1>
       <button onClick={() => selectPlayer({ player })}>בחר</button>
+      <button onClick={() => removePlayer({ player })}>הסר</button>
       {allReadyPickedError && (
         <div className=' bg-blue-600 z-50'>
           לא ניתן לבחור את אותו השחקן פעמיים

@@ -5,6 +5,8 @@ import PlayerCaracter from './PlayerCaracter'
 const PlayersOnPitch = () => {
   const { team } = useMyTeamContext()
 
+  if (!team) return
+
   const attackPlayers = team.filter((player) => player.position === 'התקפה')
   const MidfieldPlayers = team.filter((player) => player.position === 'קישור')
   const DefensePlayers = team.filter((player) => player.position === 'הגנה')

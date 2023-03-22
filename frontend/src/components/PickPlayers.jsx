@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useFetchData } from '../hooks/useFetchData'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useCreateMyTeam } from '../hooks/useCreateMyTeam'
+import { useMyTeamContext } from '../hooks/useMyTeamContext'
 
 //components
 import DropDownByPosition from './DropDowns/DropDownByPosition'
@@ -11,16 +12,21 @@ import Inputs from './Inputs'
 import SelectPlayerByFilter from './SelectPlayerByFilter'
 
 const PickPlayers = () => {
-  const { createTeam } = useCreateMyTeam()
   const { user } = useAuthContext()
+  const { createTeam } = useCreateMyTeam()
   const { fetchAllPlayers } = useFetchData()
+  const { dispatch } = useMyTeamContext()
 
   useEffect(() => {
     fetchAllPlayers()
   }, [])
 
-  const handleClick = async (e) => {
+  const handleBuildTeam = async (e) => {
     await createTeam()
+  }
+
+  const handleResetTeam = () => {
+    dispatch({ type: 'RESET_TEAM' })
   }
 
   return (
@@ -37,11 +43,20 @@ const PickPlayers = () => {
         <PriceSlider />
       </div>
       <div
-        className='px-4 py-2 rounded-md   bg-white
+        className='px-4 py-2 rounded-md  flex justify-between  bg-white
        w-full mt-1'
       >
-        <button onClick={() => handleClick()} className=''>
+        <button
+          onClick={() => handleBuildTeam()}
+          className='hover:bg-green-600 w-1/2 '
+        >
           בנה קבוצה
+        </button>
+        <button
+          onClick={() => handleResetTeam()}
+          className='hover:bg-green-600 w-1/2'
+        >
+          אפס קבוצה
         </button>
       </div>
       <div className='flex mt-2 pb-96'>

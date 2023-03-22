@@ -88,7 +88,27 @@ function myTeamReducer(state, action) {
         ...state,
         team: state.team.filter((player) => player.id !== action.payload.id),
         budget: state.budget + action.payload.price,
+        allReadyPicked: state.allReadyPicked.filter(
+          (player) => player.id !== action.payload.id
+        ),
       }
+    case 'RESET_TEAM':
+      return {
+        teamName: null,
+        coachOfTeam: null,
+        team: [],
+        built: false,
+        allReadyPicked: [],
+        teamIdArray: [],
+        isAvailableToPick: false,
+        goalkeeperPlayers: 0,
+        defencePlayers: 0,
+        midfielderPlayers: 0,
+        attackePlayers: 0,
+        teamLength: 0,
+        budget: 120,
+      }
+
     default:
       return state
   }
@@ -98,7 +118,7 @@ export const MyTeamContext = createContext(initialState)
 
 export function MyTeamProvider({ children }) {
   const [state, dispatch] = useReducer(myTeamReducer, initialState)
-  // console.log('MyTeamContext state:', state)
+  console.log('MyTeamContext state:', state)
   return (
     <MyTeamContext.Provider value={{ ...state, dispatch }}>
       {children}
