@@ -9,7 +9,6 @@ export const useFetchData = () => {
 
   const fetchAllPlayers = async () => {
     try {
-      const payload = { name: 'league1' }
       const response = await fetch('http://localhost:4000/team/allteams', {
         method: 'GET',
         headers: {
