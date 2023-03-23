@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import { AuthContextProvider } from './context/AuthContext'
-import { LeagueProvider } from './context/LeagueContext'
+import { DataProvider } from './context/DataContext'
 import { MyTeamProvider } from './context/MyTeamContext'
 import { BrowserRouter } from 'react-router-dom'
 
@@ -12,11 +12,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <MyTeamProvider>
-        <LeagueProvider>
+        <DataProvider>
           <AuthContextProvider>
             <App />
           </AuthContextProvider>
-        </LeagueProvider>
+        </DataProvider>
       </MyTeamProvider>
     </BrowserRouter>
   </React.StrictMode>

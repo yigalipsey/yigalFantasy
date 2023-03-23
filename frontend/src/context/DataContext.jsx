@@ -9,7 +9,7 @@ const initialState = {
   error: null,
 }
 
-const leagueReducer = (state, action) => {
+const dataReducer = (state, action) => {
   switch (action.type) {
     case 'SET_DATA':
       return {
@@ -48,16 +48,16 @@ const leagueReducer = (state, action) => {
   }
 }
 
-export const LeagueContext = createContext(initialState)
+export const DataContext = createContext(initialState)
 
-export const LeagueProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(leagueReducer, initialState)
+export const DataProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(dataReducer, initialState)
 
   // console.log('DataContext state:', state)
 
   return (
-    <LeagueContext.Provider value={{ ...state, dispatch }}>
+    <DataContext.Provider value={{ ...state, dispatch }}>
       {children}
-    </LeagueContext.Provider>
+    </DataContext.Provider>
   )
 }

@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from 'react'
-import { LeagueContext } from '../context/LeagueContext'
+import { DataContext } from '../context/DataContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 export const useFetchData = () => {
   const [data, setData] = useState([])
-  const { dispatch } = useContext(LeagueContext)
+  const { dispatch } = useContext(DataContext)
   const { user } = useAuthContext()
 
   const fetchAllPlayers = async () => {
