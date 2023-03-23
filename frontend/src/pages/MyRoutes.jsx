@@ -8,6 +8,7 @@ import Login from '../pages/Login'
 import SignUp from './Signup'
 import BuyldTeam from './BuyldTeam'
 import MyTeamPage from './MyTeamPage'
+import Leagues from './Leagues'
 
 const MyRoutes = () => {
   const { user } = useAuthContext()
@@ -25,6 +26,7 @@ const MyRoutes = () => {
         />
         <Route path='/myteam' element={<MyTeamPage />} />
         <Route path='/buyldteam' element={<BuyldTeam />} />
+        <Route path='/leagues' element={<Leagues />} />
       </Routes>
     </div>
   )
