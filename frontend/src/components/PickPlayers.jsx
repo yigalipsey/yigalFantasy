@@ -18,12 +18,9 @@ const PickPlayers = () => {
   const [teamNameError, setTeamNameError] = useState(false)
   const [coachOfTeamError, setCoachOfTeam] = useState(false)
   const [teamElevenError, setTeamElevenError] = useState(false)
+  const [attackPlayersError, setAattackPlayersError] = useState(true)
 
   //Text of eroors
-  const teamNameErrorDetails = 'בחירת שם קבוצה'
-  const coachOfTeamErrorDetails = 'בחירת שם מאמן'
-  const teamElevenErrorDetails = 'בחירת 11 שחקנים '
-
   const { user } = useAuthContext()
   const { createTeam } = useCreateMyTeam()
   const { fetchAllPlayers } = useFetchData()
@@ -49,13 +46,13 @@ const PickPlayers = () => {
       setTeamElevenError(true)
     }
 
-    //only if evrething filled build the team
     if (
       team.length === 11 &&
       teamName !== null &&
       coachOfTeam !== null &&
       attackePlayers >= 1
     ) {
+      //only if evrething filled build the team
       await createTeam()
     }
   }
@@ -73,6 +70,7 @@ const PickPlayers = () => {
           error2='בחירת שם קבוצה'
           error3='בחירת שם מאמן'
           error4='בחירת 11 שחקנים'
+          attackPlayersError='שים לב כי חובה לבחור לפחות שני שחקני התקפה'
         />
       ) : teamNameError && coachOfTeamError ? (
         <ErrorMsg
@@ -96,7 +94,12 @@ const PickPlayers = () => {
           />
         )
       )}
-
+      {teamName !== null &&
+        coachOfTeam !== null &&
+        team.length === 11 &&
+        attackePlayers === 0 && (
+          <ErrorMsg error='שים לב כי חובה לבחור לפחות שני שחקני התקפה' />
+        )}
       {/* {inputs for team name and team coach} */}
       <div className='flex w-full'>
         <Inputs />

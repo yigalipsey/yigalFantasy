@@ -7,11 +7,10 @@ export const useCreateMyTeam = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { user } = useAuthContext()
-  const { team, coachOfTeam, teamName } = useMyTeamContext()
+  const { team, coachOfTeam, teamName, attackePlayers } = useMyTeamContext()
 
   const createTeam = async () => {
     setIsLoading(true)
-    setError(null)
 
     console.log(user)
 
@@ -29,5 +28,5 @@ export const useCreateMyTeam = () => {
     console.log(json)
   }
 
-  return { createTeam }
+  return { createTeam, error }
 }

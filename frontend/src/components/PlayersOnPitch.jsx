@@ -57,7 +57,6 @@ function BlockPlayerList({ Players }) {
             })
           : Players.length <= 5 &&
             Players.slice(3, 5).map((p, index) => {
-              console.log(index + p.name)
               return (
                 <div key={p._id} className=' w-1/2 '>
                   <PlayerCaracter
