@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 
 const ErrorMsg = ({ error, error1, error2, error3, error4 }) => {
+  // console.log('clicked error')
   const [isVisible, setIsVisible] = useState(true)
-
-  console.log(error + '0', error1 + '1')
 
   const handleHide = () => {
     setIsVisible(false)

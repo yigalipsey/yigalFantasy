@@ -85,7 +85,6 @@ function Player({ player }) {
   } = useMyTeamContext()
 
   const selectPlayer = ({ player }) => {
-    console.log('click')
     const isAllReadyPicked = allReadyPicked.some((p) => p._id === player._id)
 
     //if user select more than 4 players at same team

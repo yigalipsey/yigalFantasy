@@ -27,7 +27,8 @@ const PickPlayers = () => {
   const { user } = useAuthContext()
   const { createTeam } = useCreateMyTeam()
   const { fetchAllPlayers } = useFetchData()
-  const { dispatch, teamName, coachOfTeam, team } = useMyTeamContext()
+  const { dispatch, teamName, coachOfTeam, team, attackePlayers } =
+    useMyTeamContext()
 
   //fetch user team
   useEffect(() => {
@@ -44,12 +45,19 @@ const PickPlayers = () => {
       setCoachOfTeam(true)
     }
 
-    if (team.length < 3) {
+    if (team.length < 11) {
       setTeamElevenError(true)
     }
 
-    //only if everithing filled build the team
-    await createTeam()
+    //only if evrething filled build the team
+    if (
+      team.length === 11 &&
+      teamName !== null &&
+      coachOfTeam !== null &&
+      attackePlayers >= 1
+    ) {
+      await createTeam()
+    }
   }
 
   const handleResetTeam = () => {
@@ -58,6 +66,7 @@ const PickPlayers = () => {
 
   return (
     <div className=' w-5/6 md:w-4/6 mx-auto '>
+      {/* {Error handeling} */}
       {teamNameError && coachOfTeamError && teamElevenError ? (
         <ErrorMsg
           error1='נא להשלים :'
@@ -88,17 +97,20 @@ const PickPlayers = () => {
         )
       )}
 
+      {/* {inputs for team name and team coach} */}
       <div className='flex w-full'>
         <Inputs />
       </div>
 
+      {/* {component of choosing players to the team} */}
       <div className=' h-64 overflow-y-auto mt-5 '>
         <SelectPlayerByFilter />
       </div>
-
+      {/* {slider of sort by price} */}
       <div>
         <PriceSlider />
       </div>
+      {/* {buttons for build and reset team} */}
       <div
         className='px-4 py-2 rounded-md  flex justify-between  bg-white
        w-full mt-1'
@@ -116,6 +128,7 @@ const PickPlayers = () => {
           אפס קבוצה
         </button>
       </div>
+      {/* {2 drop downs for sort players by position and by team} */}
       <div className='flex mt-2 pb-96'>
         <DropDownByPosition />
         <DropDownByTeam />
