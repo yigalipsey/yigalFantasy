@@ -18,7 +18,6 @@ const PickPlayers = () => {
   const [teamNameError, setTeamNameError] = useState(false)
   const [coachOfTeamError, setCoachOfTeam] = useState(false)
   const [teamElevenError, setTeamElevenError] = useState(false)
-  const [attackPlayersError, setAattackPlayersError] = useState(true)
 
   //Text of eroors
   const { user } = useAuthContext()
