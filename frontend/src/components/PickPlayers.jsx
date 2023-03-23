@@ -35,14 +35,20 @@ const PickPlayers = () => {
   const handleBuildTeam = async (e) => {
     if (teamName === null) {
       setTeamNameError(true)
+    } else {
+      setTeamNameError(false)
     }
 
     if (coachOfTeam === null) {
       setCoachOfTeam(true)
+    } else {
+      setCoachOfTeam(false)
     }
 
     if (team.length < 11) {
       setTeamElevenError(true)
+    } else {
+      setTeamElevenError(false)
     }
 
     if (
@@ -119,7 +125,7 @@ const PickPlayers = () => {
       >
         <button
           onClick={() => handleBuildTeam()}
-          className='hover:bg-green-600 w-1/2 '
+          className='hover:bg-green-600 w-1/2  '
         >
           בנה קבוצה
         </button>
