@@ -5,6 +5,7 @@ const requireAuth = require('../midellware/requireAuth')
 const {
   getTheLeagueParticipates,
   createLeague,
+  addTeamToMainLeague,
 } = require('../controllers/leagueControllers')
 
 const router = express.Router()
@@ -14,5 +15,8 @@ router.post('/mainleague', getTheLeagueParticipates)
 
 // create the league
 router.post('/create', createLeague)
+
+// add createdTeam user to main league
+router.post('/create', addTeamToMainLeague)
 
 module.exports = router

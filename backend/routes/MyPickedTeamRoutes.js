@@ -7,11 +7,16 @@ const router = express.Router()
 const {
   createMyTeam,
   FetchMyPickedTeam,
+  FetchAllUsersPickedTeams,
 } = require('../controllers/myPickedTeamControllers')
 
-// create team route
+// create user team
 router.post('/create', createMyTeam)
 
+//fetch specific team
 router.post('/', FetchMyPickedTeam)
+
+//fetch all teams created by users
+router.post('/allusersteams', FetchAllUsersPickedTeams)
 
 module.exports = router

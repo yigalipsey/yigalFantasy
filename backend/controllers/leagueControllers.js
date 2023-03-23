@@ -17,16 +17,15 @@ async function getTheLeagueParticipates(req, res) {
 }
 
 //add team to league
-async function addTeamToLeague(req, res) {
+async function addTeamToMainLeague(req, res) {
+  const team = {
+    teamId: req.body.teamId,
+  }
   try {
-    const league = await LeagueModel.find().populate({
-      path: 'teams',
-      populate: {
-        path: 'players',
-      },
-    })
-
-    res.status(201).json(league)
+    const mainLeague = await LeagueModel.find({ name: mainLeague })
+    mainLeague.teams.push(team)
+    await mainLeague.save()
+    res.status(201).json(mainLeague)
   } catch (err) {
     console.error(err)
   }
@@ -34,12 +33,12 @@ async function addTeamToLeague(req, res) {
 
 //create a new league
 const createLeague = async (req, res) => {
-  const { name, users } = req.body
+  const { name } = req.body
 
   try {
-    const newLeague = new League({
+    const newLeague = new LeagueModel({
       name,
-      users,
+      teams: [],
     })
 
     await newLeague.save()
@@ -51,4 +50,4 @@ const createLeague = async (req, res) => {
   }
 }
 
-module.exports = { getTheLeagueParticipates, createLeague }
+module.exports = { getTheLeagueParticipates, createLeague, addTeamToMainLeague }

@@ -1,16 +1,34 @@
 const Team = require('../models/myPickedTeam')
+const League = require('../models/leagueModel')
+
+// async function addTeamToMainLeague(stringId) {
+//   try {
+//     const mainLeague = await League.find({ name: 'mainLeague' })
+//     console.log(mainLeague)
+//     mainLeague.teams.push(stringId)
+//     await mainLeague.save()
+//     res.status(201).json(mainLeague)
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
 
 // Create a new myTeam
 const createMyTeam = async (req, res) => {
   try {
     const newMyPickedTeam = new Team({
-      userMail: req.body.userMail, // Assuming the user ID is sent in the request body
+      userMail: req.body.userMail,
       teamName: req.body.teamName,
       coachOfTeam: req.body.coachOfTeam,
-      players: req.body.team, // Assuming an array of player IDs is sent in the request body
-      // ... other fields for myPickedTeam
+      players: req.body.team,
     })
     const savedMyPickedTeam = await newMyPickedTeam.save()
+    const league = await League.findById('641c3cb871639e68ff98a671')
+    console.log(league)
+    const team_id = savedMyPickedTeam._id
+    const stringId = team_id.toString()
+    console.log(stringId)
+    league.teams.push('bbkhbk')
     res.status(201).json(savedMyPickedTeam)
   } catch (err) {
     console.error(err)
@@ -37,4 +55,15 @@ const FetchMyPickedTeam = async (req, res) => {
   }
 }
 
-module.exports = { createMyTeam, FetchMyPickedTeam }
+//fetch user pickedTeam
+const FetchAllUsersPickedTeams = async (req, res) => {
+  try {
+    const teams = await Team.find().populate('players')
+    console.log(teams)
+    return res.json(teams)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Server error.' })
+  }
+}
+module.exports = { createMyTeam, FetchMyPickedTeam, FetchAllUsersPickedTeams }

@@ -5,11 +5,11 @@ const leagueSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  users: [
+  teams: [
     {
-      userId: {
+      teamId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'MyPickedTeam',
       },
     },
   ],
