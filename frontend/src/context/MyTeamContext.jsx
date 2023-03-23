@@ -86,7 +86,7 @@ function myTeamReducer(state, action) {
     case 'REMOVE_PLAYER':
       return {
         ...state,
-        team: state.team.filter((player) => player.id !== action.payload.id),
+        team: state.team.filter((player) => player._id !== action.payload._id),
         budget: state.budget + action.payload.price,
         allReadyPicked: state.allReadyPicked.filter(
           (player) => player.id !== action.payload.id
