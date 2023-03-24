@@ -9,7 +9,7 @@ const leaguesReducer = (state, action) => {
     case 'SET_MAIN_LEAGUE_DATA':
       return {
         ...state,
-        mainLeague: [...state.mainLeague, state.payload],
+        mainLeague: action.payload,
       }
     case 'SET_POSITION_TO_FILTER':
       return {

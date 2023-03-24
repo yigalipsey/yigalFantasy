@@ -39,8 +39,8 @@ export const useFetchData = () => {
         }
       )
       const data = await response.json()
-      console.log('data' + data)
-      dispatchLeague({ type: 'SET_DATA', payload: data })
+      // console.log(data)
+      dispatchLeague({ type: 'SET_MAIN_LEAGUE_DATA', payload: data })
     } catch (error) {
       console.error(error)
     }

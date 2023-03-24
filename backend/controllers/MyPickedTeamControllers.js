@@ -58,9 +58,8 @@ const FetchMyPickedTeam = async (req, res) => {
 //fetch user pickedTeam
 const FetchAllUsersPickedTeams = async (req, res) => {
   try {
-    const teams = await Team.find().populate('players')
-    console.log(teams)
-    return res.json(teams)
+    const teams = await Team.find()
+    res.status(201).json(teams)
   } catch (error) {
     console.error(error)
     res.status(500).json({ message: 'Server error.' })
