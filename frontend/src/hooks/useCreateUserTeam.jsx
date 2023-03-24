@@ -12,7 +12,7 @@ export const useCreateUserTeam = () => {
   const createTeam = async () => {
     setIsLoading(true)
     console.log(user)
-    const response = await fetch('http://localhost:4000/myteam/create', {
+    const response = await fetch('http://localhost:4000/userteams/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

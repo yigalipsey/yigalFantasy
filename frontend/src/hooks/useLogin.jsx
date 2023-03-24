@@ -37,7 +37,7 @@ export const useLogin = () => {
   }
 
   const fetchUserTeam = async (email) => {
-    const response = await fetch('http://localhost:4000/myteam/', {
+    const response = await fetch('http://localhost:4000/userteams/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userMail: email }),

@@ -1,11 +1,11 @@
-const Team = require('../models/myPickedTeam')
+const Team = require('../models/userTeam')
 const League = require('../models/leagueModel')
 const User = require('../models/userModel')
 
 // Create a new user team
 const createMyTeam = async (req, res) => {
   try {
-    const newMyPickedTeam = new Team({
+    const newUserTeam = new Team({
       userMail: req.body.userMail,
       teamName: req.body.teamName,
       coachOfTeam: req.body.coachOfTeam,
@@ -13,15 +13,15 @@ const createMyTeam = async (req, res) => {
       budget: req.body.budget,
       totalPoints: 70,
     })
-    const savedMyPickedTeam = await newMyPickedTeam.save()
-    const newTeamId = savedMyPickedTeam._id
+    const savedUserTeam = await newUserTeam.save()
+    const newTeamId = savedUserTeam._id
     console.log('team id ' + newTeamId)
     const result = await User.findOneAndUpdate(
       { email: req.body.userMail },
       { $set: { teamOfUser: newTeamId } },
       { new: true }
     )
-    res.status(201).json(savedMyPickedTeam)
+    res.status(201).json(savedUserTeam)
   } catch (err) {
     console.error(err)
     res.status(500).json({ message: 'Error creating myPickedTeam' })
@@ -29,10 +29,10 @@ const createMyTeam = async (req, res) => {
 }
 
 //fetch user Team
-const FetchMyPickedTeam = async (req, res) => {
+const FetchMyUserTeam = async (req, res) => {
   try {
     const { userMail } = req.body
-    console.log(userMail)
+    console.log('usermail' + ' ' + userMail)
     const team = await Team.findOne({ userMail }).populate('players')
     console.log(team)
     if (!team) {
@@ -46,8 +46,8 @@ const FetchMyPickedTeam = async (req, res) => {
   }
 }
 
-//fetch user pickedTeam
-const FetchAllUsersPickedTeams = async (req, res) => {
+//fetch user picked Team
+const FetchAllUsersTeams = async (req, res) => {
   try {
     const teams = await Team.find().populate('players')
     res.status(201).json(teams)
@@ -70,7 +70,7 @@ const deleteAllUsersTeams = async (req, res) => {
 
 module.exports = {
   createMyTeam,
-  FetchMyPickedTeam,
-  FetchAllUsersPickedTeams,
+  FetchMyUserTeam,
+  FetchAllUsersTeams,
   deleteAllUsersTeams,
 }
