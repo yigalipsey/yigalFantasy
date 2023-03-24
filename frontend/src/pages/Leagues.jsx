@@ -19,11 +19,23 @@ function League() {
 
   return (
     <div className=' w-full h-screen pt-10 bg-gray-500 flex flex-col justify-center'>
+      <div className=' w-1/2 mx-auto bg-red flex justify-between'>
+        <button>צור ליגה </button>
+        <button>הצטרף לליגה קיימת </button>
+      </div>
       <div>
         <div className=' w-1/2 mx-auto bg-yellow '>
-          <h1>הליגה הראשית</h1>
+          <h1>הליגות שלי</h1>
+          <table className=' w-full mx-auto bg-green-500 border'>
+            <thead>
+              <tr>
+                <th className=''>שם הליגה</th>
+                <th className=''>משתתפים</th>
+              </tr>
+            </thead>
+          </table>
         </div>
-        <LeagueTable league={mainLeague} />
+        {/* <LeagueTable league={mainLeague} /> */}
       </div>
     </div>
   )

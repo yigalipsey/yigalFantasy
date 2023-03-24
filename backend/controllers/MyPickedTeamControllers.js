@@ -1,18 +1,6 @@
 const Team = require('../models/myPickedTeam')
 const League = require('../models/leagueModel')
 
-// async function addTeamToMainLeague(stringId) {
-//   try {
-//     const mainLeague = await League.find({ name: 'mainLeague' })
-//     console.log(mainLeague)
-//     mainLeague.teams.push(stringId)
-//     await mainLeague.save()
-//     res.status(201).json(mainLeague)
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
-
 // Create a new myTeam
 const createMyTeam = async (req, res) => {
   try {
