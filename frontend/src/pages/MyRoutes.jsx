@@ -18,11 +18,19 @@ const MyRoutes = () => {
       <Routes>
         <Route
           path='/login'
-          element={!user ? <Login /> : <Navigate to={'/myteam'} />}
+          element={
+            !user ? (
+              <Login />
+            ) : user && user.teamOfUser !== null ? (
+              <Navigate to={'/myteam'} />
+            ) : (
+              <Navigate to={'/buyldteam'} />
+            )
+          }
         />
         <Route
           path='/signup'
-          element={!user ? <SignUp /> : <Navigate to={'/myteam'} />}
+          element={!user ? <SignUp /> : <Navigate to={'/buyldteam'} />}
         />
         <Route path='/myteam' element={<MyTeamPage />} />
         <Route path='/buyldteam' element={<BuyldTeam />} />
