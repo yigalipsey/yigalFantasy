@@ -37,9 +37,14 @@ const signupUser = async (req, res) => {
   }
 }
 
-const test = async (req, res) => {
-  console.log(req.body)
-  res.json('work')
+const deleteAllUsers = async (req, res) => {
+  try {
+    const teams = await User.deleteMany()
+    return res.json('deleted')
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Server error.' })
+  }
 }
 
-module.exports = { signupUser, loginUser, test }
+module.exports = { signupUser, loginUser, deleteAllUsers }
