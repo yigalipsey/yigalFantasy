@@ -6,12 +6,10 @@ const initialState = {
 
 const leaguesReducer = (state, action) => {
   switch (action.type) {
-    case 'SET_DATA':
+    case 'SET_MAIN_LEAGUE_DATA':
       return {
         ...state,
-        teams: action.payload,
-        loading: false,
-        error: null,
+        mainLeague: [...state.mainLeague, state.payload],
       }
     case 'SET_POSITION_TO_FILTER':
       return {
@@ -46,12 +44,12 @@ const leaguesReducer = (state, action) => {
 export const LeaguesContext = createContext(initialState)
 
 export const LeaguesProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(leaguesReducer, initialState)
+  const [state, dispatchLeague] = useReducer(leaguesReducer, initialState)
 
-  // console.log('DataContext state:', state)
+  console.log('LeagueContext state:', state)
 
   return (
-    <LeaguesContext.Provider value={{ ...state, dispatch }}>
+    <LeaguesContext.Provider value={{ ...state, dispatchLeague }}>
       {children}
     </LeaguesContext.Provider>
   )

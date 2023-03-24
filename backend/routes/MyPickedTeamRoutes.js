@@ -8,6 +8,7 @@ const {
   createMyTeam,
   FetchMyPickedTeam,
   FetchAllUsersPickedTeams,
+  deleteAllUsersPickedTeams,
 } = require('../controllers/myPickedTeamControllers')
 
 // create user team
@@ -17,6 +18,9 @@ router.post('/create', createMyTeam)
 router.post('/', FetchMyPickedTeam)
 
 //fetch all teams created by users
-router.post('/allusersteams', FetchAllUsersPickedTeams)
+router.get('/allusersteams', FetchAllUsersPickedTeams)
+
+//delete all teams created by users
+router.delete('/allusersteams', deleteAllUsersPickedTeams)
 
 module.exports = router

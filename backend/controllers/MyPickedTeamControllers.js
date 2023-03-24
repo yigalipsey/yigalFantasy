@@ -66,4 +66,21 @@ const FetchAllUsersPickedTeams = async (req, res) => {
     res.status(500).json({ message: 'Server error.' })
   }
 }
-module.exports = { createMyTeam, FetchMyPickedTeam, FetchAllUsersPickedTeams }
+
+const deleteAllUsersPickedTeams = async (req, res) => {
+  try {
+    const teams = await Team.deleteMany()
+    console.log(teams)
+    return res.json('deleted')
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Server error.' })
+  }
+}
+
+module.exports = {
+  createMyTeam,
+  FetchMyPickedTeam,
+  FetchAllUsersPickedTeams,
+  deleteAllUsersPickedTeams,
+}

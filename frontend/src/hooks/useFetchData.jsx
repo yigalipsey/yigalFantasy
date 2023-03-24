@@ -1,12 +1,14 @@
-import { useEffect, useState, useContext } from 'react'
+import { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
 import { useAuthContext } from '../hooks/useAuthContext'
+import { useLeaguesContext } from '../hooks/useLeaguesContext'
 
 export const useFetchData = () => {
-  const [data, setData] = useState([])
   const { dispatch } = useContext(DataContext)
+  const { dispatchLeague } = useLeaguesContext()
   const { user } = useAuthContext()
 
+  //fetching all players for pick user team
   const fetchAllPlayers = async () => {
     try {
       const response = await fetch('http://localhost:4000/team/allteams', {
@@ -18,12 +20,31 @@ export const useFetchData = () => {
       })
       const data = await response.json()
       // console.log(data)
-      setData(data)
       dispatch({ type: 'SET_DATA', payload: data })
     } catch (error) {
       console.error(error)
     }
   }
 
-  return { fetchAllPlayers }
+  const fetchAllUsersTeams = async () => {
+    try {
+      const response = await fetch(
+        'http://localhost:4000/myteam/allusersteams',
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
+      const data = await response.json()
+      console.log('data' + data)
+      dispatchLeague({ type: 'SET_DATA', payload: data })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  return { fetchAllPlayers, fetchAllUsersTeams }
 }

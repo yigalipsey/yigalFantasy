@@ -1,8 +1,8 @@
-import { LeaguesContext } from '../context/LeaguesContext'
+import { LeaguesContext } from '../context/LeagusContext'
 import { useContext } from 'react'
 
 export const useLeaguesContext = () => {
-  const context = useContext(MyTeamContext)
+  const context = useContext(LeaguesContext)
 
   if (!context) {
     throw Error(
