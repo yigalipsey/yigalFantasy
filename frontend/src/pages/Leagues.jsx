@@ -1,38 +1,30 @@
 import { useEffect } from 'react'
 import { useFetchData } from '../hooks/useFetchData'
 import { useLeaguesContext } from '../hooks/useLeaguesContext'
+import LeagueTable from './LeagueTable'
 
 function League() {
   const { fetchAllUsersTeams } = useFetchData()
   const { mainLeague } = useLeaguesContext()
+
+  // Sort the array by points in descending order
+  mainLeague.sort((a, b) => b.points - a.points)
+
   useEffect(() => {
     const fetchData = async () => {
       await fetchAllUsersTeams()
     }
     fetchData()
   }, [])
+
   return (
-    <div className='bg-white rounded-lg shadow-md p-[300px]'>
-      <table className='table-auto w-full'>
-        <thead>
-          <tr>
-            <th className='px-4 py-2'>דירוג</th>
-            <th className='px-4 py-2'>שם קבוצה</th>
-            <th className='px-4 py-2'>מאמן הקבוצה</th>
-            <th className='px-4 py-2'>נקודות</th>
-          </tr>
-        </thead>
-        <tbody>
-          {mainLeague.map((team, index) => (
-            <tr key={team.teamName}>
-              <td className='border px-4 py-2'>{index + 1}</td>
-              <td className='border px-4 py-2'>{team.teamName}</td>
-              <td className='border px-4 py-2'>{team.coachOfTeam}</td>
-              <td className='border px-4 py-2'>{team.totalPoints}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className=' w-full h-screen pt-10 bg-gray-500 flex flex-col justify-center'>
+      <div>
+        <div className=' w-1/2 mx-auto bg-yellow '>
+          <h1>הליגה הראשית</h1>
+        </div>
+        <LeagueTable league={mainLeague} />
+      </div>
     </div>
   )
 }

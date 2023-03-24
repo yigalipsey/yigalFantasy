@@ -21,14 +21,9 @@ const createMyTeam = async (req, res) => {
       teamName: req.body.teamName,
       coachOfTeam: req.body.coachOfTeam,
       players: req.body.team,
+      totalPoints: 70,
     })
     const savedMyPickedTeam = await newMyPickedTeam.save()
-    const league = await League.findById('641c3cb871639e68ff98a671')
-    console.log(league)
-    const team_id = savedMyPickedTeam._id
-    const stringId = team_id.toString()
-    console.log(stringId)
-    league.teams.push('bbkhbk')
     res.status(201).json(savedMyPickedTeam)
   } catch (err) {
     console.error(err)
@@ -37,7 +32,6 @@ const createMyTeam = async (req, res) => {
 }
 
 //fetch user pickedTeam
-
 const FetchMyPickedTeam = async (req, res) => {
   try {
     const { userMail } = req.body
@@ -58,7 +52,7 @@ const FetchMyPickedTeam = async (req, res) => {
 //fetch user pickedTeam
 const FetchAllUsersPickedTeams = async (req, res) => {
   try {
-    const teams = await Team.find()
+    const teams = await Team.find().populate('players')
     res.status(201).json(teams)
   } catch (error) {
     console.error(error)
