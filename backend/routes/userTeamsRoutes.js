@@ -9,7 +9,7 @@ const {
   FetchMyPickedTeam,
   FetchAllUsersPickedTeams,
   deleteAllUsersTeams,
-} = require('../controllers/myPickedTeamControllers')
+} = require('../controllers/usersTeamControllers')
 
 // create user team
 router.post('/create', createMyTeam)
