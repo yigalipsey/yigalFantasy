@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const userRoutes = require('./routes/userRoutes')
 const playerRoutes = require('./routes/playerRoutes')
 const leagueRoutes = require('./routes/leagueRoutes')
-const MyPickedTeamRoutes = require('./routes/MyPickedTeamRoutes')
+const userTeamsRoutes = require('./routes/userTeamsRoutes')
 const teamRoutes = require('./routes/teamRoutes')
 const cors = require('cors')
 
@@ -18,11 +18,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
-// {
-//     origin: '*',
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//   }
+
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
