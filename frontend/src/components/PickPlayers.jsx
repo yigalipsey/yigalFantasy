@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState } from 'react'
 import { useFetchData } from '../hooks/useFetchData'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useCreateMyTeam } from '../hooks/useCreateMyTeam'
+import { useCreateUserTeam } from '../hooks/useCreateUserTeam'
 import { useMyTeamContext } from '../hooks/useMyTeamContext'
 
 //components
@@ -21,7 +21,7 @@ const PickPlayers = () => {
 
   //Text of eroors
   const { user } = useAuthContext()
-  const { createTeam } = useCreateMyTeam()
+  const { createTeam } = useCreateUserTeam()
   const { fetchAllPlayers } = useFetchData()
   const { dispatch, teamName, coachOfTeam, team, attackePlayers } =
     useMyTeamContext()

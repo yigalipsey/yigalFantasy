@@ -7,6 +7,7 @@ const myPickedTeamSchema = new mongoose.Schema({
   },
   teamName: { type: String, required: true },
   coachOfTeam: { type: String, required: true },
+
   players: [
     { type: mongoose.Schema.Types.ObjectId, ref: 'Player', required: true },
   ],

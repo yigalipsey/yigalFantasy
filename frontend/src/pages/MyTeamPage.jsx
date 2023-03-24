@@ -5,13 +5,13 @@ import { useLogin } from '../hooks/useLogin'
 import { useEffect } from 'react'
 
 const MyTeamPage = () => {
-  const { fetchMyTeam } = useLogin()
+  const { fetchUserTeam } = useLogin()
   const { user } = useAuthContext()
   const email = user.email
 
   useEffect(() => {
     const fetchData = async () => {
-      await fetchMyTeam(email)
+      await fetchUserTeam(email)
     }
     fetchData()
   }, [])
