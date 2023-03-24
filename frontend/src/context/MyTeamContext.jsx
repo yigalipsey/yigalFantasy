@@ -118,7 +118,7 @@ export const MyTeamContext = createContext(initialState)
 
 export function MyTeamProvider({ children }) {
   const [state, dispatch] = useReducer(myTeamReducer, initialState)
-  // console.log('MyTeamContext state:', state)
+  console.log('MyTeamContext state:', state)
   return (
     <MyTeamContext.Provider value={{ ...state, dispatch }}>
       {children}

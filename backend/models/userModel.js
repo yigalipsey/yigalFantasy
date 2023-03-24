@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  teamOfUser: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'MyPickedTeam',
+    default: null,
+  },
 })
 
 // static signup method

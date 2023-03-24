@@ -31,6 +31,26 @@ async function addTeamToMainLeague(req, res) {
   }
 }
 
+// async function createLeague(leagueName, teamIds) {
+//   try {
+//     const teams = await Team.find({ _id: { $in: teamIds } });
+
+//     if (teams.length !== teamIds.length) {
+//       throw new Error('One or more teams not found');
+//     }
+
+//     const newLeague = new League({ name: leagueName, teams });
+
+//     const savedLeague = await newLeague.save();
+
+//     console.log(`League ${savedLeague.name} created successfully`);
+
+//     return savedLeague;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
 //create a new league
 const createLeague = async (req, res) => {
   const { name } = req.body

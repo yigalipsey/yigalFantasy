@@ -1,5 +1,6 @@
 const Team = require('../models/myPickedTeam')
 const League = require('../models/leagueModel')
+const User = require('../models/userModel')
 
 // Create a new myTeam
 const createMyTeam = async (req, res) => {
@@ -12,6 +13,13 @@ const createMyTeam = async (req, res) => {
       totalPoints: 70,
     })
     const savedMyPickedTeam = await newMyPickedTeam.save()
+    const newTeamId = savedMyPickedTeam._id
+    console.log('team id ' + newTeamId)
+    const result = await User.findOneAndUpdate(
+      { email: req.body.userMail },
+      { $set: { teamOfUser: newTeamId } },
+      { new: true }
+    )
     res.status(201).json(savedMyPickedTeam)
   } catch (err) {
     console.error(err)

@@ -5,14 +5,11 @@ const leagueSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  teams: [
-    {
-      teamId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'MyPickedTeam',
-      },
-    },
-  ],
+  leagueCode: {
+    type: Number,
+    // required: true,
+  },
+  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MyPickedTeam' }],
 })
 
 module.exports = mongoose.model('League', leagueSchema)
