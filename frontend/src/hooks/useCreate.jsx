@@ -6,7 +6,7 @@ import ErrorMsg from '../components/ErrorMsg'
 export const useCreate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
-  const { user } = useAuthContext()
+  const { user, teamOfUser, dispatch } = useAuthContext()
   const { team, coachOfTeam, teamName, budget } = useMyTeamContext()
 
   //create a new team of user
@@ -25,25 +25,25 @@ export const useCreate = () => {
       }),
     })
     const json = await response.json()
-    console.log(json)
+    dispatch({ type: 'SET_USER_TEAM', payload: json._id })
+    console.log('id' + ' ' + json._id)
   }
 
   // create a new league
-  const createLeague = async ({ name }) => {
+  const createLeague = async ({ leagueName }) => {
     setIsLoading(true)
-    console.log(user)
+    console.log(teamOfUser)
     const response = await fetch('http://localhost:4000/league/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        name,
-        teams: user.teamOfUser,
+        name: leagueName,
+        teams: teamOfUser,
         userMail: user.email,
       }),
     })
     const json = await response.json()
-    console.log(json)
   }
 
-  return { createTeam, error }
+  return { createTeam, createLeague, error }
 }

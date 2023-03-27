@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useCreate } from '../hooks/useCreate'
 
 function CreateLeague() {
   const [leagueName, setLeagueName] = useState(null)
+  const { createLeague } = useCreate()
 
   const submitLeagueName = () => {
-    console.log(leagueName)
+    createLeague({ leagueName })
   }
 
   return (

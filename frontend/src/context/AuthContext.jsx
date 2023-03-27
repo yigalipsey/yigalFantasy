@@ -9,7 +9,8 @@ export const authReducer = (state, action) => {
     case 'LOGOUT':
       return { user: null }
     case 'SET_USER_TEAM':
-      return { user: action.payload }
+      console.log(action.payload)
+      return { ...state, teamOfUser: action.payload }
     default:
       return state
   }
@@ -17,7 +18,9 @@ export const authReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
-    user: null,
+    email: null,
+    teamOfUser: null,
+    token: null,
   })
 
   useEffect(() => {
