@@ -11,10 +11,10 @@ function League() {
   mainLeague.sort((a, b) => b.points - a.points)
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMainLeagueData = async () => {
       await fetchAllUsersTeams()
     }
-    fetchData()
+    fetchMainLeagueData()
   }, [])
 
   return (
@@ -23,6 +23,7 @@ function League() {
         <button>צור ליגה </button>
         <button>הצטרף לליגה קיימת </button>
       </div>
+      <div></div>
       <div>
         <div className=' w-1/2 mx-auto bg-yellow '>
           <h1>הליגות שלי</h1>
