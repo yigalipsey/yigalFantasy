@@ -9,7 +9,7 @@ const leagueSchema = new mongoose.Schema({
     type: Number,
     // required: true,
   },
-  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MyPickedTeam' }],
+  teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'userTeam' }],
 })
 
 module.exports = mongoose.model('League', leagueSchema)

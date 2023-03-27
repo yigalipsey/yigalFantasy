@@ -2,8 +2,9 @@ const LeagueModel = require('../models/leagueModel')
 
 // get all players
 async function getTheLeagueParticipates(req, res) {
+  const { id } = req.body
   try {
-    const league = await LeagueModel.find().populate({
+    const league = await LeagueModel.findById(id).populate({
       path: 'teams',
       populate: {
         path: 'players',
@@ -31,34 +32,13 @@ async function addTeamToMainLeague(req, res) {
   }
 }
 
-// async function createLeague(leagueName, teamIds) {
-//   try {
-//     const teams = await Team.find({ _id: { $in: teamIds } });
-
-//     if (teams.length !== teamIds.length) {
-//       throw new Error('One or more teams not found');
-//     }
-
-//     const newLeague = new League({ name: leagueName, teams });
-
-//     const savedLeague = await newLeague.save();
-
-//     console.log(`League ${savedLeague.name} created successfully`);
-
-//     return savedLeague;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
 //create a new league
 const createLeague = async (req, res) => {
-  const { name } = req.body
-
   try {
+    const { name, teams } = req.body
     const newLeague = new LeagueModel({
       name,
-      teams: [],
+      teams,
     })
 
     await newLeague.save()

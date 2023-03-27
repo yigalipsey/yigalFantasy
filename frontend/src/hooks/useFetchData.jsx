@@ -26,10 +26,11 @@ export const useFetchData = () => {
     }
   }
 
+  //
   const fetchAllUsersTeams = async () => {
     try {
       const response = await fetch(
-        'http://localhost:4000/myteam/allusersteams',
+        'http://localhost:4000/userteams/allusersteams',
         {
           method: 'GET',
           headers: {
