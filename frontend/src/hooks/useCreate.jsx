@@ -9,6 +9,7 @@ export const useCreate = () => {
   const { user } = useAuthContext()
   const { team, coachOfTeam, teamName, budget } = useMyTeamContext()
 
+  //create a new team of user
   const createTeam = async () => {
     setIsLoading(true)
     console.log(user)
@@ -20,6 +21,23 @@ export const useCreate = () => {
         teamName,
         coachOfTeam,
         budget,
+        userMail: user.email,
+      }),
+    })
+    const json = await response.json()
+    console.log(json)
+  }
+
+  // create a new league
+  const createLeague = async ({ name }) => {
+    setIsLoading(true)
+    console.log(user)
+    const response = await fetch('http://localhost:4000/league/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        teams: user.teamOfUser,
         userMail: user.email,
       }),
     })
