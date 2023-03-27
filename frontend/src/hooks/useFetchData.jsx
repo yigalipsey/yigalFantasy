@@ -49,13 +49,29 @@ export const useFetchData = () => {
     }
   }
 
-  // fetch specific user team
-  const fetchUserTeam = async (email) => {
+  // fetch specific user team by mail
+  const fetchUserTeamByMail = async (email) => {
     console.log(email)
     const response = await fetch('http://localhost:4000/userteams/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userMail: email }),
+    })
+    const json = await response.json()
+    console.log(json)
+    if (response.ok) {
+      // update the team context
+      dispatchUserTeam({ type: 'SET_TEAM', payload: json })
+    }
+  }
+
+  // fetch specific user team by id
+  const fetchUserTeamById = async (_id) => {
+    console.log('kara befront')
+    console.log(_id)
+    const response = await fetch(`http://localhost:4000/userteams/${_id}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
     })
     const json = await response.json()
     console.log(json)
@@ -101,7 +117,8 @@ export const useFetchData = () => {
     fetchAllPlayers,
     fetchAllUsersTeams,
     fetchUserLeagues,
-    fetchUserTeam,
+    fetchUserTeamByMail,
     fetchSpecificLeague,
+    fetchUserTeamById,
   }
 }

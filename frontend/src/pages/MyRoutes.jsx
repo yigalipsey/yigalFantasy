@@ -37,6 +37,7 @@ const MyRoutes = () => {
         <Route path='/buyldteam' element={<BuyldTeam />} />
         <Route path='/leagues' element={<Leagues />} />
         <Route path='/league/:_id' element={<LeagueTable />} />
+        <Route path='/team/:_id' element={<UserTeamPage />} />
       </Routes>
     </div>
   )

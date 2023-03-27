@@ -1,20 +1,31 @@
 import Pitch from '../components/SoccerPitch'
 import PlayersOnPitch from '../components/PlayersOnPitch'
+import { useParams } from 'react-router-dom'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useFetchData } from '../hooks/useFetchData'
 import { useEffect } from 'react'
 
 const UserTeamPage = () => {
-  const { fetchUserTeam } = useFetchData()
+  const { fetchUserTeamByMail, fetchUserTeamById } = useFetchData()
   const { user } = useAuthContext()
+  let { _id } = useParams()
   const email = user.email
 
   useEffect(() => {
-    console.log(user.email)
-    const fetchData = async () => {
-      await fetchUserTeam(email)
+    console.log(_id)
+    const fetchDataByMail = async () => {
+      await fetchUserTeamByMail(email)
     }
-    fetchData()
+    const fetchDataById = async () => {
+      await fetchUserTeamById(_id)
+    }
+
+    if (_id === undefined) {
+      fetchDataByMail()
+    }
+    if (_id !== undefined) {
+      fetchDataById()
+    }
   }, [])
 
   return (

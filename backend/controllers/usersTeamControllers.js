@@ -28,12 +28,31 @@ const createMyTeam = async (req, res) => {
   }
 }
 
-//fetch user Team
-const FetchUserTeam = async (req, res) => {
+//fetch user Team by mail
+const FetchUserTeamByMail = async (req, res) => {
   try {
     const { userMail } = req.body
     const team = await Team.findOne({ userMail }).populate('players')
-    console.log('userMail' + userMail)
+    console.log('userMail')
+    if (!team) {
+      return res.status(404).json({ message: 'Team not found for user.' })
+    }
+
+    return res.json(team)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ message: 'Server error.' })
+  }
+}
+
+//fetch user Team by id
+const FetchUserTeamById = async (req, res) => {
+  const teamId = req.params._id
+  console.log(teamId)
+  console.log('kara')
+  try {
+    const team = await Team.findOne({ _id: teamId }).populate('players')
+
     if (!team) {
       return res.status(404).json({ message: 'Team not found for user.' })
     }
@@ -46,6 +65,7 @@ const FetchUserTeam = async (req, res) => {
 }
 
 //fetch user picked Team
+
 const FetchAllUsersTeams = async (req, res) => {
   try {
     const teams = await Team.find().populate('players')
@@ -69,7 +89,8 @@ const deleteAllUsersTeams = async (req, res) => {
 
 module.exports = {
   createMyTeam,
-  FetchUserTeam,
+  FetchUserTeamByMail,
   FetchAllUsersTeams,
   deleteAllUsersTeams,
+  FetchUserTeamById,
 }
