@@ -12,7 +12,7 @@ const {
 const router = express.Router()
 
 // get all players route
-router.post('/findleague', getTheLeagueParticipates)
+router.get('/:_id', getTheLeagueParticipates)
 
 // create the league
 router.post('/create', createLeague)

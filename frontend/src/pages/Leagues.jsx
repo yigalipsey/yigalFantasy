@@ -33,7 +33,6 @@ function League() {
         <div className=' w-1/2 mx-auto bg-yellow '>
           <h1>הליגות שלי</h1>
           <table className=' w-full mx-auto bg-green-500 border'>
-            {/* {allLeaguesIn.map((league) => {})} */}
             <thead>
               <tr>
                 <th className=''>שם הליגה</th>
@@ -46,9 +45,12 @@ function League() {
         {allLeaguesIn.map((league) => {
           return (
             <div className='w-1/2 mx-auto bg-green-500 border flex justify-between'>
-              {/* <LeagueTable league={league} /> */}
-              <Link className='w-[100px] bg-violet-50' to={`/${league._id} `} />
-              <div>{league.name}</div>
+              <Link
+                className='w-[100px] bg-violet-50'
+                to={`/league/${league._id} `}
+              >
+                {league.name}
+              </Link>
               <div>{league.teams.length}</div>
             </div>
           )

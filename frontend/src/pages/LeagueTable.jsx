@@ -1,9 +1,21 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useFetchData } from '../hooks/useFetchData'
 
 const LeagueTable = ({ league }) => {
+  const { fetchSpecificLeague } = useFetchData()
+  let { _id } = useParams()
+
+  useEffect(() => {
+    const fetchSpecificLeagueData = async () => {
+      await fetchSpecificLeague(_id)
+    }
+    fetchSpecificLeagueData()
+  }, [])
+
   return (
     <div className=' w-full rounded-lg shadow-md '>
-      <table className='table-auto w-1/2 mx-auto bg-red-500 border'>
+      {/* <table className='table-auto w-1/2 mx-auto bg-red-500 border'>
         <thead>
           <tr>
             <th className='px-4 py-2'>דירוג</th>
@@ -22,7 +34,7 @@ const LeagueTable = ({ league }) => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
     </div>
   )
 }

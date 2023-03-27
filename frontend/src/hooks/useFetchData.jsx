@@ -80,10 +80,28 @@ export const useFetchData = () => {
     }
   }
 
+  // fetch specific leagues
+  const fetchSpecificLeague = async (_id) => {
+    // console.log(user.email)
+    const response = await fetch(`http://localhost:4000/league/${_id}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    })
+    const json = await response.json()
+    console.log(json)
+    // if (response.ok) {
+    //   dispatchLeague({
+    //     type: 'SET_SPECIFIC_LEAGUE_DATA',
+    //     payload: json,
+    //   })
+    // }
+  }
+
   return {
     fetchAllPlayers,
     fetchAllUsersTeams,
     fetchUserLeagues,
     fetchUserTeam,
+    fetchSpecificLeague,
   }
 }
