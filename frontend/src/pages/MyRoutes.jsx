@@ -7,7 +7,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import Login from '../pages/Login'
 import SignUp from './Signup'
 import BuyldTeam from './BuyldTeam'
-import MyTeamPage from './MyTeamPage'
+import UserTeamPage from './UserTeamPage'
 import Leagues from './Leagues'
 import LeagueTable from './LeagueTable'
 
@@ -33,7 +33,7 @@ const MyRoutes = () => {
           path='/signup'
           element={!user ? <SignUp /> : <Navigate to={'/buyldteam'} />}
         />
-        <Route path='/myteam' element={<MyTeamPage />} />
+        <Route path='/myteam' element={<UserTeamPage />} />
         <Route path='/buyldteam' element={<BuyldTeam />} />
         <Route path='/leagues' element={<Leagues />} />
         <Route path='/league/:_id' element={<LeagueTable />} />

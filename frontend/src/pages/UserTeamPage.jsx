@@ -4,7 +4,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import { useFetchData } from '../hooks/useFetchData'
 import { useEffect } from 'react'
 
-const MyTeamPage = () => {
+const UserTeamPage = () => {
   const { fetchUserTeam } = useFetchData()
   const { user } = useAuthContext()
   const email = user.email
@@ -34,4 +34,4 @@ const MyTeamPage = () => {
   )
 }
 
-export default MyTeamPage
+export default UserTeamPage
