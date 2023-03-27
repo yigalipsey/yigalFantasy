@@ -30,7 +30,6 @@ export const useCreate = () => {
 
   // create a new league
   const createLeague = async ({ leagueName }) => {
-    console.log(user.email)
     setIsLoading(true)
 
     const response = await fetch('http://localhost:4000/league/create', {
@@ -42,6 +41,7 @@ export const useCreate = () => {
       }),
     })
     const json = await response.json()
+    console.log(json)
   }
 
   return { createTeam, createLeague, error }

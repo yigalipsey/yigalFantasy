@@ -38,15 +38,17 @@ const createLeague = async (req, res) => {
   const userMail = req.body.userMail
 
   const teams = await Team.find({ userMail })
-  console.log(teams)
+
   try {
     const { name } = req.body
     const newLeague = new LeagueModel({
       name,
       teams,
     })
+
     await newLeague.save()
-    res.status(201).json({ message: 'League created successfully' })
+    const _id = newLeague._id
+    res.status(201).json({ _id, message: 'League created successfully' })
   } catch (err) {
     console.error(err)
     res.status(500).json({ message: 'Something went wrong' })
