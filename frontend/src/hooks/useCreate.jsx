@@ -25,7 +25,6 @@ export const useCreate = () => {
       }),
     })
     const json = await response.json()
-    dispatch({ type: 'SET_USER_TEAM', payload: json._id })
   }
 
   // create a new league
