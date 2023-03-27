@@ -3,7 +3,7 @@ import { useAuthContext } from './useAuthContext'
 import { useMyTeamContext } from './useMyTeamContext'
 import ErrorMsg from '../components/ErrorMsg'
 
-export const useCreateUserTeam = () => {
+export const useCreate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { user } = useAuthContext()

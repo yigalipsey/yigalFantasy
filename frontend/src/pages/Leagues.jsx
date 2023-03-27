@@ -1,9 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useFetchData } from '../hooks/useFetchData'
 import { useLeaguesContext } from '../hooks/useLeaguesContext'
+import CreateLeague from './CreateLeague'
 import LeagueTable from './LeagueTable'
 
 function League() {
+  const [isOpen, setIsOpen] = useState(false)
   const { fetchAllUsersTeams } = useFetchData()
   const { mainLeague } = useLeaguesContext()
 
@@ -20,10 +22,14 @@ function League() {
   return (
     <div className=' w-full h-screen pt-10 bg-gray-500 flex flex-col justify-center'>
       <div className=' w-1/2 mx-auto bg-red flex justify-between'>
-        <button>צור ליגה </button>
+        <button onClick={() => setIsOpen(!isOpen)}>צור ליגה </button>
         <button>הצטרף לליגה קיימת </button>
       </div>
-      <div></div>
+      {isOpen && (
+        <div className='c w-1/2 mx-auto bg-green-300 '>
+          <CreateLeague />
+        </div>
+      )}
       <div>
         <div className=' w-1/2 mx-auto bg-yellow '>
           <h1>הליגות שלי</h1>

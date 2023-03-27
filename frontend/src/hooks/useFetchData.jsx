@@ -8,7 +8,7 @@ export const useFetchData = () => {
   const { dispatchLeague } = useLeaguesContext()
   const { user } = useAuthContext()
 
-  //fetching all players for pick user team
+  //fetching all players for  user could pick his own team
   const fetchAllPlayers = async () => {
     try {
       const response = await fetch('http://localhost:4000/team/allteams', {
@@ -26,7 +26,7 @@ export const useFetchData = () => {
     }
   }
 
-  //
+  // fetch all the teams created by the users for main league data
   const fetchAllUsersTeams = async () => {
     try {
       const response = await fetch(
