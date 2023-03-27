@@ -10,7 +10,7 @@ export const useFetchData = () => {
   const { dispatch: dispatchUserTeam } = useMyTeamContext()
   const { user, email } = useAuthContext()
 
-  //fetching all players for  user could pick his own team
+  //fetching all players for user  thata user could pick his own team
   const fetchAllPlayers = async () => {
     try {
       const response = await fetch('http://localhost:4000/team/allteams', {
@@ -49,7 +49,24 @@ export const useFetchData = () => {
     }
   }
 
+  // fetch specific user team
   const fetchUserTeam = async (email) => {
+    console.log(email)
+    const response = await fetch('http://localhost:4000/userteams/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userMail: email }),
+    })
+    const json = await response.json()
+    console.log(json)
+    if (response.ok) {
+      // update the auth context
+      dispatchUserTeam({ type: 'SET_TEAM', payload: json })
+    }
+  }
+
+  // fetch all the leagues  user in
+  const fetchUserLeagues = async (email) => {
     console.log(email)
     const response = await fetch('http://localhost:4000/userteams/', {
       method: 'POST',

@@ -4,6 +4,7 @@ const requireAuth = require('../midellware/requireAuth')
 // controller functions
 const {
   getTheLeagueParticipates,
+  findLeaguesOfUser,
   createLeague,
   addTeamToMainLeague,
 } = require('../controllers/leagueControllers')
@@ -15,6 +16,9 @@ router.post('/findleague', getTheLeagueParticipates)
 
 // create the league
 router.post('/create', createLeague)
+
+// create the league
+router.get('/findleagues', findLeaguesOfUser)
 
 // add createdTeam user to main league
 router.post('/create', addTeamToMainLeague)

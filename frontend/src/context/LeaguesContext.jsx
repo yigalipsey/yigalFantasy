@@ -2,6 +2,7 @@ import { createContext, useReducer } from 'react'
 
 const initialState = {
   mainLeague: [],
+  allLeaguesIn: [],
 }
 
 const leaguesReducer = (state, action) => {

@@ -55,4 +55,26 @@ const createLeague = async (req, res) => {
   }
 }
 
-module.exports = { getTheLeagueParticipates, createLeague, addTeamToMainLeague }
+//get all leagues of specific user
+const findLeaguesOfUser = async (req, res) => {
+  const { userMail } = req.body
+
+  const teams = await Team.find({ userMail })
+
+  try {
+    // Find the league that the user is in, and populate it with teams
+    const leagues = await LeagueModel.find({ teams }).populate('teams')
+
+    res.json({ leagues })
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Server error')
+  }
+}
+
+module.exports = {
+  getTheLeagueParticipates,
+  createLeague,
+  addTeamToMainLeague,
+  findLeaguesOfUser,
+}
