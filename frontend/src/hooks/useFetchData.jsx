@@ -89,12 +89,12 @@ export const useFetchData = () => {
     })
     const json = await response.json()
     console.log(json)
-    // if (response.ok) {
-    //   dispatchLeague({
-    //     type: 'SET_SPECIFIC_LEAGUE_DATA',
-    //     payload: json,
-    //   })
-    // }
+    if (response.ok) {
+      dispatchLeague({
+        type: 'SET_SPECIFIC_LEAGUE_DATA',
+        payload: json,
+      })
+    }
   }
 
   return {

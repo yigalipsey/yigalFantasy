@@ -31,7 +31,7 @@ export const LeaguesContext = createContext(initialState)
 export const LeaguesProvider = ({ children }) => {
   const [state, dispatchLeague] = useReducer(leaguesReducer, initialState)
 
-  // console.log('LeagueContext state:', state)
+  console.log('LeagueContext state:', state)
 
   return (
     <LeaguesContext.Provider value={{ ...state, dispatchLeague }}>
