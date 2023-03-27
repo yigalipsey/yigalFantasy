@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useFetchData } from '../hooks/useFetchData'
 import { useLeaguesContext } from '../hooks/useLeaguesContext'
+import { Link } from 'react-router-dom'
 
 const LeagueTable = ({ league }) => {
   const { fetchSpecificLeague } = useFetchData()
@@ -30,7 +31,10 @@ const LeagueTable = ({ league }) => {
           {specificLeague?.teams?.length >= 1 &&
             specificLeague.teams.map((team, index) => (
               <tr key={team.teamName}>
-                <td className='border px-4 py-2'>{index + 1}</td>
+                <td className='border px-4 py-2'>
+                  <Link to={`/team/${team._id} `}>{index + 1}</Link>
+                </td>
+
                 <td className='border px-4 py-2'>{team.teamName}</td>
                 <td className='border px-4 py-2'>{team.coachOfTeam}</td>
                 <td className='border px-4 py-2'>{team.totalPoints}</td>
