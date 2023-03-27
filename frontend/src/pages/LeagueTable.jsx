@@ -3,7 +3,7 @@ import React from 'react'
 const LeagueTable = ({ league }) => {
   return (
     <div className=' w-full rounded-lg shadow-md '>
-      <table className='table-auto w-1/2 mx-auto bg-green-500 border'>
+      <table className='table-auto w-1/2 mx-auto bg-red-500 border'>
         <thead>
           <tr>
             <th className='px-4 py-2'>דירוג</th>
@@ -13,7 +13,7 @@ const LeagueTable = ({ league }) => {
           </tr>
         </thead>
         <tbody>
-          {league.map((team, index) => (
+          {league.teams.map((team, index) => (
             <tr key={team.teamName}>
               <td className='border px-4 py-2'>{index + 1}</td>
               <td className='border px-4 py-2'>{team.teamName}</td>

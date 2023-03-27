@@ -3,9 +3,9 @@ const Team = require('../models/userTeam')
 
 // get all players
 async function getTheLeagueParticipates(req, res) {
-  const { id } = req.body
+  const { _id } = req.params
   try {
-    const league = await LeagueModel.findById(id).populate({
+    const league = await LeagueModel.findById(_id).populate({
       path: 'teams',
       populate: {
         path: 'players',

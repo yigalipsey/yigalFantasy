@@ -3,11 +3,12 @@ import { useFetchData } from '../hooks/useFetchData'
 import { useLeaguesContext } from '../hooks/useLeaguesContext'
 import CreateLeague from './CreateLeague'
 import LeagueTable from './LeagueTable'
+import { Link } from 'react-router-dom'
 
 function League() {
   const [isOpen, setIsOpen] = useState(false)
   const { fetchAllUsersTeams, fetchUserLeagues } = useFetchData()
-  const { mainLeague } = useLeaguesContext()
+  const { allLeaguesIn } = useLeaguesContext()
 
   useEffect(() => {
     const fetchMainLeagueData = async () => {
@@ -32,6 +33,7 @@ function League() {
         <div className=' w-1/2 mx-auto bg-yellow '>
           <h1>הליגות שלי</h1>
           <table className=' w-full mx-auto bg-green-500 border'>
+            {/* {allLeaguesIn.map((league) => {})} */}
             <thead>
               <tr>
                 <th className=''>שם הליגה</th>
@@ -40,7 +42,17 @@ function League() {
             </thead>
           </table>
         </div>
-        {/* <LeagueTable league={mainLeague} /> */}
+        {/*  */}
+        {allLeaguesIn.map((league) => {
+          return (
+            <div className='w-1/2 mx-auto bg-green-500 border flex justify-between'>
+              {/* <LeagueTable league={league} /> */}
+              <Link className='w-[100px] bg-violet-50' to={`/${league._id} `} />
+              <div>{league.name}</div>
+              <div>{league.teams.length}</div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

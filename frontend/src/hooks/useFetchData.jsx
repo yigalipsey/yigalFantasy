@@ -76,8 +76,7 @@ export const useFetchData = () => {
     const json = await response.json()
     console.log(json)
     if (response.ok) {
-      // update the auth context
-      // dispatchUserTeam({ type: 'SET_TEAM', payload: json })
+      dispatchLeague({ type: 'SET_USER_LEAGUE_DATA', payload: json.leagues })
     }
   }
 
