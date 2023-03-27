@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault()
     console.log(e)
     await login(email, password)
-    await fetchMyTeam(email)
+    // await fetchMyTeam(email)
   }
 
   const test = () => {

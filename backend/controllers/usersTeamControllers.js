@@ -29,12 +29,11 @@ const createMyTeam = async (req, res) => {
 }
 
 //fetch user Team
-const FetchMyUserTeam = async (req, res) => {
+const FetchUserTeam = async (req, res) => {
   try {
     const { userMail } = req.body
-    console.log('usermail' + ' ' + userMail)
     const team = await Team.findOne({ userMail }).populate('players')
-    console.log(team)
+    console.log('userMail' + userMail)
     if (!team) {
       return res.status(404).json({ message: 'Team not found for user.' })
     }
@@ -70,7 +69,7 @@ const deleteAllUsersTeams = async (req, res) => {
 
 module.exports = {
   createMyTeam,
-  FetchMyUserTeam,
+  FetchUserTeam,
   FetchAllUsersTeams,
   deleteAllUsersTeams,
 }

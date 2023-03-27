@@ -6,7 +6,7 @@ const router = express.Router()
 // controller functions
 const {
   createMyTeam,
-  FetchMyUserTeam,
+  FetchUserTeam,
   FetchAllUsersTeams,
   deleteAllUsersTeams,
 } = require('../controllers/usersTeamControllers')
@@ -15,7 +15,7 @@ const {
 router.post('/create', createMyTeam)
 
 //fetch specific user team
-router.post('/', FetchMyUserTeam)
+router.post('/', FetchUserTeam)
 
 //fetch all the teams that created by users
 router.get('/allusersteams', FetchAllUsersTeams)

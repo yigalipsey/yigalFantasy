@@ -1,4 +1,5 @@
 const LeagueModel = require('../models/leagueModel')
+const Team = require('../models/userTeam')
 
 // get all players
 async function getTheLeagueParticipates(req, res) {
@@ -34,15 +35,17 @@ async function addTeamToMainLeague(req, res) {
 
 //create a new league
 const createLeague = async (req, res) => {
+  const userMail = req.body.userMail
+
+  const teams = await Team.find({ userMail })
+  console.log(teams)
   try {
-    const { name, teams } = req.body
+    const { name } = req.body
     const newLeague = new LeagueModel({
       name,
       teams,
     })
-
     await newLeague.save()
-
     res.status(201).json({ message: 'League created successfully' })
   } catch (err) {
     console.error(err)

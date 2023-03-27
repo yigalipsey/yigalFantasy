@@ -1,23 +1,25 @@
 import Pitch from '../components/SoccerPitch'
 import PlayersOnPitch from '../components/PlayersOnPitch'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useLogin } from '../hooks/useLogin'
+import { useFetchData } from '../hooks/useFetchData'
 import { useEffect } from 'react'
 
 const MyTeamPage = () => {
-  const { fetchUserTeam } = useLogin()
+  const { fetchUserTeam } = useFetchData()
   const { user } = useAuthContext()
   const email = user.email
+  const teamOfUser = user.teamOfUser
 
   useEffect(() => {
+    console.log(user.email)
     const fetchData = async () => {
       await fetchUserTeam(email)
     }
     fetchData()
   }, [])
 
-  return (
-    <>
+  if (teamOfUser != null) {
+    return (
       <div className=' grid grid-cols-1 mym:grid-cols-2 gap-4 w-full md:w-5/6 m-auto  pt-10'>
         <div className='w-full order-1 md:order-2 mx-auto '></div>
         <div className='w-full mt-10'>
@@ -31,8 +33,10 @@ const MyTeamPage = () => {
           </div>
         </div>
       </div>
-    </>
-  )
+    )
+  } else {
+    return <div className='w-1/2 pt-20 text-white'>עוד לא בנית קבוצה</div>
+  }
 }
 
 export default MyTeamPage
