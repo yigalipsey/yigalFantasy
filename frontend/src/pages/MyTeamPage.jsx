@@ -8,7 +8,6 @@ const MyTeamPage = () => {
   const { fetchUserTeam } = useFetchData()
   const { user } = useAuthContext()
   const email = user.email
-  const teamOfUser = user.teamOfUser
 
   useEffect(() => {
     console.log(user.email)
