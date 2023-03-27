@@ -90,7 +90,7 @@ export const useFetchData = () => {
       body: JSON.stringify({ userMail: user.email }),
     })
     const json = await response.json()
-    console.log(json)
+    // console.log(json)
     if (response.ok) {
       dispatchLeague({ type: 'SET_USER_LEAGUE_DATA', payload: json.leagues })
     }

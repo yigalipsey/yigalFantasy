@@ -5,10 +5,6 @@ const leagueSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  leagueCode: {
-    type: Number,
-    // required: true,
-  },
   teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'userTeam' }],
 })
 

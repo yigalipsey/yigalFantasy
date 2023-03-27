@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 import { useMyTeamContext } from './useMyTeamContext'
+import { useLeaguesContext } from './useLeaguesContext'
 import ErrorMsg from '../components/ErrorMsg'
 
 export const useCreate = () => {
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(null)
   const { user, dispatch } = useAuthContext()
+  const { dispatchLeague } = useLeaguesContext()
   const { team, coachOfTeam, teamName, budget } = useMyTeamContext()
 
   //create a new team of user
@@ -40,8 +42,27 @@ export const useCreate = () => {
       }),
     })
     const json = await response.json()
+    dispatchLeague({ type: 'ADD_LEAGUE_ID', payload: json._id })
     console.log(json)
   }
 
-  return { createTeam, createLeague, error }
+  // join to league
+  const JoinLeagueFunction = async ({ leagueId }) => {
+    console.log(leagueId)
+    setIsLoading(true)
+
+    const response = await fetch('http://localhost:4000/league/join', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        leagueId: leagueId,
+        userMail: user.email,
+      }),
+    })
+    const json = await response.json()
+    // dispatchLeague({ type: 'ADD_LEAGUE_ID', payload: json._id })
+    console.log(json)
+  }
+
+  return { createTeam, createLeague, JoinLeagueFunction, error }
 }

@@ -20,15 +20,19 @@ async function getTheLeagueParticipates(req, res) {
 }
 
 //add team to league
-async function addTeamToMainLeague(req, res) {
-  const team = {
-    teamId: req.body.teamId,
-  }
+async function joinTeamToLeague(req, res) {
+  const userMail = req.body.userMail
+  const leagueId = req.body.leagueId
+
   try {
-    const mainLeague = await LeagueModel.find({ name: mainLeague })
-    mainLeague.teams.push(team)
-    await mainLeague.save()
-    res.status(201).json(mainLeague)
+    const team = await Team.findOne({ userMail })
+
+    const added = await LeagueModel.updateOne(
+      { _id: leagueId },
+      { $push: { teams: team } }
+    )
+
+    res.status(201).json(added)
   } catch (err) {
     console.error(err)
   }
@@ -76,6 +80,6 @@ const findLeaguesOfUser = async (req, res) => {
 module.exports = {
   getTheLeagueParticipates,
   createLeague,
-  addTeamToMainLeague,
+  joinTeamToLeague,
   findLeaguesOfUser,
 }

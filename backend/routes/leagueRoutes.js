@@ -6,7 +6,7 @@ const {
   getTheLeagueParticipates,
   findLeaguesOfUser,
   createLeague,
-  addTeamToMainLeague,
+  joinTeamToLeague,
 } = require('../controllers/leagueControllers')
 
 const router = express.Router()
@@ -20,7 +20,7 @@ router.post('/create', createLeague)
 // create the league
 router.post('/findleagues', findLeaguesOfUser)
 
-// add createdTeam user to main league
-router.post('/create', addTeamToMainLeague)
+// join user team to league
+router.post('/join', joinTeamToLeague)
 
 module.exports = router
