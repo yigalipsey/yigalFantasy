@@ -60,26 +60,31 @@ export const useFetchData = () => {
     const json = await response.json()
     console.log(json)
     if (response.ok) {
-      // update the auth context
+      // update the team context
       dispatchUserTeam({ type: 'SET_TEAM', payload: json })
     }
   }
 
   // fetch all the leagues  user in
-  const fetchUserLeagues = async (email) => {
-    console.log(email)
-    const response = await fetch('http://localhost:4000/userteams/', {
+  const fetchUserLeagues = async () => {
+    // console.log(user.email)
+    const response = await fetch('http://localhost:4000/league/findleagues', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userMail: email }),
+      body: JSON.stringify({ userMail: user.email }),
     })
     const json = await response.json()
     console.log(json)
     if (response.ok) {
       // update the auth context
-      dispatchUserTeam({ type: 'SET_TEAM', payload: json })
+      // dispatchUserTeam({ type: 'SET_TEAM', payload: json })
     }
   }
 
-  return { fetchAllPlayers, fetchAllUsersTeams, fetchUserTeam }
+  return {
+    fetchAllPlayers,
+    fetchAllUsersTeams,
+    fetchUserLeagues,
+    fetchUserTeam,
+  }
 }

@@ -6,15 +6,13 @@ import LeagueTable from './LeagueTable'
 
 function League() {
   const [isOpen, setIsOpen] = useState(false)
-  const { fetchAllUsersTeams } = useFetchData()
+  const { fetchAllUsersTeams, fetchUserLeagues } = useFetchData()
   const { mainLeague } = useLeaguesContext()
-
-  // Sort the array by points in descending order
-  mainLeague.sort((a, b) => b.points - a.points)
 
   useEffect(() => {
     const fetchMainLeagueData = async () => {
       await fetchAllUsersTeams()
+      await fetchUserLeagues()
     }
     fetchMainLeagueData()
   }, [])
