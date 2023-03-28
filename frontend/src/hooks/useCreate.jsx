@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 import { useMyTeamContext } from './useMyTeamContext'
 import { useLeaguesContext } from './useLeaguesContext'
-import ErrorMsg from '../components/ErrorMsg'
 
 export const useCreate = () => {
   const [error, setError] = useState(null)
@@ -27,6 +26,11 @@ export const useCreate = () => {
       }),
     })
     const json = await response.json()
+
+    //update local storage that user has created team
+    const userLocal = JSON.parse(localStorage.getItem('user'))
+    userLocal.teamOfUser = json._id
+    localStorage.setItem('user', JSON.stringify(userLocal))
   }
 
   // create a new league
