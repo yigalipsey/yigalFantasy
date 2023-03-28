@@ -91,6 +91,10 @@ function myTeamReducer(state, action) {
         allReadyPicked: state.allReadyPicked.filter(
           (player) => player.id !== action.payload.id
         ),
+
+        // teamIdArray: state.teamIdArray.filter(
+        //   (player) => player.id !== action.payload.id
+        // ),
         goalkeeperPlayers: state.goalkeeperPlayers - 1,
       }
     case 'REMOVE_DEFENCE_PLAYER':
@@ -122,6 +126,11 @@ function myTeamReducer(state, action) {
           (player) => player.id !== action.payload.id
         ),
         attackePlayers: state.attackePlayers - 1,
+      }
+    case 'DELETE_FROM_TEAM_ARRAY':
+      return {
+        ...state,
+        teamIdArray: state.teamIdArray.splice(action.payload, 1),
       }
     case 'RESET_TEAM':
       return {

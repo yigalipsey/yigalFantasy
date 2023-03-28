@@ -131,6 +131,11 @@ function Player({ player }) {
   }
 
   const removePlayer = ({ player }) => {
+    const indexToDelete = teamIdArray.findIndex((team) => team === player.team)
+    console.log(indexToDelete)
+
+    dispatch({ type: 'DELETE_FROM_TEAM_ARRAY', payload: indexToDelete })
+
     if (player.position === 'שוער') {
       dispatch({ type: 'REMOVE_GK', payload: player })
     }
