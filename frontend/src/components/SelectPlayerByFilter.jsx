@@ -78,6 +78,7 @@ function Player({ player }) {
     midfielderPlayers,
     goalkeeperPlayers,
     allReadyPicked,
+    team,
     teamIdArray,
     budget,
   } = useMyTeamContext()
@@ -131,22 +132,31 @@ function Player({ player }) {
   }
 
   const removePlayer = ({ player }) => {
-    const indexToDelete = teamIdArray.findIndex((team) => team === player.team)
-    console.log(indexToDelete)
+    //check if the player is picked - only if picked you can remove
+    const isPick = team.map((p) => p._id === player._id)
+    console.log(isPick)
 
-    dispatch({ type: 'DELETE_FROM_TEAM_ARRAY', payload: indexToDelete })
+    if (isPick) {
+      //search index to delete from array of multiple players from same team
+      const indexToDelete = teamIdArray.findIndex(
+        (team) => team === player.team
+      )
+      console.log(indexToDelete)
 
-    if (player.position === 'שוער') {
-      dispatch({ type: 'REMOVE_GK', payload: player })
-    }
-    if (player.position === 'הגנה') {
-      dispatch({ type: 'REMOVE_DEFENCE_PLAYER', payload: player })
-    }
-    if (player.position === 'קישור') {
-      dispatch({ type: 'REMOVE_MIDFIELDER_PLAYER', payload: player })
-    }
-    if (player.position === 'התקפה') {
-      dispatch({ type: 'REMOVE_ATTACK_PLAYER', payload: player })
+      dispatch({ type: 'DELETE_FROM_TEAM_ARRAY', payload: indexToDelete })
+
+      if (player.position === 'שוער') {
+        dispatch({ type: 'REMOVE_GK', payload: player })
+      }
+      if (player.position === 'הגנה') {
+        dispatch({ type: 'REMOVE_DEFENCE_PLAYER', payload: player })
+      }
+      if (player.position === 'קישור') {
+        dispatch({ type: 'REMOVE_MIDFIELDER_PLAYER', payload: player })
+      }
+      if (player.position === 'התקפה') {
+        dispatch({ type: 'REMOVE_ATTACK_PLAYER', payload: player })
+      }
     }
   }
 
