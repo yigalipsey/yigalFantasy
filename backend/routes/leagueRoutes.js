@@ -17,7 +17,7 @@ router.get('/:_id', getTheLeagueParticipates)
 // create the league
 router.post('/create', createLeague)
 
-// create the league
+// find  league
 router.post('/findleagues', findLeaguesOfUser)
 
 // join user team to league

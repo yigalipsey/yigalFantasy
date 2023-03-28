@@ -64,11 +64,12 @@ const createLeague = async (req, res) => {
 const findLeaguesOfUser = async (req, res) => {
   const { userMail } = req.body
 
-  const teams = await Team.find({ userMail })
-
+  const teamOfUser = await Team.findOne({ userMail })
+  const teamId = teamOfUser._id
+  console.log(teamId)
   try {
     // Find the league that the user is in, and populate it with teams
-    const leagues = await LeagueModel.find({ teams }).populate('teams')
+    const leagues = await LeagueModel.find({ teams: teamId }).populate('teams')
 
     res.json({ leagues })
   } catch (error) {
