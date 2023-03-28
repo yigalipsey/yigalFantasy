@@ -32,7 +32,9 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
       className={`bg-deep-blue z-40 w-full fixed top-0 py-2  flex  flex-row-reverse `}
     >
       <div className=' flex items-center justify-between mx-auto w-5/6 flex-row-reverse'>
-        <h4 className=' font-playfair text-3xl font-bold text-white'>D L</h4>
+        <h4 className=' font-playfair text-xl font-bold text-white'>
+          FANTASY LEAGUE
+        </h4>
         {isAboveSmallScreens ? (
           <div className=' flex justify-between gap-16 font-opensans text-sm font-semibold'>
             <MyLink

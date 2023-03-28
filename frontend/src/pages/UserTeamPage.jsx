@@ -13,6 +13,7 @@ const UserTeamPage = () => {
 
   useEffect(() => {
     console.log(_id)
+
     const fetchDataByMail = async () => {
       await fetchUserTeamByMail(email)
     }
@@ -20,17 +21,25 @@ const UserTeamPage = () => {
       await fetchUserTeamById(_id)
     }
 
-    if (_id === undefined) {
+    //fetch only if user created the team
+    if (_id === undefined && user.teamOfUser !== null) {
       fetchDataByMail()
     }
+
+    //fetch team of others
     if (_id !== undefined) {
       fetchDataById()
     }
   }, [])
 
   return (
-    <div className=' grid grid-cols-1 mym:grid-cols-2 gap-4 w-full md:w-5/6 m-auto  pt-10'>
-      <div className='w-full order-1 md:order-2 mx-auto '></div>
+    <div
+      className=' grid grid-cols-1 mym:grid-cols-2  w-full md:w-5/6 m-auto pb-10
+      pt-10'
+    >
+      <div className='order-1 md:order-2 mx-auto w-[350px] bg-orange-600 '>
+        mnlnljj nk{' '}
+      </div>
       <div className='w-full mt-10'>
         <div>
           <div className='relative w-[350px]  h-[600px]  mx-auto'>
