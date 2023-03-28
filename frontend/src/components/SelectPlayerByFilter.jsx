@@ -82,6 +82,7 @@ function Player({ player }) {
     goalkeeperPlayers,
     allReadyPicked,
     teamIdArray,
+    budget,
   } = useMyTeamContext()
 
   const selectPlayer = ({ player }) => {
@@ -107,17 +108,21 @@ function Player({ player }) {
     }
 
     if (teamLength < 11 && !isAllReadyPicked && isOverTheTeamLimit < 4) {
-      if (player.position === 'שוער' && goalkeeperPlayers < 1) {
+      if (player.position === 'שוער' && goalkeeperPlayers < 1 && budget > -1) {
         dispatch({ type: 'ADD_GK', payload: player })
       }
 
-      if (player.position === 'הגנה' && defencePlayers <= 4) {
+      if (player.position === 'הגנה' && defencePlayers <= 4 && budget > -1) {
         dispatch({ type: 'ADD_DEFENCE_PLAYER', payload: player })
       }
-      if (player.position === 'קישור' && midfielderPlayers <= 4) {
+      if (
+        player.position === 'קישור' &&
+        midfielderPlayers <= 4 &&
+        budget >= 30
+      ) {
         dispatch({ type: 'ADD_MIDFIELDER_PLAYER', payload: player })
       }
-      if (player.position === 'התקפה' && attackePlayers <= 2) {
+      if (player.position === 'התקפה' && attackePlayers <= 2 && budget > -1) {
         dispatch({ type: 'ADD_ATTACK_PLAYER', payload: player })
       }
     }

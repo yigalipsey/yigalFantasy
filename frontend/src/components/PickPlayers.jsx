@@ -20,7 +20,7 @@ const PickPlayers = () => {
   const [attackError, setAttackError] = useState(true)
   const [tryToBuild, setTryToBuild] = useState(false)
 
-  //Text of eroors
+  //contexts
   const { user } = useAuthContext()
   const { createTeam } = useCreate()
   const { fetchAllPlayers } = useFetchData()

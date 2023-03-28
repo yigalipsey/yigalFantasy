@@ -20,7 +20,7 @@ function League() {
   }, [])
 
   return (
-    <div className=' w-full h-screen pt-10 bg-gray-500 flex flex-col justify-center'>
+    <div className=' w-full h-screen pt-10 flex flex-col justify-center'>
       <div className=' w-1/2 mx-auto bg-red flex justify-between'>
         <button onClick={() => setIsOpen(!isOpen)}>צור ליגה </button>
         <button onClick={() => setIsJoinOpen(!isOpen)}>
