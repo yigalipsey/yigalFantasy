@@ -4,7 +4,6 @@ import { useDataContext } from '../hooks/useDataContext'
 import ErrorMsg from './ErrorMsg'
 
 const SelectPlayerByFilter = () => {
-  const [test, setTest] = useState(false)
   const { teams, positionToFilter, teamToFilter, priceToFilter } =
     useDataContext()
 
@@ -107,12 +106,17 @@ function Player({ player }) {
       setAllReadyPickedErrors(true)
     }
 
-    if (teamLength < 11 && !isAllReadyPicked && isOverTheTeamLimit < 4) {
-      if (player.position === 'שוער' && goalkeeperPlayers < 1 && budget > -1) {
+    if (
+      teamLength < 11 &&
+      !isAllReadyPicked &&
+      isOverTheTeamLimit < 4 &&
+      budget > -1
+    ) {
+      if (player.position === 'שוער' && goalkeeperPlayers < 1) {
         dispatch({ type: 'ADD_GK', payload: player })
       }
 
-      if (player.position === 'הגנה' && defencePlayers <= 4 && budget > -1) {
+      if (player.position === 'הגנה' && defencePlayers <= 4 && budget) {
         dispatch({ type: 'ADD_DEFENCE_PLAYER', payload: player })
       }
       if (
@@ -122,14 +126,25 @@ function Player({ player }) {
       ) {
         dispatch({ type: 'ADD_MIDFIELDER_PLAYER', payload: player })
       }
-      if (player.position === 'התקפה' && attackePlayers <= 2 && budget > -1) {
+      if (player.position === 'התקפה' && attackePlayers <= 2 && budget) {
         dispatch({ type: 'ADD_ATTACK_PLAYER', payload: player })
       }
     }
   }
 
   const removePlayer = ({ player }) => {
-    dispatch({ type: 'REMOVE_PLAYER', payload: player })
+    if (player.position === 'שוער') {
+      dispatch({ type: 'REMOVE_GK', payload: player })
+    }
+    if (player.position === 'הגנה') {
+      dispatch({ type: 'REMOVE_DEFENCE_PLAYER', payload: player })
+    }
+    if (player.position === 'קישור') {
+      dispatch({ type: 'REMOVE_MIDFIELDER_PLAYER', payload: player })
+    }
+    if (player.position === 'התקפה') {
+      dispatch({ type: 'REMOVE_ATTACK_PLAYER', payload: player })
+    }
   }
 
   return (

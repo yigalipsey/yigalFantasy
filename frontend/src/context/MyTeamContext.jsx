@@ -83,7 +83,7 @@ function myTeamReducer(state, action) {
         teamLength: state.teamLength + 1,
         teamIdArray: [...state.teamIdArray, action.payload.team],
       }
-    case 'REMOVE_PLAYER':
+    case 'REMOVE_GK':
       return {
         ...state,
         team: state.team.filter((player) => player._id !== action.payload._id),
@@ -91,6 +91,37 @@ function myTeamReducer(state, action) {
         allReadyPicked: state.allReadyPicked.filter(
           (player) => player.id !== action.payload.id
         ),
+        goalkeeperPlayers: state.goalkeeperPlayers - 1,
+      }
+    case 'REMOVE_DEFENCE_PLAYER':
+      return {
+        ...state,
+        team: state.team.filter((player) => player._id !== action.payload._id),
+        budget: state.budget + action.payload.price,
+        allReadyPicked: state.allReadyPicked.filter(
+          (player) => player.id !== action.payload.id
+        ),
+        defencePlayers: state.defencePlayers - 1,
+      }
+    case 'REMOVE_MIDFIELDER_PLAYER':
+      return {
+        ...state,
+        team: state.team.filter((player) => player._id !== action.payload._id),
+        budget: state.budget + action.payload.price,
+        allReadyPicked: state.allReadyPicked.filter(
+          (player) => player.id !== action.payload.id
+        ),
+        midfielderPlayers: state.midfielderPlayers - 1,
+      }
+    case 'REMOVE_ATTACK_PLAYER':
+      return {
+        ...state,
+        team: state.team.filter((player) => player._id !== action.payload._id),
+        budget: state.budget + action.payload.price,
+        allReadyPicked: state.allReadyPicked.filter(
+          (player) => player.id !== action.payload.id
+        ),
+        attackePlayers: state.attackePlayers - 1,
       }
     case 'RESET_TEAM':
       return {
