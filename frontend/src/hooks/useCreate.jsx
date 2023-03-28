@@ -13,7 +13,7 @@ export const useCreate = () => {
   //create a new team of user
   const createTeam = async () => {
     setIsLoading(true)
-    console.log(user)
+    // console.log(user)
     const response = await fetch('http://localhost:4000/userteams/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -64,7 +64,6 @@ export const useCreate = () => {
       }),
     })
     const json = await response.json()
-    // dispatchLeague({ type: 'ADD_LEAGUE_ID', payload: json._id })
     console.log(json)
   }
 

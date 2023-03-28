@@ -6,11 +6,19 @@ function Inputs() {
 
   const handleCoachChange = (event) => {
     const coachName = event.target.value
-    dispatch({ type: 'SET_TEAM_COACH', payload: coachName })
+    if (coachName === '') {
+      dispatch({ type: 'SET_TEAM_COACH', payload: null })
+    } else {
+      dispatch({ type: 'SET_TEAM_COACH', payload: coachName })
+    }
   }
   const handleTeamNameChange = (event) => {
     const teamName = event.target.value
-    dispatch({ type: 'SET_TEAM_NAME', payload: teamName })
+    if (teamName === '') {
+      dispatch({ type: 'SET_TEAM_NAME', payload: null })
+    } else {
+      dispatch({ type: 'SET_TEAM_NAME', payload: teamName })
+    }
   }
 
   return (

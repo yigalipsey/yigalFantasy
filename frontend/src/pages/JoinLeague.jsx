@@ -28,7 +28,7 @@ function JoinLeague() {
         </button>
       </div>
       <div className='text-right text-gray-600'>
-        {/* <p> {leagueId} ״הקוד יופיע לאחר יצירת הליגה״</p> */}
+        <p> ״ לאחר ההצטרפות רענן את הדף ״</p>
       </div>
     </div>
   )
