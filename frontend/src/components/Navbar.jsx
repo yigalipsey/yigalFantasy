@@ -42,14 +42,14 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
               setSelectedPage={setSelectedPage}
             />
             <MyLink
-              page={'Buyldteam'}
+              page={'buyldteam'}
               name={'בניית הקבוצה'}
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
             />
 
             <MyLink
-              page={'Leagues'}
+              page={'leagues'}
               name={'ליגות'}
               selectedPage={selectedPage}
               setSelectedPage={setSelectedPage}
@@ -93,7 +93,7 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
               </div>
               <div className=' border-t py-2'>
                 <MyLink
-                  page={'Buyldteam'}
+                  page={'buyldteam'}
                   name={'בניית הקבוצה'}
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
@@ -101,7 +101,7 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
               </div>
               <div className=' border-t py-2 '>
                 <MyLink
-                  page={'Leagues'}
+                  page={'leagues'}
                   name={'ליגות'}
                   selectedPage={selectedPage}
                   setSelectedPage={setSelectedPage}
