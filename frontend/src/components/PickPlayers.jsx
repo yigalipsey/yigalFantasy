@@ -64,12 +64,13 @@ const PickPlayers = () => {
     if (
       teamName !== null &&
       coachOfTeam !== null &&
-      attackePlayers.length !== 0 &&
+      attackePlayers !== 0 &&
       team.length === 11
     ) {
       setErrors(false)
+      await createTeam()
+      console.log('team here')
     } else {
-      // await createTeam()
     }
   }
 
@@ -90,8 +91,6 @@ const PickPlayers = () => {
       )}
 
       <div className=' w-5/6 md:w-4/6 mx-auto '>
-        {/* {Error handeling} */}
-
         {/* {inputs for team name and team coach} */}
         <div className='flex w-full'>
           <Inputs />
