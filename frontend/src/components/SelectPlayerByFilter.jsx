@@ -8,11 +8,10 @@ const SelectPlayerByFilter = () => {
     useDataContext()
 
   return (
-    <div className=' '>
+    <div className='  bg-opaque-black  '>
       {teams.map((team) =>
         teamToFilter === null ? (
           <div key={team.name}>
-            <h2 className='  bg-green-500 w-[full]'>שחקנים</h2>
             <ul>
               {team.players.map((player) =>
                 positionToFilter === null ? (
@@ -39,7 +38,6 @@ const SelectPlayerByFilter = () => {
         ) : (
           teamToFilter === team.name && (
             <div key={team.name}>
-              <h2 className='  bg-green-500 w-[full]'>שחקנים</h2>
               {team.players.map((player) =>
                 positionToFilter === null ? (
                   priceToFilter === null ? (
@@ -148,11 +146,28 @@ function Player({ player }) {
   }
 
   return (
-    <div className=' mt-4 flex space-x-12 bg-white '>
-      <div className=' text-yellow-400'>{player.name}</div>
-      <h1 className=' text-green-700'>{player.price}M$</h1>
-      <button onClick={() => selectPlayer({ player })}>בחר</button>
-      <button onClick={() => removePlayer({ player })}>הסר</button>
+    <>
+      <div className=' mt-1 flex py-2 border-t text-white  '>
+        <div className=' w-4/6 '>
+          <h1 className='mr-1'>{player.name}</h1>
+        </div>
+
+        <div className=' w-1/6'>
+          <h1 className='border-l'>{player.price}M$</h1>
+        </div>
+
+        <div className=' w-1/6 border-l'>
+          <button className=' mr-2' onClick={() => selectPlayer({ player })}>
+            בחר
+          </button>
+        </div>
+
+        <div className=' w-1/6'>
+          <button className=' mr-2' onClick={() => removePlayer({ player })}>
+            הסר
+          </button>
+        </div>
+      </div>
       <div>
         {allReadyPickedError ? (
           <ErrorMsg error={'לא ניתן לבחור את אותו השחקן פעמיים'} />
@@ -162,7 +177,7 @@ function Player({ player }) {
           )
         )}
       </div>
-    </div>
+    </>
   )
 }
 export default SelectPlayerByFilter

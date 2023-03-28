@@ -105,22 +105,13 @@ const PickPlayers = () => {
           <PriceSlider />
         </div>
         {/* {buttons for build and reset team} */}
-        <div
-          className='px-4 py-2 rounded-md  flex justify-between  bg-white
-       w-full mt-1'
-        >
-          <button
-            onClick={() => handleBuildTeam()}
-            className='hover:bg-green-600 w-1/2  '
-          >
-            בנה קבוצה
-          </button>
-          <button
-            onClick={() => handleResetTeam()}
-            className='hover:bg-green-600 w-1/2'
-          >
-            אפס קבוצה
-          </button>
+        <div className='px-4 py-2 rounded-md  flex   bg-white w-full mt-1'>
+          <div className=' w-1/2 flex justify-center border-l  border-l-green-500 '>
+            <button onClick={() => handleBuildTeam()}>בנה קבוצה</button>
+          </div>
+          <div className=' w-1/2 flex justify-center'>
+            <button onClick={() => handleResetTeam()}>אפס קבוצה</button>
+          </div>
         </div>
         {/* {2 drop downs for sort players by position and by team} */}
         <div className='flex mt-2 pb-96'>
