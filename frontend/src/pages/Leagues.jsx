@@ -9,6 +9,7 @@ import JoinLeague from './JoinLeague'
 function League() {
   const [isOpen, setIsOpen] = useState(false)
   const [isJoinOpen, setIsJoinOpen] = useState(false)
+  const [isLeagueOpen, setIsLeagueOpen] = useState(false)
   const { fetchAllUsersTeams, fetchUserLeagues } = useFetchData()
   const { allLeaguesIn } = useLeaguesContext()
   const { user } = useAuthContext()
@@ -23,52 +24,97 @@ function League() {
       fetchUserLeagueData()
     }
   }, [])
-
+  {
+  }
   if (user.teamOfUser !== null) {
     return (
       <div className=' w-full h-screen pt-10 flex flex-col justify-center'>
-        <div className=' w-1/2 mx-auto bg-red flex justify-between'>
-          <button onClick={() => setIsOpen(!isOpen)}>צור ליגה </button>
-          <button onClick={() => setIsJoinOpen(!isOpen)}>
-            הצטרף לליגה קיימת{' '}
-          </button>
+        <div className=' w-2/3 mx-auto flex '>
+          <div className=' w-1/2'>
+            <button
+              onClick={() => {
+                setIsOpen(!isOpen)
+                setIsJoinOpen(false)
+              }}
+              class='w-full relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group '
+            >
+              <span
+                class={`w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute`}
+              ></span>
+              <span class='relative w-full px-6 py-3 transition-all ease-out bg-white  group-hover:bg-opacity-0 duration-400'>
+                <span class='relative from-[#ff8a05] via-[#ff5478] to-[#ff00c6]'>
+                  {' צור ליגה '}
+                </span>
+              </span>
+            </button>
+          </div>
+          <div className=' w-1/2'>
+            <button
+              onClick={() => {
+                setIsJoinOpen(!isJoinOpen)
+                setIsOpen(false)
+              }}
+              class='w-full relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group '
+            >
+              <span class='w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute'></span>
+              <span class='relative w-full px-6 py-3 transition-all ease-out bg-white  group-hover:bg-opacity-0 duration-400'>
+                <span class='relative from-[#ff8a05] via-[#ff5478] to-[#ff00c6] '>
+                  {'  הצטרף לליגה  '}
+                </span>
+              </span>
+            </button>
+          </div>
         </div>
         {isOpen && (
-          <div className='c w-1/2 mx-auto bg-green-300 '>
+          <div className=' w-4/6 mx-auto bg-green-300 '>
             <CreateLeague />
           </div>
         )}
         {isJoinOpen && (
-          <div className='c w-1/2 mx-auto bg-green-300 '>
+          <div className='c w-4/6 mx-auto bg-green-300 '>
             <JoinLeague />
           </div>
         )}
         <div>
-          <div className=' w-1/2 mx-auto bg-yellow '>
-            <h1>הליגות שלי</h1>
-            <table className=' w-full mx-auto bg-green-500 border'>
-              <thead>
-                <tr>
-                  <th className=''>שם הליגה</th>
-                  <th className=''>משתתפים</th>
-                </tr>
-              </thead>
-            </table>
+          <div className=' w-2/3 mx-auto bg-white '>
+            <button
+              onClick={() => {
+                setIsLeagueOpen(!isLeagueOpen)
+              }}
+              class='w-full relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group '
+            >
+              <span class='w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute'></span>
+              <span class='relative w-full px-6 py-3 transition-all ease-out bg-white  group-hover:bg-opacity-0 duration-400'>
+                <span class='relative from-[#ff8a05] via-[#ff5478] to-[#ff00c6] '>
+                  {!isLeagueOpen ? '  צפייה בליגות  שלי  ' : 'הליגות שלי :'}
+                </span>
+              </span>
+            </button>
+            {isLeagueOpen && (
+              <table className=' w-full mx-auto bg-white border'>
+                <thead>
+                  <tr>
+                    <th className=''>שם הליגה</th>
+                    <th className=''>משתתפים</th>
+                  </tr>
+                </thead>
+              </table>
+            )}
           </div>
 
-          {allLeaguesIn.map((league) => {
-            return (
-              <div className='w-1/2 mx-auto bg-green-500 border flex justify-between'>
-                <Link
-                  className='w-[100px] bg-violet-50'
-                  to={`/league/${league._id} `}
-                >
-                  {league.name}
-                </Link>
-                <div>{league.teams.length}</div>
-              </div>
-            )
-          })}
+          {isLeagueOpen &&
+            allLeaguesIn.map((league) => {
+              return (
+                <div className='w-2/3 mx-auto bg-white border flex justify-between'>
+                  <div className=' w-2/3 border-l'>
+                    <Link to={`/league/${league._id} `}>{league.name}</Link>
+                  </div>
+                  <div className=' w-1/3 '>
+                    <h1>{league.teams.length}</h1>
+                  </div>
+                </div>
+              )
+            })}
         </div>
       </div>
     )

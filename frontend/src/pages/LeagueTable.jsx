@@ -17,8 +17,8 @@ const LeagueTable = ({ league }) => {
   }, [])
 
   return (
-    <div className=' w-full rounded-lg shadow-md pt-24 '>
-      <table className='table-auto w-2/3 md:w-1/2 mx-auto bg-red-500 border  '>
+    <div className=' w-full rounded-lg shadow-md pt-24 h-screen  '>
+      <table className='table-auto w-2/3 md:w-1/2 mx-auto bg-red-500 border mt-24  '>
         <thead>
           <tr>
             <th className='px-4 py-2'>דירוג</th>
