@@ -69,7 +69,8 @@ const SelectPlayerByFilter = () => {
 function Player({ player }) {
   const [allReadyPickedError, setAllReadyPickedError] = useState(false)
   const [allReadyPickedErrors, setAllReadyPickedErrors] = useState(false)
-  // const [teamOfPlayer, setTeamOfPlayer] = useState(null)
+  const [isOverBudget, setIsOverBudget] = useState(false)
+
   const {
     dispatch,
     defencePlayers,
@@ -104,6 +105,9 @@ function Player({ player }) {
       setAllReadyPickedErrors(true)
     }
 
+    if (budget - player.price < 0) {
+      setIsOverBudget(true)
+    }
     if (
       team.length < 11 &&
       !isAllReadyPicked &&
@@ -181,9 +185,11 @@ function Player({ player }) {
       <div>
         {allReadyPickedError ? (
           <ErrorMsg error={'לא ניתן לבחור את אותו השחקן פעמיים'} />
+        ) : allReadyPickedErrors ? (
+          <ErrorMsg error={'לא ניתן לבחור מעל ל4 שחקנים מאותה הקבוצה '} />
         ) : (
-          allReadyPickedErrors && (
-            <ErrorMsg error={'לא ניתן לבחור מעל ל4 שחקנים מאותה הקבוצה '} />
+          isOverBudget && (
+            <ErrorMsg error={'לא ניתן לבחור שחקן בחריגה מהתקציב '} />
           )
         )}
       </div>

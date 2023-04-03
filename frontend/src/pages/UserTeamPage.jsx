@@ -40,7 +40,7 @@ const UserTeamPage = () => {
       {/* <div className='order-1 md:order-2 mx-auto w-[350px] bg-orange-600 h-[30px]  mt-1'>
         הקבוצה של :
       </div> */}
-      <div className='w-full mt-5'>
+      <div className='w-full mt-10'>
         <div>
           <div className='relative w-[350px]  h-[600px]  mx-auto'>
             <Pitch />

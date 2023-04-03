@@ -7,8 +7,9 @@ function JoinLeague() {
   const [leagueId, setLeagueId] = useState(null)
   const { JoinLeagueFunction } = useCreate()
 
-  const submitLeagueCode = () => {
-    JoinLeagueFunction({ leagueId })
+  const submitLeagueCode = async () => {
+    await JoinLeagueFunction({ leagueId })
+    window.location.reload()
   }
 
   return (
@@ -28,7 +29,7 @@ function JoinLeague() {
         </button>
       </div>
       <div className='text-right text-gray-600'>
-        <p>לאחר ההצטרפות רענן את הדף </p>
+        {/* <p>לאחר ההצטרפות רענן את הדף </p> */}
       </div>
     </div>
   )

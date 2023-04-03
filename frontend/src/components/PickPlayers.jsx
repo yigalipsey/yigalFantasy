@@ -69,7 +69,7 @@ const PickPlayers = () => {
     ) {
       setErrors(false)
       await createTeam()
-      console.log('team here')
+      window.location.reload()
     } else {
     }
   }
