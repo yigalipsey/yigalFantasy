@@ -10,7 +10,6 @@ import DropDownByTeam from './DropDowns/DropDownByTeam'
 import PriceSlider from './PriceSlider'
 import Inputs from './Inputs'
 import SelectPlayerByFilter from './SelectPlayerByFilter'
-import ErrorMsg from './ErrorMsg'
 
 const PickPlayers = () => {
   const [errors, setErrors] = useState(true)

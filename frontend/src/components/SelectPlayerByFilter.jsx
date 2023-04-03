@@ -73,7 +73,6 @@ function Player({ player }) {
   const {
     dispatch,
     defencePlayers,
-    teamLength,
     attackePlayers,
     midfielderPlayers,
     goalkeeperPlayers,
@@ -106,7 +105,7 @@ function Player({ player }) {
     }
 
     if (
-      teamLength < 11 &&
+      team.length < 11 &&
       !isAllReadyPicked &&
       isOverTheTeamLimit < 4 &&
       budget > -1

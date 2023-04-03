@@ -4,7 +4,6 @@ const initialState = {
   teamName: null,
   coachOfTeam: null,
   team: [],
-  built: false,
   allReadyPicked: [],
   teamIdArray: [],
   isAvailableToPick: false,
@@ -12,7 +11,6 @@ const initialState = {
   defencePlayers: 0,
   midfielderPlayers: 0,
   attackePlayers: 0,
-  teamLength: 0,
   budget: 120,
 }
 
