@@ -94,10 +94,10 @@ function League() {
               </span>
             </button>
             {isLeagueOpen && (
-              <table className=' w-full mx-auto  border-y-2  '>
+              <table className=' w-full mx-auto    '>
                 <thead>
                   <tr>
-                    <th className=' bg-gradient-to-r from-[#ff8a05] via-[#ff5478] to-[#ff00c6] bg-clip-text  font-extrabold text-transparent sm:text-3xl'>
+                    <th className=' w-2/3 bg-gradient-to-r from-[#ff8a05] via-[#ff5478] to-[#ff00c6] bg-clip-text  font-extrabold text-transparent sm:text-3xl'>
                       שם הליגה
                     </th>
                     <th className=' bg-gradient-to-r from-[#ff8a05] via-[#ff5478] to-[#ff00c6] bg-clip-text  font-extrabold text-transparent sm:text-3xl'>
@@ -112,12 +112,12 @@ function League() {
           {isLeagueOpen &&
             allLeaguesIn.map((league) => {
               return (
-                <div className='w-2/3 mx-auto bg-white border-y border-gray-400 flex justify-between'>
+                <div className='w-2/3 mx-auto bg-white border-y border-gray-400 flex justify-between py-2'>
                   <div className=' w-2/3 border-l border-gray-400 mr-3 '>
                     <Link to={`/league/${league._id} `}>{league.name}</Link>
                   </div>
-                  <div className=' w-1/3  mr-2 '>
-                    <h1 className=' text-lg'>{league.teams.length}</h1>
+                  <div className=' w-1/3 flex justify-center  '>
+                    <h1 className=' text-lg '>{league.teams.length}</h1>
                   </div>
                 </div>
               )
