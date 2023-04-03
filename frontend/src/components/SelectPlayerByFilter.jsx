@@ -108,7 +108,7 @@ function Player({ player }) {
       team.length < 11 &&
       !isAllReadyPicked &&
       isOverTheTeamLimit < 4 &&
-      budget > -1
+      budget - player.price > -1
     ) {
       if (player.position === 'שוער' && goalkeeperPlayers < 1) {
         dispatch({ type: 'ADD_GK', payload: player })
@@ -117,11 +117,7 @@ function Player({ player }) {
       if (player.position === 'הגנה' && defencePlayers <= 4 && budget) {
         dispatch({ type: 'ADD_DEFENCE_PLAYER', payload: player })
       }
-      if (
-        player.position === 'קישור' &&
-        midfielderPlayers <= 4 &&
-        budget >= 30
-      ) {
+      if (player.position === 'קישור' && midfielderPlayers <= 4) {
         dispatch({ type: 'ADD_MIDFIELDER_PLAYER', payload: player })
       }
       if (player.position === 'התקפה' && attackePlayers <= 2 && budget) {

@@ -10,6 +10,7 @@ import DropDownByTeam from './DropDowns/DropDownByTeam'
 import PriceSlider from './PriceSlider'
 import Inputs from './Inputs'
 import SelectPlayerByFilter from './SelectPlayerByFilter'
+import StatusOfTeam from './StatusOfTeam'
 
 const PickPlayers = () => {
   const [errors, setErrors] = useState(true)
@@ -96,8 +97,12 @@ const PickPlayers = () => {
           <Inputs />
         </div>
 
+        <div>
+          <StatusOfTeam />
+        </div>
+
         {/* {component of choosing players to the team} */}
-        <div className=' h-64 overflow-y-auto mt-5 '>
+        <div className=' h-64 overflow-y-auto '>
           <SelectPlayerByFilter />
         </div>
         {/* {slider of sort by price} */}
