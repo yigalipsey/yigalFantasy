@@ -18,7 +18,7 @@ const LeagueTable = ({ league }) => {
 
   return (
     <div className=' w-full rounded-lg shadow-md pt-24 h-screen  '>
-      <table className='table-auto w-2/3 md:w-1/2 mx-auto bg-red-500 border mt-24  '>
+      <table className='table-auto bg-white w-2/3 md:w-1/2 mx-auto bg-red-500 border-[3px] border-black mt-24  '>
         <thead>
           <tr>
             <th className='px-4 py-2'>דירוג</th>
@@ -31,13 +31,19 @@ const LeagueTable = ({ league }) => {
           {specificLeague?.teams?.length >= 1 &&
             specificLeague.teams.map((team, index) => (
               <tr key={team.teamName}>
-                <td className='border px-4 py-2'>
+                <td className='border px-4 py-2 border-black'>
                   <Link to={`/team/${team._id} `}>{index + 1}</Link>
                 </td>
 
-                <td className='border px-4 py-2'>{team.teamName}</td>
-                <td className='border px-4 py-2'>{team.coachOfTeam}</td>
-                <td className='border px-4 py-2'>{team.totalPoints}</td>
+                <td className='border border-black px-4 py-2'>
+                  {team.teamName}
+                </td>
+                <td className='border border-black px-4 py-2'>
+                  {team.coachOfTeam}
+                </td>
+                <td className='border border-black px-4 py-2'>
+                  {team.totalPoints}
+                </td>
               </tr>
             ))}
         </tbody>

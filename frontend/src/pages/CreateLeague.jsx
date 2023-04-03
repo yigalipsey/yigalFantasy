@@ -12,23 +12,24 @@ function CreateLeague() {
   }
 
   return (
-    <div className='rtl bg-gray-200 px-6 py-4 rounded-lg shadow-lg'>
+    <div className='rtl  px-6 py-4 bg-gray-200 shadow-lg'>
       <div className='flex items-center justify-between mb-4'>
         <input
           type='text'
           placeholder=' כתוב את שם הליגה'
-          className='rtl bg-white rounded-full py-2 px-4 focus:outline-none focus:shadow-outline w-full'
+          className='rtl bg-white py-2 px-4 focus:outline-none focus:shadow-outline w-full'
           onChange={(e) => setLeagueName(e.target.value)}
         />
         <button
           onClick={submitLeagueName}
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'
+          className='bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] hover:bg-blue-700 text-white font-bold py-2 px-4 '
         >
           אישור
         </button>
       </div>
-      <div className='text-right text-gray-600'>
-        <p> {leagueId} ״הקוד יופיע לאחר יצירת הליגה״</p>
+      <div className='text-right '>
+        <p>{leagueId === null && 'לאחר בניית הליגה יופיע קוד הליגה'} </p>
+        <p> {leagueId} </p>
       </div>
     </div>
   )
