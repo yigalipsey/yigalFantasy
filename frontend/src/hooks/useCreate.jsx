@@ -14,17 +14,20 @@ export const useCreate = () => {
   const createTeam = async () => {
     setIsLoading(true)
     console.log('created')
-    const response = await fetch('http://localhost:4000/userteams/create', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        team,
-        teamName,
-        coachOfTeam,
-        budget,
-        userMail: user.email,
-      }),
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/userteams/create`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          team,
+          teamName,
+          coachOfTeam,
+          budget,
+          userMail: user.email,
+        }),
+      }
+    )
     const json = await response.json()
 
     //update local storage that user has created team
@@ -36,15 +39,17 @@ export const useCreate = () => {
   // create a new league
   const createLeague = async ({ leagueName }) => {
     setIsLoading(true)
-
-    const response = await fetch('http://localhost:4000/league/create', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: leagueName,
-        userMail: user.email,
-      }),
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/league/create`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: leagueName,
+          userMail: user.email,
+        }),
+      }
+    )
     const json = await response.json()
     dispatchLeague({ type: 'ADD_LEAGUE_ID', payload: json._id })
     console.log(json)
@@ -55,14 +60,17 @@ export const useCreate = () => {
     console.log(leagueId)
     setIsLoading(true)
 
-    const response = await fetch('http://localhost:4000/league/join', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        leagueId: leagueId,
-        userMail: user.email,
-      }),
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/league/join`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          leagueId: leagueId,
+          userMail: user.email,
+        }),
+      }
+    )
     const json = await response.json()
     console.log(json)
   }

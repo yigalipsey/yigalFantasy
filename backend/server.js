@@ -31,13 +31,14 @@ app.use('/team', teamRoutes)
 app.use('/league', leagueRoutes)
 app.use('/userteams', userTeamsRoutes)
 
+const { PORT } = process.env
 // connect to db
 mongoose.set('strictQuery', false)
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     // listen for requests
-    app.listen(process.env.PORT, () => {
+    app.listen(PORT, () => {
       console.log('connected to db & listening on port', process.env.PORT)
     })
   })

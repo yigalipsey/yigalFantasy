@@ -7,15 +7,17 @@ export const useLogin = () => {
   const { dispatch, user } = useAuthContext()
 
   const login = async (email, password) => {
-    // console.log(user.userDetails.teamOfUser)
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('http://localhost:4000/user/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/user/login`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      }
+    )
     const json = await response.json()
 
     if (!response.ok) {

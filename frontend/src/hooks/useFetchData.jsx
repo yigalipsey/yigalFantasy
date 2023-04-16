@@ -13,13 +13,16 @@ export const useFetchData = () => {
   //fetching all players for user  thata user could pick his own team
   const fetchAllPlayers = async () => {
     try {
-      const response = await fetch('http://localhost:4000/team/allteams', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      })
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/team/allteams`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      )
       const data = await response.json()
       // console.log(data)
       dispatch({ type: 'SET_DATA', payload: data })
@@ -32,7 +35,7 @@ export const useFetchData = () => {
   const fetchAllUsersTeams = async () => {
     try {
       const response = await fetch(
-        'http://localhost:4000/userteams/allusersteams',
+        `${process.env.REACT_APP_BASE_URL}/userteams/allusersteams`,
         {
           method: 'GET',
           headers: {
@@ -52,11 +55,14 @@ export const useFetchData = () => {
   // fetch specific user team by mail
   const fetchUserTeamByMail = async (email) => {
     console.log(email)
-    const response = await fetch('http://localhost:4000/userteams/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userMail: email }),
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/userteams/`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userMail: email }),
+      }
+    )
     const json = await response.json()
     console.log(json)
     if (response.ok) {
@@ -69,10 +75,13 @@ export const useFetchData = () => {
   const fetchUserTeamById = async (_id) => {
     console.log('kara befront')
     console.log(_id)
-    const response = await fetch(`http://localhost:4000/userteams/${_id}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/userteams/${_id}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
     const json = await response.json()
     console.log(json)
     if (response.ok) {
@@ -84,11 +93,14 @@ export const useFetchData = () => {
   // fetch all the leagues  user in
   const fetchUserLeagues = async () => {
     // console.log(user.email)
-    const response = await fetch('http://localhost:4000/league/findleagues', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userMail: user.email }),
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/league/findleagues`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userMail: user.email }),
+      }
+    )
     const json = await response.json()
     // console.log(json)
     if (response.ok) {
@@ -99,10 +111,13 @@ export const useFetchData = () => {
   // fetch specific leagues
   const fetchSpecificLeague = async (_id) => {
     // console.log(user.email)
-    const response = await fetch(`http://localhost:4000/league/${_id}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    })
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/league/${_id}`,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
     const json = await response.json()
     console.log(json)
     if (response.ok) {
