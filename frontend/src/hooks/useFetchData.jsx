@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useAuthContext } from './useAuthContext'
 import { useMyTeamContext } from './useMyTeamContext'
 import { useLeaguesContext } from '../hooks/useLeaguesContext'
 
