@@ -135,11 +135,16 @@ function Player({ player }) {
     const isPick = team.map((p) => p._id === player._id)
     console.log(isPick)
 
+    if (isPick.length === 0) {
+      return
+    }
+
     if (isPick) {
       //search index to delete from array of multiple players from same team
       const indexToDelete = teamIdArray.findIndex(
         (team) => team === player.team
       )
+
       console.log(indexToDelete)
 
       dispatch({ type: 'DELETE_FROM_TEAM_ARRAY', payload: indexToDelete })

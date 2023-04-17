@@ -82,7 +82,7 @@ const PickPlayers = () => {
     <>
       {/* {check if there is any error and display } */}
       {errors && tryToBuild && (
-        <div className='z-14 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white p-4 rounded-lg h-[220px] w-1/2 bg-black gap-5 flex justify-center items-center flex-col '>
+        <div className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white p-4 rounded-lg h-[220px] w-1/2 bg-black gap-5 flex justify-center items-center flex-col '>
           <h1>לא ניתן לבנות קבוצה ללא :</h1>
           {teamError && <h1>שם קבוצה</h1>}
           {coachError && <h1>מאמן</h1>}
