@@ -4,7 +4,7 @@ import { useSignup } from '../hooks/useSignUp'
 const Signup = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { signup, error, isLoading } = useSignup()
+  const { signup, error } = useSignup()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -46,12 +46,17 @@ const Signup = () => {
                       placeholder='Password'
                     />
                   </div>
-                  <div className='relative'>
-                    <button className='bg-black text-white rounded-md px-2 py-1'>
-                      הרשם
-                    </button>
-                    {error && <div className='error'>{error}</div>}
+                  <div className='relative flex'>
+                    <div>
+                      <button className='bg-black text-white rounded-md px-2 py-1'>
+                        הרשם
+                      </button>
+                    </div>
+                    <div className=' mr-2 mt-2'>
+                      <h1>מינימום 8 תווים, אות גדולה וקטנה, מספר וסימן</h1>
+                    </div>
                   </div>
+                  <div> {error && <div className='error'>{error}</div>}</div>
                 </div>
               </div>
             </div>

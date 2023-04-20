@@ -3,6 +3,7 @@ import { useFetchData } from '../hooks/useFetchData'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useCreate } from '../hooks/useCreate'
 import { useMyTeamContext } from '../hooks/useMyTeamContext'
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 //components
 import DropDownByPosition from './DropDowns/DropDownByPosition'
@@ -69,7 +70,7 @@ const PickPlayers = () => {
     ) {
       setErrors(false)
       await createTeam()
-      window.location.reload()
+      window.location.href = '/myteam'
     } else {
     }
   }

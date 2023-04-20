@@ -7,7 +7,7 @@ const StatusOfTeam = () => {
     <div className=' w-full flex justify-center gap-2 bg-green-600 rounded-md'>
       <h1>תקציב שנשאר</h1>
       <h1>{budget} </h1>
-      <h1>מתוך 120 </h1>
+      <h1> מיליון מתוך 120 מיליון </h1>
     </div>
   )
 }

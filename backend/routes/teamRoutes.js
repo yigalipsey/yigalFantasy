@@ -15,12 +15,12 @@ const router = express.Router()
 router.post('/create', requireAuth, createTeam)
 
 //find team by name
-router.get('/getteambyname', findTeamByName)
+router.get('/getteambyname', requireAuth, findTeamByName)
 
 //find all teams
-router.get('/allteams', findAllTeams)
+router.get('/allteams', requireAuth, findAllTeams)
 
 //add player to the team
-router.post('/addplayer', AddPlyerToTeam)
+router.post('/addplayer', requireAuth, AddPlyerToTeam)
 
 module.exports = router

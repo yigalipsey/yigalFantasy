@@ -11,16 +11,12 @@ const Login = () => {
     e.preventDefault()
     console.log(e)
     await login(email, password)
-    // await fetchMyTeam(email)
   }
 
   const test = () => {
     setEmaila(true)
     console.log(emaila)
   }
-
-  // onChange={(e) => setEmail(e.target.value)}
-  //  onChange={(e) => setPassword(e.target.value)}
 
   return (
     <>

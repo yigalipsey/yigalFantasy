@@ -13,9 +13,9 @@ const PlayerCaracter = ({ player, location }) => {
           : location === 'center' && 'items-center'
       }  `}
     >
-      <div className='h-[50px]'>
+      <div className={`h-[50px]`}>
         <img
-          className={`w-[60px] `}
+          className={`w-[60px]  `}
           src={` ${
             player.team === '6410b1ad7e98290ae55a6d0c'
               ? maccabiImage
@@ -27,16 +27,16 @@ const PlayerCaracter = ({ player, location }) => {
         />
       </div>
 
-      <div className='w-full '>
-        <h1
-          className={` text-gray-500  flex flex-col  m-2  ${
+      <div className='w-full  '>
+        <div
+          className={` text-black   flex flex-col  m-2  ${
             location === 'end'
-              ? 'items-end'
+              ? 'items-end '
               : location === 'center' && 'items-center'
-          }`}
+          } `}
         >
-          {player.name}
-        </h1>
+          <h1>{player.name}</h1>
+        </div>
       </div>
     </div>
   )

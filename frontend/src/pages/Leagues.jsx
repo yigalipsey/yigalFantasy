@@ -30,7 +30,7 @@ function League() {
     return (
       <div className=' w-full h-screen pt-10 flex flex-col justify-center'>
         {!isLeagueOpen && (
-          <div className=' w-2/3 mx-auto flex '>
+          <div className=' w-3/4 mx-auto flex '>
             <div className={`  w-1/2  `}>
               <button
                 onClick={() => {
@@ -49,7 +49,7 @@ function League() {
                 </span>
               </button>
             </div>
-            <div className=' w-1/2'>
+            <div className=' w-1/2 '>
               <button
                 onClick={() => {
                   setIsJoinOpen(!isJoinOpen)
@@ -77,7 +77,7 @@ function League() {
           </div>
         )}
         <div>
-          <div className=' w-2/3 mx-auto bg-white  '>
+          <div className=' w-3/4 mx-auto bg-white  '>
             <button
               onClick={() => {
                 setIsLeagueOpen(!isLeagueOpen)

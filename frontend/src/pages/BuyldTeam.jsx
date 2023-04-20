@@ -2,7 +2,7 @@ import Pitch from '../components/SoccerPitch'
 import PickPlayers from '../components/PickPlayers'
 import PlayersOnPitch from '../components/PlayersOnPitch'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 const BuyldTeam = () => {
   const { user } = useAuthContext()
@@ -37,7 +37,7 @@ const BuyldTeam = () => {
     )
   } else {
     return (
-      <div className='z-14 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white p-4 rounded-lg h-[220px] w-2/3  md:w-1/2 bg-black gap-5 flex justify-center items-center flex-col '>
+      <div className='z-14 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white p-4 rounded-lg h-[220px] w-3/4  md:w-1/2 bg-black gap-5 flex justify-center items-center flex-col '>
         לא ניתן לבנות יותר מקבוצה אחת
       </div>
     )

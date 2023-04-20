@@ -21,7 +21,7 @@ const ErrorMsg = ({ error, error1, error2, error3, error4 }) => {
   }, [isVisible])
 
   return isVisible && error === undefined ? (
-    <div className='z-14 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white p-4 rounded-lg h-[140px] w-2/3 md:w-1/2 bg-black gap-5 flex justify-center items-center flex-col '>
+    <div className='z-14 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white p-4 rounded-lg h-[140px] w-3/4 md:w-1/2 bg-black gap-5 flex justify-center items-center flex-col '>
       <div>{error1}</div>
       <div>{error2}</div>
       <div>{error3}</div>
@@ -29,7 +29,7 @@ const ErrorMsg = ({ error, error1, error2, error3, error4 }) => {
     </div>
   ) : (
     isVisible && error !== undefined && (
-      <div className='z-14 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white p-4 rounded-lg h-[220px] w-2/3 md:w-1/2 bg-black gap-5 flex justify-center items-center  '>
+      <div className='z-14 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 text-white p-4 rounded-lg h-[220px] w-3/4 md:w-1/2 bg-black gap-5 flex justify-center items-center  '>
         <div>{error}</div>
       </div>
     )
