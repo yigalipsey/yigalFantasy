@@ -12,7 +12,7 @@ const SelectPlayerByFilter = () => {
       {teams.map((team) =>
         teamToFilter === null ? (
           <div key={team.name}>
-            <ul>
+            <ul className={'njonojnoj'}>
               {team.players.map((player) =>
                 positionToFilter === null ? (
                   priceToFilter === null ? (
