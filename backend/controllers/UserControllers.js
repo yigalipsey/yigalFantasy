@@ -7,6 +7,7 @@ const createToken = (_id) => {
 
 // login a user
 const loginUser = async (req, res) => {
+  console.log('loginUserxdfx')
   const { email, password } = req.body
 
   try {
@@ -23,17 +24,14 @@ const loginUser = async (req, res) => {
   }
 }
 
-// signup a user
 const signupUser = async (req, res) => {
   const { email, password } = req.body
-  console.log('here')
+
   try {
     const user = await User.signup(email, password)
     const teamOfUser = user.teamOfUser
-    if (!teamOfUser) {
-      res.status(200).json({ email, token, _id })
-    }
     const _id = user._id
+
     // create a token
     const token = createToken(user._id)
 

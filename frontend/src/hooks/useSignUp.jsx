@@ -9,7 +9,7 @@ export const useSignup = () => {
   const signup = async (email, password) => {
     setIsLoading(true)
     setError(null)
-
+    console.log('po')
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/user/signup`,
       {

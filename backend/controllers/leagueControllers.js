@@ -6,6 +6,7 @@ async function getTheLeagueParticipates(req, res) {
   const leagueId = req.params._id
 
   try {
+    // Find the league with the given ID and populate its 'teams' field with the players of each team
     const league = await LeagueModel.findById(leagueId).populate({
       path: 'teams',
       populate: {
@@ -19,12 +20,13 @@ async function getTheLeagueParticipates(req, res) {
   }
 }
 
-//add team to league
+// add team to league
 async function joinTeamToLeague(req, res) {
   const userMail = req.body.userMail
   const leagueId = req.body.leagueId
 
   try {
+    // Find the team with the given userMail and add it to the league with the given leagueId
     const team = await Team.findOne({ userMail })
 
     const added = await LeagueModel.updateOne(
@@ -38,14 +40,16 @@ async function joinTeamToLeague(req, res) {
   }
 }
 
-//create a new league
+// create a new league
 const createLeague = async (req, res) => {
   const userMail = req.body.userMail
 
+  // Find all teams associated with the given userMail
   const teams = await Team.find({ userMail })
 
   try {
     const { name } = req.body
+    // Create a new league with the given name and teams
     const newLeague = new LeagueModel({
       name,
       teams,
@@ -60,15 +64,16 @@ const createLeague = async (req, res) => {
   }
 }
 
-//get all leagues of specific user
+// get all leagues of specific user
 const findLeaguesOfUser = async (req, res) => {
   const { userMail } = req.body
 
+  // Find the team associated with the given userMail and get its ID
   const teamOfUser = await Team.findOne({ userMail })
   const teamId = teamOfUser._id
-  console.log(teamId)
+
   try {
-    // Find the league that the user is in, and populate it with teams
+    // Find all leagues that the team with the given ID is associated with, and populate each league's 'teams' field with the players of each team
     const leagues = await LeagueModel.find({ teams: teamId }).populate('teams')
 
     res.json({ leagues })

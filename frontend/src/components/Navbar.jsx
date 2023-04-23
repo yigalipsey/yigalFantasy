@@ -13,8 +13,8 @@ const MyLink = ({ page, name, selectedPage, setSelectedPage, img }) => {
   if (!isAboveSmallScreens) {
     return (
       <Link
-        className={`${selectedPage === page ? 'text-black' : 'text-white '}
-        hover:text-black transition duration-500 text-lg flex justify-between ml-2`}
+        className={`${selectedPage === page ? 'text-white' : 'text-black '}
+        hover:text-white transition duration-500 text-lg flex justify-between ml-2`}
         to={`${page}`}
         onClick={() => setSelectedPage(page)}
       >

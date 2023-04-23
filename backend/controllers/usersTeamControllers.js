@@ -2,6 +2,9 @@ const Team = require('../models/userTeam')
 const League = require('../models/leagueModel')
 const User = require('../models/userModel')
 
+//random for points
+const randomPoints = Math.random() * 100
+
 // Create a new user team
 const createMyTeam = async (req, res) => {
   try {
@@ -11,7 +14,7 @@ const createMyTeam = async (req, res) => {
       coachOfTeam: req.body.coachOfTeam,
       players: req.body.team,
       budget: req.body.budget,
-      totalPoints: 70,
+      totalPoints: randomPoints,
     })
     const savedUserTeam = await newUserTeam.save()
     const newTeamId = savedUserTeam._id
@@ -31,6 +34,7 @@ const createMyTeam = async (req, res) => {
 //fetch user Team by mail
 const FetchUserTeamByMail = async (req, res) => {
   try {
+    console.log('kara')
     const { userMail } = req.body
     const team = await Team.findOne({ userMail }).populate('players')
     console.log('userMail')

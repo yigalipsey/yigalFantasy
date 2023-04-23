@@ -59,7 +59,10 @@ export const useFetchData = () => {
       `${process.env.REACT_APP_BASE_URL}/userteams/`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
         body: JSON.stringify({ userMail: email }),
       }
     )
@@ -79,7 +82,10 @@ export const useFetchData = () => {
       `${process.env.REACT_APP_BASE_URL}/userteams/${_id}`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
       }
     )
     const json = await response.json()

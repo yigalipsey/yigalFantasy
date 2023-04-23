@@ -12,15 +12,15 @@ const {
 const router = express.Router()
 
 // get all players route
-router.get('/:_id', requireAuth, getTheLeagueParticipates)
+router.get('/:_id', getTheLeagueParticipates)
 
 // create the league
-router.post('/create', requireAuth, createLeague)
+router.post('/create', createLeague)
 
 // find  league
-router.post('/findleagues', requireAuth, findLeaguesOfUser)
+router.post('/findleagues', findLeaguesOfUser)
 
 // join user team to league
-router.post('/join', requireAuth, joinTeamToLeague)
+router.post('/join', joinTeamToLeague)
 
 module.exports = router

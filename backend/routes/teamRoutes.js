@@ -1,5 +1,6 @@
 const express = require('express')
 const requireAuth = require('../midellware/requireAuth')
+const myLogger = require('../midellware/myLoger')
 
 // controller functions
 const {
@@ -12,15 +13,15 @@ const {
 const router = express.Router()
 
 // create team route
-router.post('/create', requireAuth, createTeam)
+router.post('/create', createTeam)
 
 //find team by name
-router.get('/getteambyname', requireAuth, findTeamByName)
+router.get('/getteambyname', findTeamByName)
 
 //find all teams
 router.get('/allteams', requireAuth, findAllTeams)
 
 //add player to the team
-router.post('/addplayer', requireAuth, AddPlyerToTeam)
+router.post('/addplayer', AddPlyerToTeam)
 
 module.exports = router
