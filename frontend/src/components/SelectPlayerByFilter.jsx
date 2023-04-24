@@ -140,15 +140,12 @@ function Player({ player }) {
   }
 
   const removePlayer = ({ player }) => {
-    //check if the player is picked - only if picked you can remove
-    const isPick = team.map((p) => p._id === player._id)
-    console.log(isPick.length)
+    // Check if the player is in the team array
+    const isPlayerInTeamArray = team.some((p) => p._id === player._id)
 
-    if (isPick.length === 0) {
+    if (!isPlayerInTeamArray) {
       return
-    }
-
-    if (isPick) {
+    } else {
       //search index to delete from array of multiple players from same team
       const indexToDelete = teamIdArray.findIndex(
         (team) => team === player.team
