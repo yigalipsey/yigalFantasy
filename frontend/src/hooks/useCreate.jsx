@@ -51,6 +51,9 @@ export const useCreate = () => {
       }
     )
     const json = await response.json()
+    if (response.ok) {
+      console.log(json)
+    }
     dispatchLeague({ type: 'ADD_LEAGUE_ID', payload: json._id })
     console.log(json)
   }

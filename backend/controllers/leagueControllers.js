@@ -20,23 +20,40 @@ async function getTheLeagueParticipates(req, res) {
   }
 }
 
-// add team to league
+// Async function to add team to a league
 async function joinTeamToLeague(req, res) {
+  // Get the request data
   const userMail = req.body.userMail
   const leagueId = req.body.leagueId
 
   try {
-    // Find the team with the given userMail and add it to the league with the given leagueId
+    // Find the team with the given userMail and get its id
     const team = await Team.findOne({ userMail })
+    const teamId = team._id
 
-    const added = await LeagueModel.updateOne(
-      { _id: leagueId },
-      { $push: { teams: team } }
-    )
+    // Find the league by its id
+    const league = await LeagueModel.findOne({ _id: leagueId })
 
-    res.status(201).json(added)
-  } catch (err) {
-    console.error(err)
+    // If league is not found, return 404 error
+    if (!league) {
+      return res.status(404).send('League not found')
+    }
+
+    // Check if team already exists in the league
+    if (league.teams.includes(teamId)) {
+      return res.status(400).send('Team already exists in the league')
+    }
+
+    // Add the team to the league and save the changes
+    league.teams.push(teamId)
+    await league.save()
+
+    // Return success message
+    res.send('Team added to the league')
+  } catch (error) {
+    // Catch and handle any errors
+    console.error(error)
+    res.status(500).send('Server error')
   }
 }
 

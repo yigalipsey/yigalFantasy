@@ -76,7 +76,6 @@ export const useFetchData = () => {
 
   // fetch specific user team by id
   const fetchUserTeamById = async (_id) => {
-    console.log('kara befront')
     console.log(_id)
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/userteams/${_id}`,

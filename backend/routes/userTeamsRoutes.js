@@ -17,13 +17,13 @@ const {
 router.post('/create', createMyTeam)
 
 //fetch specific user team by email
-router.post('/', myLogger, FetchUserTeamByMail)
+router.post('/', requireAuth, FetchUserTeamByMail)
 
 //fetch specific user team by id
-router.post('/:_id', FetchUserTeamById)
+router.post('/:_id', requireAuth, FetchUserTeamById)
 
 //fetch all the teams that created by users
-router.get('/allusersteams', FetchAllUsersTeams)
+router.get('/allusersteams', requireAuth, FetchAllUsersTeams)
 
 //delete all teams created by users
 router.delete('/allusersteams', deleteAllUsersTeams)
