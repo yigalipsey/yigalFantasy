@@ -8,25 +8,32 @@ const SelectPlayerByFilter = () => {
     useDataContext()
 
   return (
-    <div className='  bg-opaque-black  '>
+    <div className='bg-opaque-black'>
+      {/* Map over each team in the teams array */}
       {teams.map((team) =>
+        // If no teamToFilter is selected, display all players
         teamToFilter === null ? (
           <div key={team.name}>
             <ul className={'njonojnoj'}>
+              {/* Map over each player in the team's players array */}
               {team.players.map((player) =>
+                // If no positionToFilter or priceToFilter is selected, display all players
                 positionToFilter === null ? (
                   priceToFilter === null ? (
                     <Player key={player._id} player={player} />
                   ) : (
+                    // If a priceToFilter is selected, display players that match the price
                     priceToFilter === player.price && (
                       <Player key={player._id} player={player} />
                     )
                   )
                 ) : (
+                  // If a positionToFilter is selected, display players that match the position
                   positionToFilter === player.position &&
                   (priceToFilter === null ? (
                     <Player key={player._id} player={player} />
                   ) : (
+                    // If both a positionToFilter and priceToFilter are selected, display players that match both
                     priceToFilter === player.price && (
                       <Player key={player._id} player={player} />
                     )
@@ -36,9 +43,11 @@ const SelectPlayerByFilter = () => {
             </ul>
           </div>
         ) : (
+          // If a teamToFilter is selected, only display players from that team
           teamToFilter === team.name && (
             <div key={team.name}>
               {team.players.map((player) =>
+                // Same filtering logic as above
                 positionToFilter === null ? (
                   priceToFilter === null ? (
                     <Player key={player._id} player={player} />
@@ -133,7 +142,7 @@ function Player({ player }) {
   const removePlayer = ({ player }) => {
     //check if the player is picked - only if picked you can remove
     const isPick = team.map((p) => p._id === player._id)
-    console.log(isPick)
+    console.log(isPick.length)
 
     if (isPick.length === 0) {
       return
@@ -144,8 +153,6 @@ function Player({ player }) {
       const indexToDelete = teamIdArray.findIndex(
         (team) => team === player.team
       )
-
-      console.log(indexToDelete)
 
       dispatch({ type: 'DELETE_FROM_TEAM_ARRAY', payload: indexToDelete })
 
@@ -175,14 +182,14 @@ function Player({ player }) {
           <h1 className='border-l'>{player.price}M$</h1>
         </div>
 
-        <div className=' w-1/6 border-l'>
-          <button className=' mr-2' onClick={() => selectPlayer({ player })}>
+        <div className=' w-1/6 border-l  hover:text-green-700 '>
+          <button className=' mr-2 ' onClick={() => selectPlayer({ player })}>
             בחר
           </button>
         </div>
 
-        <div className=' w-1/6'>
-          <button className=' mr-2' onClick={() => removePlayer({ player })}>
+        <div className=' w-1/6 hover:text-rose-700 '>
+          <button className=' mr-2 ' onClick={() => removePlayer({ player })}>
             הסר
           </button>
         </div>

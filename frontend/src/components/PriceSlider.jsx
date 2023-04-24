@@ -23,7 +23,7 @@ function PriceSlider() {
 
   return (
     <div className='flex items-center rounded-lg bg-gray-200 pl-10'>
-      <div className=' w-2/6 border-l-4 border-l-red text-rose-700 flex justify-center '>
+      <div className=' w-2/6 border-l-4 text-white bg-rose-700 rounded-r-lg flex justify-center  hover:text-rose-700 hover:bg-white'>
         <button onClick={resetPrices}>אפס מחירים</button>
       </div>
       <div className=' mr-4 text-green-700 w-2/6 '>{price}</div>

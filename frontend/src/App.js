@@ -34,17 +34,6 @@ function App() {
       <MyRoutes />
     </div>
   )
-
-  // return (
-  //   <div
-  //     style={{ backgroundImage: `url(${realStadium})` }}
-  //     className='bg-cover'
-  //   >
-  //     {/* <RoutesBeforeAuth />  */}
-  //     <Navbar selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
-  //     <MyRoutes />
-  //   </div>
-  // )
 }
 
 export default App

@@ -112,10 +112,10 @@ const PickPlayers = () => {
         </div>
         {/* {buttons for build and reset team} */}
         <div className='px-4 py-2 rounded-md  flex   bg-white w-full mt-1'>
-          <div className=' w-1/2 flex justify-center border-l  border-l-green-500 '>
+          <div className=' w-1/2 flex justify-center border-l  border-l-black hover:bg-green-700 hover:rounded-md hover:text-white '>
             <button onClick={() => handleBuildTeam()}>בנה קבוצה</button>
           </div>
-          <div className=' w-1/2 flex justify-center'>
+          <div className=' w-1/2 flex justify-center hover:bg-rose-700 hover:rounded-md hover:text-white'>
             <button onClick={() => handleResetTeam()}>אפס קבוצה</button>
           </div>
         </div>
