@@ -37,11 +37,9 @@ const UserTeamPage = () => {
       className=' grid grid-cols-1 mym:grid-cols-2  w-full md:w-5/6 m-auto pb-10
       pt-10'
     >
-      {/* <div className='order-1 md:order-2 mx-auto w-[350px] bg-orange-600 h-[30px]  mt-1'>
-        הקבוצה של :
-      </div> */}
-      <div className='w-full mt-10'>
+      <div className='w-full mt-7 '>
         <div>
+          <div className='w-[350px] mx-auto mb-1 bg-red '>{'lknjkbhkbhk'}</div>
           <div className='relative w-[350px]  h-[600px]  mx-auto'>
             <Pitch />
             <div className=' absolute top-0 -left-0'>
