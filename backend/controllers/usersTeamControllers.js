@@ -3,7 +3,7 @@ const League = require('../models/leagueModel')
 const User = require('../models/userModel')
 
 //random for points
-const randomPoints = Math.floor(Math.random() * 100)
+const randomPoints = Math.floor(Math.random() * 1000)
 
 // Create a new user team
 const createMyTeam = async (req, res) => {

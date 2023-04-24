@@ -39,7 +39,6 @@ const UserTeamPage = () => {
     >
       <div className='w-full mt-7 '>
         <div>
-          <div className='w-[350px] mx-auto mb-1 bg-red '>{'lknjkbhkbhk'}</div>
           <div className='relative w-[350px]  h-[600px]  mx-auto'>
             <Pitch />
             <div className=' absolute top-0 -left-0'>

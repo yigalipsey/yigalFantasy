@@ -14,6 +14,9 @@ async function getTheLeagueParticipates(req, res) {
       },
     })
 
+    //sort the league by points
+    league.teams.sort((a, b) => b.totalPoints - a.totalPoints)
+
     res.status(201).json(league)
   } catch (err) {
     console.error(err)
